@@ -1,0 +1,5 @@
+.playwright-mcp/
+reference-*.png
+build/
+__pycache__/
+*.blend1
