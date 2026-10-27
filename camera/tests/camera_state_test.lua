@@ -1,0 +1,45 @@
+local Camera = sample
+local function near(a,b) assert(math.abs(a-b)<0.00001, tostring(a).." != "..tostring(b)) end
+local state = Camera.new()
+state:set_bounds(400,240)
+assert(state:pan(-100,50,2))
+assert(state.mode == "look" and state.target_x == 200 and state.target_y == -100)
+state:pan(-1000,1000,2)
+assert(state.target_x == 400 and state.target_y == -240)
+state:recenter()
+assert(state.mode == "follow" and state.target_x == 0 and state.target_y == 0)
+
+local a,b = Camera.new(),Camera.new()
+a:pan(-100,20,1)
+b:pan(-100,20,1)
+for i=1,30 do a:update(1/30,0,0) end
+for i=1,120 do b:update(1/120,0,0) end
+near(a.x,b.x); near(a.y,b.y)
+assert(a.x>99 and a.x<100)
+a:recenter()
+for i=1,240 do a:update(1/60,0,0) end
+assert(a.x==0 and a.y==0, "Follow must finish returning control to the native camera")
+
+local hold = Camera.new()
+hold:update(0,100,200)
+hold:set_hold(true)
+hold:update(0,130,180)
+near(hold.x,-30); near(hold.y,20)
+near(hold.target_x,-30); near(hold.target_y,20)
+hold:pan(-50,0,1)
+assert(hold.mode == "hold")
+hold:set_hold(false)
+assert(hold.mode == "look")
+hold:reset()
+assert(hold.x==0 and hold.y==0 and hold.mode=="follow" and hold.last_center_x==nil)
+
+local invalid = Camera.new()
+assert(not invalid:pan(0/0,0,1))
+assert(not invalid:pan(1,1,-1))
+assert(not invalid:update(-1,0,0))
+assert(not invalid:update(1,math.huge,0))
+assert(invalid.x==0 and invalid.target_x==0)
+invalid:pan(-400,-400,1)
+invalid:update(1,0,0)
+invalid:set_bounds(100,80)
+assert(invalid.x<=100 and invalid.y<=80 and invalid.target_x<=100 and invalid.target_y<=80)

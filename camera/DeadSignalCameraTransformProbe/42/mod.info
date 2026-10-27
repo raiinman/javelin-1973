@@ -1,0 +1,6 @@
+name=Dead Signal Camera - Image Transform Research
+id=DeadSignalCameraTransformProbe
+author=Dead Signal Interactive
+modversion=0.0.1
+versionMin=42.20.0
+description=Experimental actual-world image pan, rotation and planar tilt. Debug single-player only. Image transformation does not add world geometry or correct native picking. Return to the normal view before gameplay.

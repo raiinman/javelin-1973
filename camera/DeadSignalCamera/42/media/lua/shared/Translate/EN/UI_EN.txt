@@ -1,0 +1,7 @@
+UI_EN = {
+    UI_optionscreen_binding_DeadSignalCamera = "Dead Signal Camera",
+    UI_optionscreen_binding_DSCameraControls = "Show/hide camera controls",
+    UI_optionscreen_binding_DSCameraClose = "Close zoom preset",
+    UI_optionscreen_binding_DSCameraNormal = "Normal zoom preset",
+    UI_optionscreen_binding_DSCameraWide = "Wide zoom preset",
+}

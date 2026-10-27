@@ -1,0 +1,6 @@
+name=Dead Signal Camera
+id=DeadSignalCamera
+author=Dead Signal Interactive
+description=Native zoom presets and camera-pan binding guidance. Fixed isometric orientation. No external renderer or installer.
+modversion=0.1.1
+versionMin=42.20.0

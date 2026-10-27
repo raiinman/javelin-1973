@@ -1,0 +1,6 @@
+name=Dead Signal Camera - Geometry Probe
+id=DeadSignalCameraProbe
+author=Dead Signal Interactive
+modversion=0.0.3
+versionMin=42.20.0
+description=Development probe for the built-in 3D scene renderer. Debug single-player only. Right-click the world to open a nearby-map geometry snapshot. This is not a gameplay camera.
