@@ -1,0 +1,1 @@
+Original Blender studio render of this project's red 1973 AMC Javelin AMX Pierre Cardin, front three-quarter view, black T hood graphic, chrome trim and side pipes, neutral background. Reuse assets/javelin-preview.png, rendered by tools/build_mod.py, as readme-banner.png. This is a source-model illustration, not runtime evidence.
