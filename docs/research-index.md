@@ -13,6 +13,7 @@ The actual-car research remains relevant. The current cloud model supersedes ear
 | [Front-nose research](front-nose-research.md) | Grille, lamps, bumper/guards and crown relationships | Check the target before importing another car's equipment |
 | [Rear-haunch research](rear-haunch-research.md), [rear contour](rear-contour-research.md) | Rear shoulder, sail/glass, spoiler, bumper and lamps | Comparison cameras are not dimensional calibration |
 | [Interior research](interior-cycle10-research.md), [manual cabin hardware](manual-cabin-hardware-research.md) | Cardin seating, door/headliner motifs, fascia, wheel and manual controls | Supplemental automatic/standard-car features do not override the target |
+| [AMC 360-style engine](amc360-engine.md) | Engine evidence classes, fit results and open reference checks | Built without access to the supplied engine photographs; layout items are assumptions until compared |
 | [Decal evidence](decal-reference.md), [camera-fit evidence](reference-camera-fit.md) | Original hood/fender T boundaries and comparison alignment | Fine artwork and uncalibrated millimetre claims remain separate |
 
 ## Baseline measurements and disagreements

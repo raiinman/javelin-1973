@@ -16,8 +16,8 @@ import os
 import sys
 from itertools import combinations
 
+import bpy  # must precede bmesh when run as the bpy module
 import bmesh
-import bpy
 from mathutils import Matrix, Vector
 from mathutils.bvhtree import BVHTree
 
@@ -138,7 +138,13 @@ def check(engine_path, report_path):
     for ob in obs:
         n = tri_count(ob, dg)
         total += n
-        per[ob.name] = dict(triangles=n, materials=[m.name for m in ob.data.materials],
+        gh = hashlib.sha256()
+        for v in ob.data.vertices:
+            gh.update(('%.6f %.6f %.6f;' % tuple(v.co)).encode())
+        for f in ob.data.polygons:
+            gh.update((' '.join(map(str, f.vertices)) + '|%d;' % f.material_index).encode())
+        per[ob.name] = dict(triangles=n, geometry_sha256=gh.hexdigest(),
+                            materials=[m.name for m in ob.data.materials],
                             pivot=[round(c, 4) for c in ob.matrix_world.translation],
                             **topology(ob, dg))
     trees = {ob.name: bvh_for(ob, dg) for ob in obs}
@@ -160,7 +166,13 @@ def check(engine_path, report_path):
         if d['boundary_edges'] and name not in open_ok:
             problems.append(f'{name}: {d["boundary_edges"]} open boundary edges')
     for k, v in hits.items():
-        problems.append(f'unintended intersection {k}: {v} triangle pairs')
+        a, b = k.split(' x ')
+        i, j = trees[a].overlap(trees[b])[0]
+        bm = eval_bmesh(bpy.data.objects[a], dg)
+        bm.faces.ensure_lookup_table()
+        at = [round(c, 3) for c in bm.faces[i].calc_center_median()]
+        bm.free()
+        problems.append(f'unintended intersection {k}: {v} triangle pairs, e.g. near {at}')
     rep = dict(engine=os.path.basename(engine_path), sha256=sha256(engine_path),
                blender=bpy.app.version_string, total_triangles=total, objects=per,
                seated_contacts={k: [v, SEATED[frozenset(k.split(' x '))]] for k, v in seated.items()},
@@ -173,13 +185,14 @@ def check(engine_path, report_path):
 
 # ------------------------------------------------------------------ rendering
 
-def setup_render(res=(1400, 1000), samples=48):
+def setup_render(res=(1400, 1000), samples=int(os.environ.get('ENG_SAMPLES', 48))):
     sc = bpy.context.scene
     sc.render.engine = 'CYCLES'
     sc.cycles.device = 'CPU'
     sc.cycles.samples = samples
     sc.cycles.use_denoising = True
     sc.render.resolution_x, sc.render.resolution_y = res
+    sc.render.resolution_percentage = int(os.environ.get('ENG_RES_PCT', 100))
     sc.render.film_transparent = False
     sc.view_settings.view_transform = 'AgX'
     world = bpy.data.worlds.get('ENG_ReviewWorld') or bpy.data.worlds.new('ENG_ReviewWorld')
@@ -238,7 +251,7 @@ def studio(center):
     fm.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = .8
     fd.materials.append(fm)
     fl = bpy.data.objects.new('ENG_Floor', fd)
-    fl.location = (0, 0, c.z - .24)
+    fl.location = (0, 0, -.235)
     bpy.context.scene.collection.objects.link(fl)
 
 
@@ -259,23 +272,30 @@ def render_engine(engine_path, outdir):
                   os.path.join(outdir, f'amc360_{name}.png'))
     top = look_camera('CAM_top', (0, -.22, 2.5), (0, -.22, .1), ortho=1.25)
     render_to(top, os.path.join(outdir, 'amc360_top.png'))
-    # Component isolation: functional groups pulled apart along the view axes.
-    shifts = {'ENG_Pressings': Vector((0, 0, .28)), 'ENG_FuelIgnition': Vector((.0, .0, .55)),
-              'ENG_FrontDrive': Vector((0, .45, 0)), 'ENG_Castings': Vector((0, 0, 0))}
-    for gname, d in shifts.items():
-        col = bpy.data.collections[gname]
-        for ob in col.objects:
-            ob.location = ob.location + d
-    for n, d in (('ENG_OilPan', Vector((0, 0, -.45))), ('ENG_ValveCover_L', Vector((-.12, 0, -.10))),
-                 ('ENG_ValveCover_R', Vector((.12, 0, -.10))),
-                 ('ENG_AirCleaner', Vector((0, 0, .20))), ('ENG_AirCleanerLabel360', Vector((0, 0, .20))),
-                 ('ENG_ExhaustManifold_L', Vector((-.18, 0, 0))), ('ENG_ExhaustManifold_R', Vector((.18, 0, 0))),
-                 ('ENG_Fan', Vector((0, .18, 0))), ('ENG_Alternator', Vector((.15, 0, 0))),
-                 ('ENG_AlternatorBracket', Vector((.10, 0, 0))), ('ENG_Intake', Vector((0, 0, .22)))):
+    # Label legibility close-up, from ahead of the engine where a person stands at the bay.
+    render_to(look_camera('CAM_label', (0, .32, .95), (0, -.20, .52), 50),
+              os.path.join(outdir, 'amc360_label_closeup.png'))
+    # Component isolation: each part pulled apart along its own mounting direction.
+    up, fwd = Vector((0, 0, 1)), Vector((0, 1, 0))
+    offsets = {
+        'ENG_AirCleaner': up * .55, 'ENG_AirCleanerLabel360': up * .55, 'ENG_Carburettor': up * .36,
+        'ENG_Intake': up * .20,
+        'ENG_ValveCover_L': Vector((-.16, 0, .16)), 'ENG_ValveCover_R': Vector((.16, 0, .16)),
+        'ENG_ExhaustManifold_L': Vector((-.24, 0, -.04)), 'ENG_ExhaustManifold_R': Vector((.24, 0, -.04)),
+        'ENG_OilPan': up * -.28,
+        'ENG_TimingCover': fwd * .22, 'ENG_WaterPump': fwd * .34, 'ENG_OilFilter': fwd * .30 + Vector((.10, 0, -.06)),
+        'ENG_OilFillerCap': fwd * .26 + up * .10, 'ENG_CrankDamper': fwd * .46, 'ENG_FanPulley': fwd * .50,
+        'ENG_DriveBelt': fwd * .58, 'ENG_Fan': fwd * .80,
+        'ENG_Alternator': fwd * .42 + Vector((.18, 0, .06)), 'ENG_AlternatorBracket': fwd * .20 + Vector((.18, 0, .06)),
+        'ENG_Distributor': fwd * .30 + Vector((.10, 0, .18)), 'ENG_DistributorCap': fwd * .30 + Vector((.10, 0, .30)),
+        'ENG_IgnitionLeads': up * .38 + Vector((0, 0, 0)), 'ENG_PlugBoots': up * .38,
+        'ENG_WireLoom_L': up * .38, 'ENG_WireLoom_R': up * .38,
+    }
+    for n, d in offsets.items():
         ob = bpy.data.objects[n]
         ob.location = ob.location + d
-    bpy.data.objects['ENG_Floor'].location.z -= .5
-    cam = look_camera('CAM_exploded', c + Vector((1.9, 2.0, 1.2)), c + Vector((0, .1, .2)), 32)
+    bpy.data.objects['ENG_Floor'].location.z = -.56
+    cam = look_camera('CAM_exploded', c + Vector((1.9, 2.25, 1.25)), c + Vector((.04, .30, .20)), 36)
     render_to(cam, os.path.join(outdir, 'amc360_components.png'))
 
 
@@ -307,6 +327,26 @@ def find_hood():
     return cands
 
 
+def contact_faces(co, dg, eng_trees):
+    """Every car face an engine triangle crosses, with its vertices and the engine parts."""
+    ct = bvh_for(co, dg)
+    hits = {}
+    for n, t in eng_trees.items():
+        for _i, k in t.overlap(ct):
+            hits.setdefault(k, set()).add(n)
+    if not hits:
+        return []
+    bm = eval_bmesh(co, dg)
+    bm.faces.ensure_lookup_table()
+    out = []
+    for k in sorted(hits):
+        f = bm.faces[k]
+        out.append(dict(face=k, verts=[[round(c, 3) for c in v.co] for v in f.verts],
+                        normal=[round(c, 2) for c in f.normal], engine_parts=sorted(hits[k])))
+    bm.free()
+    return out
+
+
 def fit(engine_path, car_path, out_path, report_path, render_dir, root_loc):
     car_hash = sha256(car_path)
     bpy.ops.wm.open_mainfile(filepath=car_path)
@@ -318,23 +358,28 @@ def fit(engine_path, car_path, out_path, report_path, render_dir, root_loc):
     eng = engine_objects()
     eng_trees = {o.name: bvh_for(o, dg) for o in eng}
     eng_bms = {o.name: eval_bmesh(o, dg) for o in eng}
-    # Static clearance against every car mesh, visible or hidden.
+    # Static clearance against every car mesh near the engine, visible or hidden.
     static = {}
+    allv = [v.co for bm in eng_bms.values() for v in bm.verts]
+    lo = Vector([min(c[i] for c in allv) - .06 for i in range(3)])
+    hi = Vector([max(c[i] for c in allv) + .06 for i in range(3)])
     for co in car_mesh_objects():
         if co.data is None or not len(co.data.polygons):
             continue
+        bb = [co.matrix_world @ Vector(b) for b in co.bound_box]
+        if any(max(b[i] for b in bb) < lo[i] or min(b[i] for b in bb) > hi[i] for i in range(3)):
+            continue
         t = bvh_for(co, dg)
-        best, hitpairs = 9.0, 0
-        for n, bm in eng_bms.items():
-            hitpairs += len(eng_trees[n].overlap(t))
-            for v in bm.verts[::3]:
+        best = 9.0
+        for bm in eng_bms.values():
+            for v in bm.verts:
                 r = t.find_nearest(v.co, best)
                 if r[0] is not None and r[3] < best:
                     best = r[3]
-        if best < .05 or hitpairs:
-            visible = co.visible_get()
-            static[co.name] = dict(min_distance_m=round(best, 4), overlapping_tri_pairs=hitpairs,
-                                   visible=visible)
+        faces = contact_faces(co, dg, eng_trees)
+        if best < .05 or faces:
+            static[co.name] = dict(min_distance_m=round(best, 4), visible=co.visible_get(),
+                                   contact_faces=faces)
     # Hood sweep at half-frame samples, frames 1..26.
     hoods = find_hood()
     sweep = {}
@@ -356,50 +401,139 @@ def fit(engine_path, car_path, out_path, report_path, render_dir, root_loc):
                              overlapping_tri_pairs=overl))
         sweep[hood.name] = rows
     scene.frame_set(frame0)
+    animated = bool(bpy.data.actions) or any(o.animation_data for o in hoods)
+    # Without hood animation, also sweep an explicitly assumed rear-edge hinge.
+    # This is a diagnostic, not evidence of the real rig.
+    assumed = {}
+    for hood in hoods:
+        hb = eval_bmesh(hood, bpy.context.evaluated_depsgraph_get())
+        ymin = min(v.co.y for v in hb.verts)
+        rear = [v.co for v in hb.verts if v.co.y < ymin + .02]
+        pivot = Vector((0, ymin, sum(c.z for c in rear) / len(rear)))
+        rows = []
+        for i in range(51):
+            ang = math.radians(55) * i / 50
+            m = Matrix.Translation(pivot) @ Matrix.Rotation(ang, 4, 'X') @ Matrix.Translation(-pivot)
+            hc = hb.copy()
+            hc.transform(m)
+            ht = BVHTree.FromBMesh(hc)
+            hc.free()
+            best, who, overl = 9.0, None, 0
+            for n, bm in eng_bms.items():
+                overl += len(eng_trees[n].overlap(ht))
+                for v in bm.verts:
+                    r = ht.find_nearest(v.co, best)
+                    if r[0] is not None and r[3] < best:
+                        best, who = r[3], n
+            rows.append(dict(sample=i, open_deg=round(math.degrees(ang), 2), min_clearance_m=round(best, 4),
+                             nearest_engine_part=who, overlapping_tri_pairs=overl))
+        hb.free()
+        assumed[hood.name] = dict(hinge_pivot=[round(c, 4) for c in pivot], max_open_deg=55, rows=rows)
     after = visibility_snapshot()
     changed = [k for k in before if before[k][:3] != after.get(k, (None,))[:3]]
     rep = dict(car=os.path.basename(car_path), car_sha256=car_hash, engine_sha256=sha256(engine_path),
                root_location=list(root_loc), car_objects=len(before), car_visibility_changed=changed,
-               static_near_or_overlapping=static, hood_sweep=sweep)
+               car_has_actions=bool(bpy.data.actions), hood_animated=animated,
+               static_near_or_overlapping=static, hood_sweep=sweep, assumed_rear_hinge_sweep=assumed)
     with open(report_path, 'w') as f:
         json.dump(rep, f, indent=1)
     worst = {h: min(rows, key=lambda r: r['min_clearance_m']) for h, rows in sweep.items()}
-    print(json.dumps(dict(hoods=[h.name for h in hoods], worst=worst,
-                          static={k: v for k, v in static.items() if v['overlapping_tri_pairs']}), indent=1))
-    bpy.ops.wm.save_as_mainfile(filepath=out_path, compress=True, copy=True)
+    print(json.dumps(dict(hoods=[h.name for h in hoods], worst=worst, animated=animated,
+                          contacts={k: len(v['contact_faces']) for k, v in static.items()}), indent=1))
     if render_dir:
+        section_slices(os.path.join(render_dir, 'amc360_fit_sections.png'), root_loc)
         render_fit(render_dir, root_loc, hoods)
+    save_diagnostic(engine_path, car_path, out_path, root_loc)
+
+
+def section_slices(path, root_loc):
+    """Planar cuts of visible car meshes (red, closed hood included) and the engine (blue)."""
+    from PIL import Image, ImageDraw
+    dg = bpy.context.evaluated_depsgraph_get()
+    carobs = [o for o in bpy.data.objects if o.type == 'MESH' and not o.name.startswith('ENG_')
+              and o.visible_get()]
+    engobs = engine_objects()
+    ry = root_loc[1]
+
+    def cut(obs, axis, val):
+        no = Vector((1, 0, 0)) if axis == 'x' else Vector((0, 1, 0))
+        co = no * val
+        segs = []
+        for o in obs:
+            bm = eval_bmesh(o, dg)
+            r = bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
+                                       plane_co=co, plane_no=no, dist=1e-6)
+            segs += [[v.co.copy() for v in e.verts] for e in r['geom_cut'] if isinstance(e, bmesh.types.BMEdge)]
+            bm.free()
+        return segs
+    panels = [('y', round(ry - .45, 3)), ('y', round(ry - .25, 3)), ('y', round(ry + .10, 3)),
+              ('x', 0.0), ('x', .20), ('x', -.30)]
+    W, H = 700, 460
+    sheet = Image.new('RGB', (W * 3, H * 2), 'white')
+    for k, (ax, val) in enumerate(panels):
+        img = Image.new('RGB', (W, H), 'white')
+        d = ImageDraw.Draw(img)
+        if ax == 'y':
+            u0, u1, v0, v1 = -.75, .75, -.55, .55
+            U = lambda p: p.x
+        else:
+            u0, u1, v0, v1 = ry - 1.0, ry + .55, -.55, .55
+            U = lambda p: p.y
+        sc = min((W - 20) / (u1 - u0), (H - 30) / (v1 - v0))
+        P = lambda p: (10 + (U(p) - u0) * sc, H - 10 - (p.z - v0) * sc)
+        for g in range(-20, 30):
+            gv = g / 10
+            if u0 <= gv <= u1:
+                d.line([P(Vector((gv, gv, v0))), P(Vector((gv, gv, v1)))], fill=(232, 232, 232))
+        for g in range(-5, 6):
+            gz = g / 10
+            d.line([P(Vector((u0, u0, gz))), P(Vector((u1, u1, gz)))], fill=(232, 232, 232))
+        for segs, col in ((cut(carobs, ax, val), (200, 30, 30)), (cut(engobs, ax, val), (30, 60, 200))):
+            for a, b in segs:
+                d.line([P(a), P(b)], fill=col, width=1)
+        lab = 'section %s = %.3f m (%s)' % (ax.upper(), val, 'looking forward' if ax == 'y' else 'from +X')
+        d.text((10, 6), lab + '   red: car (visible, closed hood)   blue: engine   grid 0.1 m', fill='black')
+        sheet.paste(img, ((k % 3) * W, (k // 3) * H))
+    sheet.save(path)
+    print('sections', path)
 
 
 def render_fit(outdir, root_loc, hoods):
     os.makedirs(outdir, exist_ok=True)
-    setup_render((1400, 1000), 40)
-    sc = bpy.context.scene
-    c = Vector(root_loc) + Vector((0, -.2, .2))
+    setup_render((1400, 1000))
+    c = Vector(root_loc) + Vector((0, -.2, .15))
     add_light('ENG_FitKey', c + Vector((1.5, 1.5, 2.5)), (math.radians(-35), math.radians(30), math.radians(140)), 900, 2)
     add_light('ENG_FitTop', c + Vector((0, 0, 2.5)), (0, 0, 0), 600, 2.5)
-    # Open hood view at the final frame, closed-hood section view from the side.
-    sc.frame_set(26)
-    render_to(look_camera('CAM_fit_open', c + Vector((1.6, 1.9, 1.4)), c, 35),
-              os.path.join(outdir, 'amc360_fit_open_hood.png'))
-    sc.frame_set(1)
-    hidden = []
-    for o in bpy.data.objects:
-        if o.type == 'MESH' and not o.name.startswith('ENG_') and o.matrix_world.translation.x < -.05 \
-                and not o.hide_render:
-            pass
-    # Driver-side cutaway: hide render of car meshes whose bounds lie mostly left of -0.45 m.
-    for o in bpy.data.objects:
-        if o.type != 'MESH' or o.name.startswith('ENG_') or o.hide_render:
-            continue
-        xs = [(o.matrix_world @ Vector(b)).x for b in o.bound_box]
-        if max(xs) < -.40:
-            o.hide_render = True
-            hidden.append(o.name)
-    render_to(look_camera('CAM_fit_side', c + Vector((-2.6, 0, .05)), c, 40),
-              os.path.join(outdir, 'amc360_fit_closed_side.png'))
-    for n in hidden:
-        bpy.data.objects[n].hide_render = False
+    # The supplied file has no hood animation, so the bay views hide the hood
+    # in this session only; the car file itself is never written.
+    for h in hoods:
+        h.hide_render = True
+    render_to(look_camera('CAM_fit_bay', c + Vector((1.3, 1.7, 1.3)), c, 30),
+              os.path.join(outdir, 'amc360_fit_bay_hood_hidden.png'))
+    render_to(look_camera('CAM_fit_bay_top', c + Vector((0, .1, 2.2)), c + Vector((0, .1, 0)), 35),
+              os.path.join(outdir, 'amc360_fit_bay_top_hood_hidden.png'))
+    for h in hoods:
+        h.hide_render = False
+    render_to(look_camera('CAM_fit_closed', c + Vector((2.6, 3.2, 1.0)), c + Vector((0, -.4, 0)), 40),
+              os.path.join(outdir, 'amc360_fit_closed_hood.png'))
+
+
+def save_diagnostic(engine_path, car_path, out_path, root_loc):
+    """Small separate file: the car's scene is library-linked read-only as a background set,
+    the engine collection is appended locally at the fit transform."""
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+    with bpy.data.libraries.load(car_path, link=True, relative=False) as (src, dst):
+        dst.scenes = list(src.scenes)
+    car_scene = dst.scenes[0]
+    scene = bpy.context.scene
+    scene.name = 'AMC360_BayFit_DIAGNOSTIC'
+    scene.background_set = car_scene
+    scene['diagnostic'] = ('Engine fit check only. Car is linked read-only from the historical '
+                           'assets/current-stl snapshot; not an adopted car checkpoint.')
+    link_engine(engine_path, root_loc)
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    bpy.ops.wm.save_as_mainfile(filepath=out_path, compress=True, relative_remap=True)
+    print('diagnostic', out_path)
 
 
 def main():
@@ -412,7 +546,7 @@ def main():
     ap.add_argument('--car')
     ap.add_argument('--out')
     ap.add_argument('--renders')
-    ap.add_argument('--root', nargs=3, type=float, default=(0, 1.35, -.235))
+    ap.add_argument('--root', nargs=3, type=float, default=(0, 1.49, -.235))
     o = ap.parse_args(a)
     eng = os.path.abspath(o.engine)
     if o.mode == 'check':

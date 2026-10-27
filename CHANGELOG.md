@@ -6,6 +6,8 @@
 - Included the current complete STL-based Javelin with accepted Meshy cockpit, restored front enclosure, separate black skirts, narrow brightwork and fitted side pipes as an editable source snapshot with packed textures and checksum.
 - Added portable takeover guidance distinguishing the current assembly, preserved procedural mod, independent camera candidate and untested Fast Load revision.
 
+- Added an original procedural AMC 360-style exterior engine (separate file, 29,192 triangles) with verification, actual-mesh renders and a bay-fit diagnostic against the historical car snapshot. Reference photographs were not available in the build session; see `docs/amc360-engine.md` for unverified layout choices.
+
 ### Fixed
 - Saved and reopened the current car with the assembled cabin and functional panels visible in Material Preview.
 

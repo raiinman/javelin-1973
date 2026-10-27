@@ -1,0 +1,643 @@
+{
+ "engine": "AMC360_Engine.blend",
+ "sha256": "51fd994855a7846d5fb898de7be5bb8ec4d7fec09d0f137f27c7e5a131db3d94",
+ "blender": "5.2.1 LTS",
+ "total_triangles": 29192,
+ "objects": {
+  "ENG_AirCleaner": {
+   "triangles": 1936,
+   "geometry_sha256": "297ab2bf413f78838f6a8ceb6a868b985111e7b4f3e650f578dcc7a88209b623",
+   "materials": [
+    "ENG_Black_Satin",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.0,
+    -0.275,
+    0.426
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 5,
+   "inward_shells": 0
+  },
+  "ENG_AirCleanerLabel360": {
+   "triangles": 248,
+   "geometry_sha256": "b325bb5b61edf026dff7fa205fbc358d93998264d264a1acf71830d5358e1f44",
+   "materials": [
+    "ENG_Decal_Silver"
+   ],
+   "pivot": [
+    0.0,
+    -0.203,
+    0.54
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 256,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 0,
+   "inward_shells": 0
+  },
+  "ENG_Alternator": {
+   "triangles": 1204,
+   "geometry_sha256": "28f527ebd40147b93d8b02b78469e54ec9615cb53f2587a751a82e9f9f4972d0",
+   "materials": [
+    "ENG_Aluminium",
+    "ENG_Black_Satin",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.25,
+    0.004,
+    0.245
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 6,
+   "inward_shells": 0
+  },
+  "ENG_AlternatorBracket": {
+   "triangles": 208,
+   "geometry_sha256": "aa830c9dd318f4b83cd37ad14fcb9d2873b154ce72abb74dbf9751a2628369c7",
+   "materials": [
+    "ENG_Black_Satin",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.25,
+    -0.025,
+    0.245
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 5,
+   "inward_shells": 0
+  },
+  "ENG_Block": {
+   "triangles": 1224,
+   "geometry_sha256": "4bf27078c5af8503ec7d1597e2f8fe278f145768f625fd6eb0e5a66383858e51",
+   "materials": [
+    "ENG_Paint_Cast"
+   ],
+   "pivot": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 10,
+   "inward_shells": 0
+  },
+  "ENG_Carburettor": {
+   "triangles": 688,
+   "geometry_sha256": "0bd6eb634f344a3a26eb89acb5e6eab38b4a2763da5108c22245beb418b8c141",
+   "materials": [
+    "ENG_Zinc_Plate",
+    "ENG_Steel_Bright",
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    0.0,
+    -0.275,
+    0.335
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 7,
+   "inward_shells": 0
+  },
+  "ENG_CrankDamper": {
+   "triangles": 1378,
+   "geometry_sha256": "8a2c389bddfcf7ae4a8f0c0d4cc946de1eafdc8abcacf2828beb854e47a2fe42",
+   "materials": [
+    "ENG_Black_Satin",
+    "ENG_Rubber",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.0,
+    0.085,
+    0.0
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 3,
+   "inward_shells": 0
+  },
+  "ENG_Distributor": {
+   "triangles": 460,
+   "geometry_sha256": "4835af3e505d1f85f9547391520e0bbd409d2a058381d5dcf7ed3967dd500317",
+   "materials": [
+    "ENG_Paint_Cast",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.118,
+    0.06,
+    0.095
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 3,
+   "inward_shells": 0
+  },
+  "ENG_DistributorCap": {
+   "triangles": 656,
+   "geometry_sha256": "196bbd4ceb96b971ba2ae8939dfb05bad2b047b802a8fdc59a457f1032f89653",
+   "materials": [
+    "ENG_Bakelite_Cap",
+    "ENG_Rubber"
+   ],
+   "pivot": [
+    0.1331,
+    0.0684,
+    0.1772
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 10,
+   "inward_shells": 0
+  },
+  "ENG_DriveBelt": {
+   "triangles": 624,
+   "geometry_sha256": "4c026dd6e26efe4951546898cd50f9cef19ea83272f1b4784ee26a3e4c63727d",
+   "materials": [
+    "ENG_Rubber"
+   ],
+   "pivot": [
+    0.0,
+    0.125,
+    0.12
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 1,
+   "inward_shells": 0
+  },
+  "ENG_ExhaustManifold_L": {
+   "triangles": 1852,
+   "geometry_sha256": "402146f92f3be7ad4ac415eeb93503a9ee2921cee3bfb62f09340b40505e7857",
+   "materials": [
+    "ENG_Cast_Iron"
+   ],
+   "pivot": [
+    -0.2828,
+    -0.2535,
+    0.0594
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 12,
+   "inward_shells": 0
+  },
+  "ENG_ExhaustManifold_R": {
+   "triangles": 1852,
+   "geometry_sha256": "c2acec3d745c9fe64889133bf259a15fe5826d3ce4741170659cc256103f7ea9",
+   "materials": [
+    "ENG_Cast_Iron"
+   ],
+   "pivot": [
+    0.2828,
+    -0.2755,
+    0.0594
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 12,
+   "inward_shells": 0
+  },
+  "ENG_Fan": {
+   "triangles": 640,
+   "geometry_sha256": "2257b8e7704f5484df17535e27892c77e2c6fe3b0b3af675d4f350f3d8d17950",
+   "materials": [
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    0.0,
+    0.169,
+    0.19
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 5,
+   "inward_shells": 0
+  },
+  "ENG_FanPulley": {
+   "triangles": 704,
+   "geometry_sha256": "0ed4e23350773e03e00560f1548ffdc7bd35666d722985fda42733afa7f528f7",
+   "materials": [
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    0.0,
+    0.125,
+    0.19
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 2,
+   "inward_shells": 0
+  },
+  "ENG_Head_L": {
+   "triangles": 284,
+   "geometry_sha256": "80040d5c4803c3641f890306a54652dc61e0f131a5ca02a85fb749e123d4fd88",
+   "materials": [
+    "ENG_Paint_Cast"
+   ],
+   "pivot": [
+    -0.2001,
+    -0.2765,
+    0.2001
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 5,
+   "inward_shells": 0
+  },
+  "ENG_Head_R": {
+   "triangles": 284,
+   "geometry_sha256": "3a8fbd26c63bcc828e43a1d9e4aaae5f91ee1c2a20fcfe1b69648d917d93e3f9",
+   "materials": [
+    "ENG_Paint_Cast"
+   ],
+   "pivot": [
+    0.2001,
+    -0.2985,
+    0.2001
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 5,
+   "inward_shells": 0
+  },
+  "ENG_IgnitionLeads": {
+   "triangles": 5248,
+   "geometry_sha256": "1a091486d9722bf9a059d3c220b5c1151a8b1a0df5fca6857030d4f58d95031b",
+   "materials": [
+    "ENG_Rubber"
+   ],
+   "pivot": [
+    0.145,
+    0.075,
+    0.2418
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 8,
+   "inward_shells": 0
+  },
+  "ENG_Intake": {
+   "triangles": 3580,
+   "geometry_sha256": "bdb246ea7f684df6b42c194094eb1d19be4e0d7f1920b1716aef15190c525a9f",
+   "materials": [
+    "ENG_Paint_Cast"
+   ],
+   "pivot": [
+    0.0,
+    -0.275,
+    0.335
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 2,
+   "inward_shells": 0
+  },
+  "ENG_OilFillerCap": {
+   "triangles": 144,
+   "geometry_sha256": "bb8b19f3d5bc8df767a3e5157abc467748cd927a9d8eda6974f264836599c4be",
+   "materials": [
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    -0.11,
+    0.08,
+    0.168
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 1,
+   "inward_shells": 0
+  },
+  "ENG_OilFilter": {
+   "triangles": 240,
+   "geometry_sha256": "9f0566e21d85e793b2922406b99df2b4ab63c1a7c497b72811748d7507ca2dba",
+   "materials": [
+    "ENG_Black_Satin",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.172,
+    0.108,
+    -0.008
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 1,
+   "inward_shells": 0
+  },
+  "ENG_OilPan": {
+   "triangles": 1150,
+   "geometry_sha256": "615770944eeb6ff462b8706cfeb4fbb7ef03813e907eb4c15cfda9aa99a5e9f1",
+   "materials": [
+    "ENG_Paint_Pressed",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.0,
+    -0.26,
+    -0.018
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 2,
+   "inward_shells": 0
+  },
+  "ENG_PlugBoots": {
+   "triangles": 896,
+   "geometry_sha256": "1dcfdba934cea19df1c0fcfa60783765da247318d5161b3722574de1489a96fe",
+   "materials": [
+    "ENG_Rubber",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.0,
+    -0.27,
+    0.1
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 16,
+   "inward_shells": 0
+  },
+  "ENG_TimingCover": {
+   "triangles": 840,
+   "geometry_sha256": "f5ab20d3a2801d129eb12fa0adfe3f6927d3a45e502d00a3d8c13fbacdb7615d",
+   "materials": [
+    "ENG_Paint_Cast",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.0,
+    0.03,
+    0.1
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 5,
+   "inward_shells": 0
+  },
+  "ENG_ValveCover_L": {
+   "triangles": 914,
+   "geometry_sha256": "1cade55508bafebb7e61328e12bd3491baca176d2c6a00b6282aa63d0c8c58d2",
+   "materials": [
+    "ENG_Paint_Pressed",
+    "ENG_Steel_Bright",
+    "ENG_Rubber"
+   ],
+   "pivot": [
+    -0.2351,
+    -0.2765,
+    0.2351
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 10,
+   "inward_shells": 0
+  },
+  "ENG_ValveCover_R": {
+   "triangles": 882,
+   "geometry_sha256": "bfe70fdfe5117626ad5f6060639757202e39770c603810326df3edd6dfda3a18",
+   "materials": [
+    "ENG_Paint_Pressed",
+    "ENG_Steel_Bright",
+    "ENG_Rubber"
+   ],
+   "pivot": [
+    0.2351,
+    -0.2985,
+    0.2351
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 10,
+   "inward_shells": 0
+  },
+  "ENG_WaterPump": {
+   "triangles": 624,
+   "geometry_sha256": "260a16f8b27678118bdda1716886620954c98114852516b7587d1b141e761317",
+   "materials": [
+    "ENG_Paint_Cast",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.0,
+    0.055,
+    0.19
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 3,
+   "inward_shells": 0
+  },
+  "ENG_WireLoom_L": {
+   "triangles": 216,
+   "geometry_sha256": "21ca4f8874846e14f316ead980ff62ad6299e0269f2296b516a24ff3bc53efe1",
+   "materials": [
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    -0.3242,
+    -0.1253,
+    0.1771
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 2,
+   "inward_shells": 0
+  },
+  "ENG_WireLoom_R": {
+   "triangles": 216,
+   "geometry_sha256": "62e0159abc4fc494c8be12d27c29e4961b1d5f2543eab6cdf7cbcad8c6960ae2",
+   "materials": [
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    0.3242,
+    -0.1473,
+    0.1771
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 2,
+   "inward_shells": 0
+  }
+ },
+ "seated_contacts": {
+  "ENG_Alternator x ENG_AlternatorBracket": [
+   26,
+   "pivot and adjuster bolts"
+  ],
+  "ENG_CrankDamper x ENG_TimingCover": [
+   32,
+   "damper hub in seal boss"
+  ],
+  "ENG_Distributor x ENG_TimingCover": [
+   112,
+   "distributor shank in cover boss"
+  ],
+  "ENG_DistributorCap x ENG_IgnitionLeads": [
+   102,
+   "lead ends enter cap towers"
+  ],
+  "ENG_Fan x ENG_FanPulley": [
+   66,
+   "fan bolted to spacer"
+  ],
+  "ENG_Head_L x ENG_PlugBoots": [
+   184,
+   "plug threads enter head bosses"
+  ],
+  "ENG_Head_R x ENG_PlugBoots": [
+   184,
+   "plug threads enter head bosses"
+  ],
+  "ENG_IgnitionLeads x ENG_PlugBoots": [
+   256,
+   "lead ends enter boot tips"
+  ],
+  "ENG_IgnitionLeads x ENG_WireLoom_L": [
+   128,
+   "loom comb grips leads"
+  ],
+  "ENG_IgnitionLeads x ENG_WireLoom_R": [
+   98,
+   "loom comb grips leads"
+  ],
+  "ENG_OilFillerCap x ENG_TimingCover": [
+   26,
+   "cap on filler tube"
+  ],
+  "ENG_OilFilter x ENG_TimingCover": [
+   42,
+   "filter spins onto adapter"
+  ],
+  "ENG_TimingCover x ENG_WaterPump": [
+   36,
+   "pump flange bolted to cover"
+  ]
+ },
+ "unintended_intersections": {},
+ "problems": []
+}

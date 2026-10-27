@@ -11,8 +11,8 @@ import argparse
 import math
 import sys
 
+import bpy  # must precede bmesh when run as the bpy module
 import bmesh
-import bpy
 from mathutils import Matrix, Vector
 
 S45 = math.sqrt(.5)
@@ -30,12 +30,12 @@ CARB_Y = -.275
 CARB_PAD_Z = .335
 CLEANER_Z = .426
 PUMP_C = (0.0, .190)
-ALT_C = (.260, .300)
+ALT_C = (.250, .330)
 BELT_Y = .125
 
 # Distributor: boss on the passenger-side timing cover, leaning out and slightly back.
-DIST_BASE = Vector((.118, .035, .100))
-DIST_AXIS = Vector((.25, -.15, .95)).normalized()
+DIST_BASE = Vector((.118, .060, .095))
+DIST_AXIS = Vector((.18, .10, .98)).normalized()
 
 PAINT = {
     # Unverified colour choices; see docs/amc360-engine.md before matching the target.
@@ -288,7 +288,22 @@ def block_profile():
     return right + [(0.0, .165)] + left
 
 
-def build_block(P):
+def bell_flange(prof):
+    """Rear flange: round bell pattern about the crank, rising into the deck corners."""
+    r = .235
+    a0 = math.asin(-.018 / r)
+    right = [(0.0, -.018)]
+    for k in range(9):
+        a = a0 + (math.radians(24) - a0) * k / 8
+        right.append((r * math.cos(a), r * math.sin(a)))
+    for u, v in ((DECK + .004, .0925 + .008), (DECK + .004, -.0925 - .006)):
+        right.append(bank_point(1, u, v))
+    right += [(.052, .184)]
+    left = [(-x, z) for x, z in reversed(right[1:])]
+    return right + [(0.0, .172)] + left
+
+
+def build_block():
     p = Part('ENG_Block', ['ENG_Paint_Cast'])
     prof = block_profile()
     # remove duplicate bottom-centre point produced by mirroring
@@ -297,8 +312,7 @@ def build_block(P):
         prof = prof[:-1]
     p.extrude(prof, BLOCK_REAR, 0.0, 'ENG_Paint_Cast', bevel=.006)
     # Rear bellhousing flange: a broader cast plate behind the block.
-    flange = [(x * 1.07, (z - .08) * 1.07 + .08) for x, z in prof]
-    p.extrude(flange, BLOCK_REAR - .012, BLOCK_REAR + .0005, 'ENG_Paint_Cast', bevel=.003)
+    p.extrude(bell_flange(prof), BLOCK_REAR - .014, BLOCK_REAR + .0005, 'ENG_Paint_Cast', bevel=.004)
     # Core plugs on the outer bank walls, three per side between cylinders.
     for side in (-1, 1):
         for i in range(3):
@@ -336,7 +350,7 @@ def build_head(side):
 def plug_dir(side):
     n = Vector((side * S45, 0, -S45))
     a = Vector((side * S45, 0, S45))
-    return (n * math.cos(math.radians(32)) + a * math.sin(math.radians(32))).normalized()
+    return (n * math.cos(math.radians(80)) + a * math.sin(math.radians(80))).normalized()
 
 
 def plug_tip(side, y):
@@ -388,8 +402,8 @@ def build_wire_clips(side):
     m = bank_matrix(side, DECK)
     p = Part(name, ['ENG_Black_Satin'])
     for y in loom_clip_y(side):
-        p.rbox((HEAD_HALF + .009, y, .135), (.020, .012, .060), .003, 'ENG_Black_Satin', xf=m)
-    p.pivot = m @ Vector((HEAD_HALF + .009, loom_clip_y(side)[0], .135))
+        p.rbox((HEAD_HALF + .004, y, .1205), (.014, .012, .036), .003, 'ENG_Black_Satin', xf=m)
+    p.pivot = m @ Vector((HEAD_HALF + .004, loom_clip_y(side)[0], .1205))
     return p
 
 
@@ -400,7 +414,7 @@ def loom_clip_y(side):
 
 def intake_top(x, y, half):
     t = abs(x) / half
-    z = .293 + .012 * (1 - t * t)
+    z = .293 - .022 * (1 - t * t) ** 1.5
     # Runner humps from each port toward the plenum.
     for side in (-1, 1):
         for i, cy in enumerate(CYL_Y[side]):
@@ -415,13 +429,14 @@ def intake_top(x, y, half):
             qx, qy = sx + s * dx, py + s * dy
             d = math.hypot(x - qx, y - qy)
             f = max(0.0, 1 - (d / .030) ** 2)
-            z = max(z, .300 + .022 * f * f * (1 - .25 * s))
+            z = max(z, .287 + .030 * f * (2 - f) * (1 - .15 * s))
     # Plenum and carburettor pad.
     px = abs(x) / .090
     py = abs(y - CARB_Y) / .088
     rr = (px ** 4 + py ** 4) ** .25
-    if rr < 1:
-        z = max(z, CARB_PAD_Z if rr < .78 else CARB_PAD_Z - (rr - .78) / .22 * .035)
+    if rr < 1.25:
+        k = 0.0 if rr < .78 else min(1.0, (rr - .78) / .47)
+        z = max(z, CARB_PAD_Z - .060 * k * k)
     return z
 
 
@@ -450,9 +465,9 @@ def build_intake():
         rings.append(sec)
     p.grid(rings, 'ENG_Paint_Cast', cap0=True, cap1=True)
     # Thermostat housing with upper-hose neck on the front face.
-    base = Vector((-.060, INTAKE_Y[0] + .002, .268))
-    p.lathe([(0, 0), (.032, 0), (.032, .018), (.024, .022), (.022, .060), (.025, .064),
-             (.025, .070), (.019, .072), (0, .072)], 16, 'ENG_Paint_Cast',
+    base = Vector((-.072, INTAKE_Y[0] + .002, .286))
+    p.lathe([(0, 0), (.026, 0), (.026, .016), (.020, .020), (.018, .056), (.021, .060),
+             (.021, .066), (.016, .068), (0, .068)], 16, 'ENG_Paint_Cast',
             axis_matrix(base, Vector((0, 1, .18))))
     return p
 
@@ -472,10 +487,9 @@ def build_heads_ports_exhaust(side):
     lp = [m @ Vector((log_v, yf - k * (yf - yr) / 12, log_u)) for k in range(13)]
     sec = [(.030 * math.cos(2 * math.pi * i / 14), .026 * math.sin(2 * math.pi * i / 14)) for i in range(14)]
     p.sweep(lp, sec, 'ENG_Cast_Iron')
-    p.lathe([(0, 0), (.030, 0), (.026, -.004), (0, -.004)], 14, 'ENG_Cast_Iron',
-            axis_matrix(lp[0], lp[0] - lp[1]))
-    p.lathe([(0, 0), (.030, 0), (.026, -.004), (0, -.004)], 14, 'ENG_Cast_Iron',
-            axis_matrix(lp[-1], lp[-1] - lp[-2]))
+    for end, prev in ((lp[0], lp[1]), (lp[-1], lp[-2])):
+        p.lathe([(.028, -.003), (.028, .002), (.024, .014), (.014, .022), (0, .025)], 14,
+                'ENG_Cast_Iron', axis_matrix(end, end - prev))
     # Downturned outlet with a three-bolt flange near the rear.
     oc = m @ Vector((log_v, ys[-1] - .020, log_u))
     p.lathe([(.026, 0), (.026, -.070), (.042, -.070), (.042, -.082), (.022, -.082)], 14,
@@ -485,7 +499,7 @@ def build_heads_ports_exhaust(side):
 
 
 def build_oil_pan():
-    p = Part('ENG_OilPan', ['ENG_Paint_Pressed'], pivot=(0, -.26, -.018))
+    p = Part('ENG_OilPan', ['ENG_Paint_Pressed', 'ENG_Steel_Bright'], pivot=(0, -.26, -.018))
 
     def depth(y):
         t = max(0.0, min(1.0, (-.245 - y) / .060))
@@ -508,7 +522,7 @@ def build_oil_pan():
         pts += mirror + [(-.176, -.0235), (-.190, -.0235)]
         return [(x, y, z) for x, z in pts]
 
-    ys = [.055 - k * (.630) / 27 for k in range(28)]
+    ys = [.050 - k * (.624) / 27 for k in range(28)]
     p.grid([section(y) for y in ys], 'ENG_Paint_Pressed', cap0=True, cap1=True)
     p.lathe([(.016, 0), (.016, -.008), (.011, -.012), (0, -.012)], 6, 'ENG_Steel_Bright',
             axis_matrix(Vector((.06, -.47, -.215)), Vector((0, 0, 1))))
@@ -517,8 +531,8 @@ def build_oil_pan():
 
 def timing_outline():
     return [(-.150, -.018), (.150, -.018), (.162, .015), (.160, .060), (.150, .095),
-            (.120, .118), (.090, .128), (.075, .165), (.070, .225), (.045, .258), (0.0, .266),
-            (-.045, .258), (-.070, .225), (-.085, .170), (-.130, .140), (-.158, .080), (-.162, .015)]
+            (.120, .118), (.090, .128), (.075, .165), (.068, .215), (.045, .238), (0.0, .244),
+            (-.045, .238), (-.068, .215), (-.085, .170), (-.130, .140), (-.158, .080), (-.162, .015)]
 
 
 def build_timing_cover():
@@ -526,7 +540,7 @@ def build_timing_cover():
     p.extrude(timing_outline(), .0005, .055, 'ENG_Paint_Cast', bevel=.008)
     # Crank seal boss.
     p.lathe([(.058, 0), (.058, .010), (.050, .014), (.040, .014)], 24, 'ENG_Paint_Cast',
-            Matrix.Translation((0, .052, 0)) @ Matrix.Rotation(-math.pi / 2, 4, 'X'))
+            Matrix.Translation((0, .0552, 0)) @ Matrix.Rotation(-math.pi / 2, 4, 'X'))
     # Distributor boss.
     p.lathe([(0, -.050), (.030, -.050), (.030, 0), (.024, .004), (0, .004)], 16, 'ENG_Paint_Cast',
             axis_matrix(DIST_BASE, DIST_AXIS))
@@ -541,8 +555,8 @@ def build_timing_cover():
 
 
 def filter_frame():
-    d = Vector((.50, .0, -.866)).normalized()
-    a = Vector((.168, .112, -.040))
+    d = Vector((.70, .20, -.68)).normalized()
+    a = Vector((.172, .108, -.008))
     return a, d
 
 
@@ -550,7 +564,7 @@ def build_oil_filter():
     a, d = filter_frame()
     p = Part('ENG_OilFilter', ['ENG_Black_Satin', 'ENG_Steel_Bright'], pivot=a)
     base = a + d * .004
-    p.lathe([(0, 0), (.040, 0), (.047, .006), (.047, .112), (.043, .120), (.020, .123), (0, .123)],
+    p.lathe([(0, 0), (.038, 0), (.045, .006), (.045, .092), (.041, .100), (.020, .103), (0, .103)],
             24, 'ENG_Black_Satin', axis_matrix(base, d))
     return p
 
@@ -571,7 +585,7 @@ def build_water_pump():
     p.lathe([(0, .0005), (.072, .0005), (.072, .012), (.060, .015), (.058, .028), (.034, .032),
              (.032, .052), (.022, .054), (.020, .060), (0, .060)], 24, 'ENG_Paint_Cast', xf)
     # Lower-hose inlet and heater nipple.
-    for start, direction, r, ln in (((-.045, .072, .150), (-.55, .55, -.2), .021, .060),
+    for start, direction, r, ln in (((-.045, .070, .150), (-.85, .30, -.25), .021, .052),
                                     ((.040, .070, .235), (.35, .55, .55), .010, .040)):
         s = Vector(start)
         dd = Vector(direction).normalized()
@@ -580,12 +594,16 @@ def build_water_pump():
     return p
 
 
+GROOVE_DEPTH = .009
+BELT_SEAT = .002   # belt inner face above the groove root
+
+
 def groove_pulley(p, center_xz, y_mid, r, width, segs, mat, hub=True):
     c = Vector((center_xz[0], y_mid - width / 2, center_xz[1]))
     xf = axis_matrix(c, Vector((0, 1, 0)))
-    w = width
-    prof = [(0, 0), (r - .012, 0), (r, .0015), (r, .004), (r - .009, w * .38), (r - .009, w * .62),
-            (r, w - .004), (r, w - .0015), (r - .012, w), (.022, w), (.022, w + .006), (0, w + .006)]
+    w, wm, root = width, width / 2, r - GROOVE_DEPTH
+    prof = [(0, 0), (r - .006, 0), (r, .0015), (r, wm - .0075), (root, wm - .002), (root, wm + .002),
+            (r, wm + .0075), (r, w - .0015), (r - .006, w), (.022, w), (.022, w + .006), (0, w + .006)]
     p.lathe(prof, segs, mat, xf)
 
 
@@ -616,7 +634,7 @@ def build_fan():
     p = Part('ENG_Fan', ['ENG_Black_Satin'], pivot=hub)
     p.lathe([(0, 0), (.080, 0), (.084, .002), (.084, .005), (0, .005)], 24, 'ENG_Black_Satin',
             axis_matrix(hub, Vector((0, 1, 0))))
-    pitch = math.radians(27)
+    pitch = math.radians(18)
     thick = .0028
     nr, nc = 7, 3
     for b in range(4):
@@ -624,7 +642,8 @@ def build_fan():
         top, bot = [], []
         for i in range(nr + 1):
             r = .060 + (.228 - .060) * i / nr
-            chord = .040 + .030 * math.sin(math.pi * min(1, i / nr * 1.25)) - .010 * (i / nr)
+            t = i / nr
+            chord = .046 + .030 * min(1, t / .35) - .042 * max(0, t - .78) ** 2 / .0484
             rt, rb = [], []
             for j in range(nc + 1):
                 c = -chord / 2 + chord * j / nc
@@ -649,7 +668,8 @@ def build_fan():
 
 def build_belt():
     p = Part('ENG_DriveBelt', ['ENG_Rubber'], pivot=(0, BELT_Y, .12))
-    circles = [((0.0, 0.0), .0835), (ALT_C, .0335), (PUMP_C, .0735)]   # CCW order
+    seat = BELT_SEAT - GROOVE_DEPTH
+    circles = [((0.0, 0.0), .088 + seat), (ALT_C, .0385 + seat), (PUMP_C, .078 + seat)]   # CCW
     pts = []
     tang = []
     n = len(circles)
@@ -669,9 +689,9 @@ def build_belt():
         c, r = circles[i]
         th0 = math.atan2(prev_n.y, prev_n.x)
         th1 = math.atan2(nrm.y, nrm.x)
-        while th1 > th0:
-            th1 -= 2 * math.pi
-        steps = max(3, int((th0 - th1) / math.radians(7)))
+        while th1 < th0:
+            th1 += 2 * math.pi
+        steps = max(3, int((th1 - th0) / math.radians(7)))
         for k in range(steps):
             th = th0 + (th1 - th0) * k / steps
             pts.append((c[0] + r * math.cos(th), c[1] + r * math.sin(th)))
@@ -682,7 +702,7 @@ def build_belt():
             pts.append((q.x, q.y))
     path = [Vector((x, BELT_Y, z)) for x, z in pts]
     # Trapezoid V-belt: section in (normal, binormal). Normal points away from wrap.
-    sec = [(-.0035, -.0045), (.0045, -.0065), (.0045, .0065), (-.0035, .0045)]
+    sec = [(-.0035, -.0030), (.0040, -.0055), (.0040, .0055), (-.0035, .0030)]
     # Build manually so the wide face is outward of the loop.
     ctr = Vector((.08, BELT_Y, .14))
     rings = []
@@ -723,8 +743,8 @@ def build_alternator():
 def build_alt_bracket():
     p = Part('ENG_AlternatorBracket', ['ENG_Black_Satin', 'ENG_Steel_Bright'],
              pivot=(ALT_C[0], -.025, ALT_C[1] - .085))
-    plate = [(.165, .215), (.235, .145), (.285, .170), (.300, .232), (.330, .330), (.318, .345),
-             (.276, .262), (.240, .238), (.200, .262)]
+    plate = [(.150, .245), (.215, .170), (.275, .200), (.290, .262), (.320, .360), (.308, .375),
+             (.266, .292), (.230, .268), (.180, .292)]
     p.extrude(plate, -.0295, -.0215, 'ENG_Black_Satin', bevel=.002)
     # Pivot and adjuster bolts bridging bracket to the alternator ears.
     for x, z in ((ALT_C[0], ALT_C[1] - .077), (ALT_C[0] + .062, ALT_C[1] + .062)):
@@ -855,9 +875,11 @@ def build_distributor():
     p.lathe([(0, .004), (.030, .004), (.030, .012), (.034, .016), (.035, .070), (.040, .074),
              (.040, .084), (0, .084)], 20, 'ENG_Paint_Cast', xf)
     # Vacuum advance canister.
-    side = xf @ Vector((0, -.030, .055))
+    out = Vector((1, 0, 0))
+    out = (out - DIST_AXIS * out.dot(DIST_AXIS)).normalized()
+    side = dist_point(.052) + out * .030
     p.lathe([(0, 0), (.022, 0), (.024, .010), (.024, .026), (.020, .034), (0, .034)], 14,
-            'ENG_Steel_Bright', axis_matrix(side, (xf.to_3x3() @ Vector((0, -1, 0)))))
+            'ENG_Steel_Bright', axis_matrix(side, out))
     # Hold-down clamp.
     p.rbox(DIST_BASE + Vector((-.030, .0, .006)), (.040, .016, .006), .002, 'ENG_Steel_Bright')
     return p
@@ -887,19 +909,18 @@ def lead_paths():
         m = bank_matrix(side, DECK)
         for k, y in enumerate(CYL_Y[side]):
             plug, d = plug_tip(side, y)
-            boot_end = plug + d * .050
-            lu = .118 + .0085 * k
-            lv = .112
-            pts = [boot_end, boot_end + d * .012,
-                   m @ Vector((lv + .010, y - .022, lu - .010)),
+            boot_end = plug + d * .045
+            lu = .110 + .0062 * k
+            lv = .104
+            pts = [boot_end, boot_end + d * .010,
                    m @ Vector((lv, y - .040, lu))]
             yfront = HEAD_Y[side][0] - .020
             pts.append(m @ Vector((lv, yfront, lu)))
             _a, tb, tip = towers_s[k]
-            stack = k * .0085
+            stack = k * .0075
             if side > 0:
-                pts += [Vector((.300 - stack * .4, .006 + stack * .3, .165 - stack * .5)),
-                        Vector((.225, .022 + stack * .5, .168 + stack * .2)),
+                pts += [Vector((.300 - stack * .4, .014 + stack * .3, .165 - stack * .5)),
+                        Vector((.215, .030 + stack * .5, .172 + stack * .2)),
                         tip + DIST_AXIS * .030 + Vector((.012, 0, 0)), tip + DIST_AXIS * .010, tip]
             else:
                 pts += [Vector((-.300, .022 + stack * .4, .232 + stack)),
@@ -926,13 +947,9 @@ def build_plug_boots():
             plug, d = plug_tip(side, y)
             p.lathe([(0, -.004), (.0075, -.004), (.0075, .006), (.0055, .010)], 6,
                     'ENG_Steel_Bright', axis_matrix(plug, d))
-            p.lathe([(.0055, .010), (.0090, .014), (.0090, .040), (.0060, .050), (0, .0505)], 10,
+            p.lathe([(.0055, .010), (.0090, .014), (.0090, .036), (.0060, .045), (0, .0455)], 10,
                     'ENG_Rubber', axis_matrix(plug, d))
     return p
-
-
-BUILDERS = ['block', 'heads', 'covers', 'intake', 'exhaust', 'pan', 'front', 'carb', 'cleaner',
-            'ignition', 'accessories']
 
 
 def make_materials():
@@ -972,7 +989,7 @@ def generate(scene=None, root_location=(0, 0, 0)):
     root.location = root_location
     root['frame'] = 'crank axis at block front face; +Y forward, +Z up, driver -X'
     top.objects.link(root)
-    parts = [build_block(None)]
+    parts = [build_block()]
     for side in (-1, 1):
         parts += [build_head(side), build_valve_cover(side), build_heads_ports_exhaust(side),
                   build_wire_clips(side)]
