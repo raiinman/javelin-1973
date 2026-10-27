@@ -1,0 +1,35 @@
+-- Revision 0.0.3 fixture. Written for future use, not executed in this session.
+Events.OnGameBoot.fire()
+assert(#startupRequests == 1 and startupRequests[1].kind == "nativeTermsCheck")
+Events.OnGameBoot.fire()
+assert(#startupRequests == 1, "At most one request per Lua environment")
+menuState = {}
+Events.OnMainMenuEnter.fire()
+Events.OnFETick.fire()
+assert(continues == 0, "Startup bypass never continues a save")
+assert(MainScreen.instance.delay == 0 and MainScreen.instance.warningFade == 0)
+assert(videoEffects == false)
+MainOptions:toUI()
+assert(videoEffects == true, "Restore native video value before options read it")
+Events.OnFETick.fire()
+optionsVisible = true
+Events.OnFETick.fire()
+assert(videoEffects == true)
+optionsVisible = false
+Events.OnFETick.fire()
+Events.OnPreMapLoad.fire()
+assert(videoEffects == true)
+videoEffects = false
+Events.OnFETick.fire()
+assert(videoEffects == false, "Detached menu handler cannot alter gameplay")
+videoEffects = true
+Events.OnResetLua.fire()
+Events.OnGameBoot.fire()
+assert(#startupRequests == 1)
+Events.OnGameStart.fire()
+assert(videoEffects == true and continues == 0)
+DeadSignalFastLoad.setSkipStartup(false)
+assert(DeadSignalFastLoad.getSkipStartup() == false)
+DeadSignalFastLoad.setLightweightMenu(false)
+assert(DeadSignalFastLoad.getLightweightMenu() == false)
+assert(DeadSignalFastLoad.setAutoContinue == nil)

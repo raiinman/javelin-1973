@@ -1,0 +1,6 @@
+name=Dead Signal Fast Load
+id=DeadSignalFastLoad
+author=Dead Signal Interactive
+description=120 researched survival tips for the native save-loading pool and a shuffled menu carousel, with Project Zomboid themed rain artwork. Match startup mods to a chosen save with backup and Undo. Never auto-loads saves. Required loading remains.
+modversion=0.0.8
+versionMin=42.20.0
