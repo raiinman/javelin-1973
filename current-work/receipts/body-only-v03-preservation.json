@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checks": {
+    "exact_same_objects_and_data_names_no_geometry_added_deleted": true,
+    "all_raw_mesh_data_normals_UV_attributes_material_slots_exact": true,
+    "all_raw_local_transforms_hierarchy_constraints_modifiers_exact": true,
+    "excluded_allowlist_exactly69meshes4empties": true,
+    "exact_approved_flags_membership_and_export_property_delta": true,
+    "exact3source_collection_hide_and_exclude_flags_only": true,
+    "only_one_optional_history_collection_added": true,
+    "all_original_layer_flags_preserved": true,
+    "all_materials_images_preview_exact": true,
+    "all_actions_rig_exact": true,
+    "all_still_active_original_motion_exact7actions51samples": true,
+    "excluded_world_matrices_exact_under_equal_original_context": true,
+    "original8exhaust_parts_remain_visible_and_unchanged": true,
+    "original12face_history_archive_stays_hidden": true,
+    "source_successor_files_unchanged": true
+  },
+  "details": {
+    "visibility_errors": [],
+    "property_errors": [],
+    "collection_errors": [],
+    "raw_mesh_mismatch": [],
+    "raw_transform_mismatch": [],
+    "max_still_active_motion_delta": 0.0,
+    "max_excluded_equal_context_world_delta": 0.0,
+    "equal_context_visibility_mismatch": [],
+    "excluded_count": 73,
+    "restored_objects": [
+      "CabinMainFloor",
+      "TransmissionTunnel"
+    ],
+    "actions": [
+      "DSI_DoorLeft_Open",
+      "DSI_DoorRight_Open",
+      "DSI_Hood_Open",
+      "DSI_Reference_Combined_1_26",
+      "DSI_Trunk_Open",
+      "DSI_WindowLeft_Open",
+      "DSI_WindowRight_Open"
+    ],
+    "samples_per_action": 51
+  },
+  "hashes": {
+    "artifact-workspace/javelin-coherent-assembly-20261027/milestones/DSI_Javelin_Coherent_Quarters_Rails_Milestone_V02.blend": "9460ea93e8cdf10a19fde99ac7876143d3add5c7720b09a2d045297362ef0b9d",
+    "artifact-workspace/javelin-coherent-assembly-20261027/DSI_Javelin_BodyOnly_Visible_Successor_V03.blend": "668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90"
+  },
+  "scope": "BODY-only reversible visibility/export-exclusion successor. All added underside parts remain raw optional history. No geometry modification, new structure, native gameplay or physical repair certification.",
+  "context_note": "Hidden objects may be absent from dependency graph and retain identity world caches. Raw local basis/parent inverse/hierarchy remain exact; this checker independently restores only source visibility state in memory and evaluates all excluded matrices through7actions\u00d751samples. Diagnostic state is NEVER saved."
+}

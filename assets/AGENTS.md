@@ -1,7 +1,7 @@
 # Original art
 
 ## Purpose
-Editable car model and preview renders built from the user's video.
+Preserved procedural art/model sources and historical preview renders built from the user's video. Current reviewed cloud authoring is indexed in `../current-work/README.md`; old model filenames and previews here do not override that authority. Real-car reference findings remain relevant within their stated limits.
 - `palette.svg` defines the original deterministic swatch atlas used by each mesh's face UVs.
 - `front-artwork.svg` is the original editable physical-plan drawing for the complete hood/fender T and companion line. The generator consumes these paths directly; the previous graphic was discarded at the user's request.
 - `model-manifest.json` records original per-part geometry and authored dimensions.
@@ -11,7 +11,7 @@ Editable car model and preview renders built from the user's video.
 
 ## Ownership
 Blender source, procedural palette definition and car previews.
-- `current-stl/` preserves the current complete STL-based assembly as a portable editable snapshot, separate from the earlier procedural production source. Refresh only from a verified working checkpoint; follow its child contract.
+- `current-stl/` preserves the older complete STL-based assembly as a historical portable editable snapshot, separate from the earlier procedural production source. It is superseded by the cloud artifact indexed in `../current-work/`; preserve its exact binary/source identity and follow its child contract.
 
 ## Local Contracts
 Create original geometry and textures. Keep reference screenshots in ignored local files. Preserve the red body, black T hood stripe, four rear lamps with reverse inserts on the inner pair only, chrome side exhausts, chrome trim and Cardin upholstery.
@@ -21,7 +21,7 @@ Create original geometry and textures. Keep reference screenshots in ignored loc
 - Use supplemental car photographs to resolve mirror construction and mounting, while retaining the video car's round chrome identity. Distinguish painted sport pods and differently shaped chrome replacements rather than combining their outlines into the target.
 
 ## Work Guidance
-- Current refinement is front fenders only: broad width, crown distribution/height and hood-to-fender graphic span. The checked terminal-roll checkpoint is an intermediate improvement, not a finished fender. Keep the user's open Blender on the latest checked source while preserving their saves.
+- Historical procedural refinement scope was front fenders only: broad width, crown distribution/height and hood-to-fender graphic span. The checked terminal-roll checkpoint is an intermediate improvement, not a finished fender. Keep the user's open Blender on the latest checked source while preserving their saves.
 - The front ceiling carries two static stowed padded visors with seated mounts and a short-stalk interior mirror facing into the cabin. Preserve Cardin roof ribbons and the dome. Exact target dimensions/pose and mirror optical alignment remain open; review driver-eye, ceiling and open-door captures before native inspection.
 - The manual cabin has distinct compact clutch/brake pads, tall narrow accelerator and small separate far-left parking-brake control, with physical suspended arms and upper supports. Do not substitute the supplemental automatic car's wide brake. Exact dimensions, pivots and tread pattern remain inferred; inspect seated/open-door views before native review.
 - Rear fascia/lower sheet corners share a continuous curved boundary, closing actual holes beside the outer lamps. Both moving door cards carry original Cardin spiral/caption appliques seated on their inlays, readable from the cabin on each side. These changes do not establish overall likeness or close a section.
@@ -58,7 +58,7 @@ Target the supplied car's 1:1 visual identity before reducing detail for game sc
 
 ## Verification
 Inspect the generated source model and render at gameplay distance.
-- Build using `tools/build_mod.py`; it recreates `Javelin73PC.blend`, the preview, model/animation FBX, palette PNG and model definitions.
+- Historical procedural build uses `tools/build_mod.py`, not the current cloud model; it recreates `Javelin73PC.blend`, the preview, model/animation FBX, palette PNG and model definitions.
 
 ## Child DOX Index
-- `current-stl/AGENTS.md`: current assembled STL source snapshot, checksum and visibility checks.
+- `current-stl/AGENTS.md`: preserved historical STL source snapshot, checksum and visibility checks; current cloud authority remains indexed outside assets.

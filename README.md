@@ -2,67 +2,49 @@
 
 # 1973 AMC Javelin AMX Pierre Cardin
 
-A Dead Signal Interactive creation.
+A Dead Signal Interactive creation. Private development repository.
 
-Current development: [project status and takeover](docs/project-status.md) · [latest assembled STL car](assets/current-stl/Javelin73PC-current.blend) · [camera mod](camera/AGENTS.md) · [Fast Load, untested](fast-load/verification.md).
+![Reviewed body-only V03, actual front-quarter authoring render](current-work/progress/body-only-v03-front.png)
 
-![Original Javelin source-model studio render](readme-banner.png)
+**Reviewed body-only V03, 2026-10-27.** Actual authoring render. Body geometry correction and proper slicing remain unfinished; this is not in-game evidence.
 
-![Project Zomboid](https://img.shields.io/badge/Project_Zomboid-42.20.0-355844?logo=steam&logoColor=white)
-![Status](https://img.shields.io/badge/Status-development_alpha-b68139)
-![Assets](https://img.shields.io/badge/Assets-original-70434c?logo=blender&logoColor=white)
+![Project Zomboid](https://img.shields.io/badge/Project_Zomboid-42.20.4-355844?logo=steam&logoColor=white)
+![Blender](https://img.shields.io/badge/Blender-5.2.1-e87d0d?logo=blender&logoColor=white)
+![Status](https://img.shields.io/badge/Status-body_correction_and_slicing-b68139)
 
-An original car mod based on [Bob La Cross's 1973 AMX video](https://www.youtube.com/watch?v=ZpfnHMBiRvA).
+[Current model and work](current-work/README.md) · [Status](docs/project-status.md) · [Artifact manifest](current-work/artifact-manifest.json) · [Real-car research](docs/research-index.md)
 
-[Install](#install) · [Vehicle](#vehicle) · [Verification](#verification) · [Build](#build) · [Sources](#sources) · [Changes](CHANGELOG.md)
+## Current direction
 
-## Install
+Correct the existing body geometry and slice it properly. **Do not add more underneath structure now.** The newly authored underside modules remain preserved but hidden and excluded from export in V03. Original floor/tunnel and original side pipes remain; no geometry was deleted or added by this scope correction.
 
-Place the complete [Javelin73PC](Javelin73PC/) folder inside your Zomboid `mods` folder, then enable **1973 AMC Javelin AMX Pierre Cardin** in Mods and restart the game.
+The reviewed body-only checkpoint is SHA-256 `668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90`. It passed 15 independent preservation/scope checks, not a body-repair, final-likeness or native-game acceptance test. [Evidence and remaining work](current-work/README.md).
 
-The vehicle script is **`Base.Javelin73PC`**. `Base.` is the game namespace; the separately installed `Base.en_amc_javelin_72` belongs to another mod.
+The current `.blend` is external to this GitHub tree. **A clone does not contain the V03 binary** or the complete cloud development archive. Its exact identity and delivery limits are in the [manifest](current-work/artifact-manifest.json). The older files under `assets/current-stl/`, `assets/Javelin73PC.blend` and `Javelin73PC/` remain historical work, not current-model authority.
 
-The [installer](tools/install_mod.py) validates the package, preserves backups of owned updates and refuses to replace unrelated or unmarked mod folders. [Installation details](docs/verification.md#installation).
-
-## Vehicle
-
-Red two-door coupe with four seats, black T hood graphic, chrome bumpers, side exhausts, four individually framed rear lamps and original Pierre Cardin-inspired upholstery. Uses native sports-car mechanics, repairable parts, loot and rare world-spawn registration.
-
-This is a low-poly adaptation for the game's viewing scale. Rims, badges and some body transitions are simplified. The banner depicts the editable source model.
-
-## Verification
-
-Read the [verification report](docs/verification.md) for current checks and remaining runtime limits. Native import and Blender checks do not replace in-game inspection.
+## Project map
 
 <table>
-<tr><th>Project file</th><th>Purpose</th></tr>
-<tr><td><a href="SPEC.md">Specification</a></td><td>Target, scope and acceptance criteria</td></tr>
-<tr><td><a href="docs/reference-study.md">Reference study</a></td><td>Observed features and asset provenance</td></tr>
-<tr><td><a href="docs/research-1973.md">1973 research</a></td><td>Four research passes grounded in factory literature and the video car</td></tr>
-<tr><td><a href="docs/geometry-review.md">Geometry review</a></td><td>Nine review passes, including remaining native inspection</td></tr>
-<tr><td><a href="docs/import-contract.md">Import contract</a></td><td>Native coordinate, rig and shader evidence</td></tr>
-<tr><td><a href="assets/Javelin73PC.blend">Blender source</a></td><td>Original editable model</td></tr>
-<tr><td><a href="AGENTS.md">Project guidance</a></td><td>Operational authority and DOX hierarchy</td></tr>
+<tr><th>Location</th><th>Purpose</th></tr>
+<tr><td><a href="current-work/README.md">Current work</a></td><td>Reviewed body-only source identity, actual exterior views, evidence and pending repairs</td></tr>
+<tr><td><a href="docs/research-index.md">Real-car research</a></td><td>Still-relevant factory dimensions, target observations, photographs, citations and disagreements</td></tr>
+<tr><td><a href="assets/current-stl/">Historical STL snapshot</a></td><td>Preserved older editable assembly</td></tr>
+<tr><td><a href="Javelin73PC/">Historical procedural package</a></td><td>Earlier runtime work, not a V03 export</td></tr>
+<tr><td><a href="camera/verification.md">Camera 0.1.1</a></td><td>Independent zoom candidate; full 3D gameplay rotation remains unproven research</td></tr>
+<tr><td><a href="fast-load/README.md">Fast Load 0.0.8</a></td><td>Independent and explicitly untested; no automatic save loading or measured speedup</td></tr>
+<tr><td><a href="AGENTS.md">Project guidance</a></td><td>Scope, ownership and DOX contracts</td></tr>
 </table>
 
-## Build
+## Game targets and build limits
 
-Requires Blender, Python and the installed target game for native compatibility checks. Run from the project root:
+Project Zomboid's user-confirmed target is **42.20.4**; Blender authoring uses **5.2.1**. Export, native import, appearance, driving, braking, destruction and save/reload are separate gates. Older exporter/package receipts do not validate V03. `tools/build_mod.py` rebuilds the historical procedural model, not this body-only checkpoint.
 
-<table><tr><td align="left"><pre>blender --background --python tools/build_mod.py
-python tools/validate_mod.py --game "&lt;game-directory&gt;"
-python tools/check_game_syntax.py --game "&lt;game-directory&gt;"
-python tools/check_fbx_import.py --game "&lt;game-directory&gt;"
-python tools/check_model_pose.py
-python -m unittest discover -s tools -p "test_*.py"
-python tools/install_mod.py --game "&lt;game-directory&gt;"</pre></td></tr></table>
+The user's later goal is to bring the sliced model to **Wreckfest for PC, installed through the Xbox app/Microsoft Store**. Custom-mod/import support for this exact edition and the delivery route remain unverified. No supported import pipeline is promised.
 
-[Tool contracts](tools/AGENTS.md) document the export workflow and isolated runtime test. Development test hooks are excluded from the installed package.
+## Provenance
 
-## Sources
+Preserve the user-owned STL body authority, accepted cockpit and original project work. Real-car reference research remains relevant even when older models are superseded. External photographs, literature and video are research references, not automatically redistributable assets. The unrelated old Javelin mod is technical reference only.
 
-The current prototype uses the user-owned full-car STL with original project equipment, textures, rigging and gameplay integration, plus the accepted Meshy cockpit assets. The earlier procedural source is preserved separately. External video and photographs are viewing references. The unrelated old Javelin mod is technical reference only; none of its assets are included.
-
-DOX project guidance is installed from [raiinman/dox](https://github.com/raiinman/dox), with its [MIT license](docs/licenses/DOX-MIT.txt).
+[Target video](https://www.youtube.com/watch?v=ZpfnHMBiRvA) · [Historical project artwork, prior model](readme-banner.png) · [DOX MIT notice](docs/licenses/DOX-MIT.txt) · [Historical changelog](CHANGELOG.md)
 
 </div>

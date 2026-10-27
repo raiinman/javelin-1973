@@ -1,0 +1,48 @@
+{
+  "schema": "dsi.javelin.body-only-docs.v1",
+  "snapshot_utc": "2026-10-27T18:48:00Z",
+  "base_commit": "c4212951529669100eafc5b5cf7a5abcccd99e52",
+  "visibility": "private",
+  "current_model": {
+    "filename": "DSI_Javelin_BodyOnly_Milestone_V03.blend",
+    "sha256": "668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90",
+    "bytes": 27862912,
+    "scope": "Reviewed body-only reversible visibility/export exclusion; actual body repair pending",
+    "included_in_clone": false,
+    "storage": "Owner-private ChatGPT Library; preserved external cloud milestone; not included in a GitHub clone",
+    "library_model_id": "libfile_dc7967b8d0088191ad558887bc71a3dd",
+    "native_game_verified": false,
+    "library_version": 2,
+    "library_filename": "DSI_Javelin_Current_Cloud_Model.blend",
+    "library_file_id": "file_00000000dde481f585f8ec150cd3d27d",
+    "library_delivery_status": "Successful guarded replacement receipt inspected; exact delivered bytes hash/size independently recomputed",
+    "history": "Same Library identity retains v0V01 and v1V02 as history; v2 is the reviewed body-only V03"
+  },
+  "current_task": "Correct existing body geometry and slice properly; do not add more underneath structure now",
+  "future_aspiration": {
+    "game": "Wreckfest",
+    "platform": "PC",
+    "installation": "Xbox app/Microsoft Store",
+    "exact_edition_custom_mod_import_support": "unverified",
+    "delivery_route": "unverified"
+  },
+  "images": [
+    {
+      "path": "current-work/progress/body-only-v03-front.png",
+      "sha256": "1fc8e190de6158247b22c74995c9a2179ed761111833f68f60b34ff536b3a402",
+      "bytes": 624212,
+      "private_library_image_id": "libfile_6979cc01c8288191937e4a3b4c4b21bd",
+      "image_version": 0,
+      "scope": "Actual V03 exterior authoring render, no native-game/repair-completion claim"
+    },
+    {
+      "path": "current-work/progress/body-only-v03-rear.png",
+      "sha256": "54b82df7464614f639683a3e2ddaf3099acb33487a95c67deab75f1396bed5bf",
+      "bytes": 602857,
+      "private_library_image_id": "libfile_b6ce3c4d707c8191a9b1820f7e215eb4",
+      "image_version": 0,
+      "scope": "Actual V03 exterior authoring render, no native-game/repair-completion claim"
+    }
+  ],
+  "history": "All prior source/optional structural work retained; old Git model binaries/source.json unchanged."
+}

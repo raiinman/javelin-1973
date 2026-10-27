@@ -1,17 +1,17 @@
 # Purpose
 
-- Preserve the latest assembled STL-based Javelin as an editable source snapshot available from a fresh clone.
+- Preserve the older assembled STL-based Javelin as a historical editable snapshot available from a fresh clone. The reviewed cloud model indexed in `../../current-work/README.md` supersedes this model checkpoint.
 
 # Ownership
 
-- `Javelin73PC-current.blend` is a copy of the verified working assembly, including Meshy cabin, closures, skirts, trim and fitted pipes.
+- `Javelin73PC-current.blend` is the preserved prior assembly, not the current cloud model. It is a copy of the historically verified assembly, including Meshy cabin, closures, skirts, trim and fitted pipes.
 - `source.json` records the repository-relative authoring source, checksum and verification scope.
 
 # Local Contracts
 
 - Preserve the earlier `../Javelin73PC.blend` procedural source and ignored authoring history.
-- Keep current assembled components visible in Material Preview; preserve originals and superseded variants hidden.
-- Copy only the verified checkpoint. Update `source.json` with each snapshot refresh and distinguish display/asset checks from native gameplay results.
+- Keep this historical snapshot's assembled components visible in Material Preview; preserve originals and superseded variants hidden.
+- Do not silently refresh or relabel this historical snapshot. Preserve `source.json` and the existing binary identity. A separately reviewed future migration must update the current-work manifest and affected contracts, and must distinguish display/asset checks from native gameplay results.
 
 # Work Guidance
 
