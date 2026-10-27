@@ -1,12 +1,12 @@
 {
  "engine": "AMC360_Engine.blend",
- "sha256": "51fd994855a7846d5fb898de7be5bb8ec4d7fec09d0f137f27c7e5a131db3d94",
+ "sha256": "dd129299ebf7ab31f886da19587c0769995dae8a9f48a987a2125946a2860796",
  "blender": "5.2.1 LTS",
- "total_triangles": 29192,
+ "total_triangles": 29914,
  "objects": {
   "ENG_AirCleaner": {
-   "triangles": 1936,
-   "geometry_sha256": "297ab2bf413f78838f6a8ceb6a868b985111e7b4f3e650f578dcc7a88209b623",
+   "triangles": 1696,
+   "geometry_sha256": "806f752913c3799743a5d9c637e059e999e021b20fb729fc5ced1c3adac50d78",
    "materials": [
     "ENG_Black_Satin",
     "ENG_Steel_Bright"
@@ -46,8 +46,8 @@
    "inward_shells": 0
   },
   "ENG_Alternator": {
-   "triangles": 1204,
-   "geometry_sha256": "28f527ebd40147b93d8b02b78469e54ec9615cb53f2587a751a82e9f9f4972d0",
+   "triangles": 1124,
+   "geometry_sha256": "d5a237a1b0f58d57bf3497756e12f4754db7360016bcad928d6f8d0e52e40ba4",
    "materials": [
     "ENG_Aluminium",
     "ENG_Black_Satin",
@@ -109,8 +109,8 @@
    "inward_shells": 0
   },
   "ENG_Carburettor": {
-   "triangles": 688,
-   "geometry_sha256": "0bd6eb634f344a3a26eb89acb5e6eab38b4a2763da5108c22245beb418b8c141",
+   "triangles": 768,
+   "geometry_sha256": "0252330d2a5bad093aabafd63fee6213a80e784bbf023e6f3ff7b2f49bbd0fb2",
    "materials": [
     "ENG_Zinc_Plate",
     "ENG_Steel_Bright",
@@ -127,12 +127,12 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 7,
+   "closed_shells": 8,
    "inward_shells": 0
   },
   "ENG_CrankDamper": {
-   "triangles": 1378,
-   "geometry_sha256": "8a2c389bddfcf7ae4a8f0c0d4cc946de1eafdc8abcacf2828beb854e47a2fe42",
+   "triangles": 1122,
+   "geometry_sha256": "674f6ea2f841c7874a95239438725379a0d11edc57daa9967cc80a24cf473aac",
    "materials": [
     "ENG_Black_Satin",
     "ENG_Rubber",
@@ -142,6 +142,27 @@
     0.0,
     0.085,
     0.0
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 3,
+   "inward_shells": 0
+  },
+  "ENG_Dipstick": {
+   "triangles": 476,
+   "geometry_sha256": "aa0d613fa48f13523df4ac0159e08551a53e6746c8615ec448bb84da03c491d0",
+   "materials": [
+    "ENG_Steel_Bright",
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    -0.15,
+    0.03,
+    0.084
    ],
    "degenerate_faces": 0,
    "zero_length_edges": 0,
@@ -215,8 +236,8 @@
    "inward_shells": 0
   },
   "ENG_ExhaustManifold_L": {
-   "triangles": 1852,
-   "geometry_sha256": "402146f92f3be7ad4ac415eeb93503a9ee2921cee3bfb62f09340b40505e7857",
+   "triangles": 1952,
+   "geometry_sha256": "ecb6988218c1001c6a2e9fec723428b3ba1f8123451239c85501cc758a134f3a",
    "materials": [
     "ENG_Cast_Iron"
    ],
@@ -231,12 +252,12 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 12,
+   "closed_shells": 13,
    "inward_shells": 0
   },
   "ENG_ExhaustManifold_R": {
-   "triangles": 1852,
-   "geometry_sha256": "c2acec3d745c9fe64889133bf259a15fe5826d3ce4741170659cc256103f7ea9",
+   "triangles": 1952,
+   "geometry_sha256": "dc90371b780e6ccf77a4698e554768ae70e3d548a8fcc52ecbfc6a8ace7bbf0f",
    "materials": [
     "ENG_Cast_Iron"
    ],
@@ -251,7 +272,7 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 12,
+   "closed_shells": 13,
    "inward_shells": 0
   },
   "ENG_Fan": {
@@ -275,8 +296,8 @@
    "inward_shells": 0
   },
   "ENG_FanPulley": {
-   "triangles": 704,
-   "geometry_sha256": "0ed4e23350773e03e00560f1548ffdc7bd35666d722985fda42733afa7f528f7",
+   "triangles": 624,
+   "geometry_sha256": "c19026195609ec89b8d787bf30d1106e217d5479bad7bfe747ef314dc5fe0fbd",
    "materials": [
     "ENG_Black_Satin"
    ],
@@ -294,9 +315,31 @@
    "closed_shells": 2,
    "inward_shells": 0
   },
+  "ENG_FuelPump": {
+   "triangles": 616,
+   "geometry_sha256": "04bb598f17186159cc33756e359d43dc6dd1650d1e834fa4cab50514eeab271f",
+   "materials": [
+    "ENG_Paint_Cast",
+    "ENG_Steel_Bright",
+    "ENG_Black_Satin"
+   ],
+   "pivot": [
+    0.205,
+    0.03,
+    0.05
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 5,
+   "inward_shells": 0
+  },
   "ENG_Head_L": {
    "triangles": 284,
-   "geometry_sha256": "80040d5c4803c3641f890306a54652dc61e0f131a5ca02a85fb749e123d4fd88",
+   "geometry_sha256": "2ab69c3197ac58e8cc1e09cf6ab270b8ca04383fd61eea69943883ac8eb538e8",
    "materials": [
     "ENG_Paint_Cast"
    ],
@@ -316,7 +359,7 @@
   },
   "ENG_Head_R": {
    "triangles": 284,
-   "geometry_sha256": "3a8fbd26c63bcc828e43a1d9e4aaae5f91ee1c2a20fcfe1b69648d917d93e3f9",
+   "geometry_sha256": "e3070f95a1d234be3e7b1ae332be6f88b3e6cfe4550a2d1bd07e7a8268445ab4",
    "materials": [
     "ENG_Paint_Cast"
    ],
@@ -335,8 +378,8 @@
    "inward_shells": 0
   },
   "ENG_IgnitionLeads": {
-   "triangles": 5248,
-   "geometry_sha256": "1a091486d9722bf9a059d3c220b5c1151a8b1a0df5fca6857030d4f58d95031b",
+   "triangles": 3520,
+   "geometry_sha256": "f5776bf48bf9842bed785372eaea3b1647afe6757dac4f421b566197bcf1c258",
    "materials": [
     "ENG_Rubber"
    ],
@@ -355,8 +398,8 @@
    "inward_shells": 0
   },
   "ENG_Intake": {
-   "triangles": 3580,
-   "geometry_sha256": "bdb246ea7f684df6b42c194094eb1d19be4e0d7f1920b1716aef15190c525a9f",
+   "triangles": 4588,
+   "geometry_sha256": "80e12062cb2a27c842e9daca9988c62c4827ed2b73a873a54c84fd60e9769932",
    "materials": [
     "ENG_Paint_Cast"
    ],
@@ -417,7 +460,7 @@
   },
   "ENG_OilPan": {
    "triangles": 1150,
-   "geometry_sha256": "615770944eeb6ff462b8706cfeb4fbb7ef03813e907eb4c15cfda9aa99a5e9f1",
+   "geometry_sha256": "f358e9f742be6e23ae5810ed5635addf65f13d0fd73db1f44c045f9a34ee1278",
    "materials": [
     "ENG_Paint_Pressed",
     "ENG_Steel_Bright"
@@ -436,9 +479,30 @@
    "closed_shells": 2,
    "inward_shells": 0
   },
+  "ENG_PCVHose": {
+   "triangles": 796,
+   "geometry_sha256": "bcd718b4cb21c4b27d8539afe5ba3f435b5a4a7fe3667bcbc06a557587185183",
+   "materials": [
+    "ENG_Rubber",
+    "ENG_Steel_Bright"
+   ],
+   "pivot": [
+    0.3224,
+    -0.118,
+    0.3366
+   ],
+   "degenerate_faces": 0,
+   "zero_length_edges": 0,
+   "boundary_edges": 0,
+   "nonmanifold_edges": 0,
+   "loose_verts": 0,
+   "inconsistent_winding_edges": 0,
+   "closed_shells": 2,
+   "inward_shells": 0
+  },
   "ENG_PlugBoots": {
-   "triangles": 896,
-   "geometry_sha256": "1dcfdba934cea19df1c0fcfa60783765da247318d5161b3722574de1489a96fe",
+   "triangles": 768,
+   "geometry_sha256": "f51138fa28c3a64c3e08d1ff062bab1cf70d4af19876d5d412cde3164fd94a32",
    "materials": [
     "ENG_Rubber",
     "ENG_Steel_Bright"
@@ -480,7 +544,7 @@
   },
   "ENG_ValveCover_L": {
    "triangles": 914,
-   "geometry_sha256": "1cade55508bafebb7e61328e12bd3491baca176d2c6a00b6282aa63d0c8c58d2",
+   "geometry_sha256": "b1f13e167a3a4ebff85976922c70f0c4a6547d909165807e7e2832c8e991a706",
    "materials": [
     "ENG_Paint_Pressed",
     "ENG_Steel_Bright",
@@ -501,8 +565,8 @@
    "inward_shells": 0
   },
   "ENG_ValveCover_R": {
-   "triangles": 882,
-   "geometry_sha256": "bfe70fdfe5117626ad5f6060639757202e39770c603810326df3edd6dfda3a18",
+   "triangles": 940,
+   "geometry_sha256": "df455cd9542c99917f8944ba3f68dc52c0400cf3e3ee8cc9b03b112ba4928a6b",
    "materials": [
     "ENG_Paint_Pressed",
     "ENG_Steel_Bright",
@@ -519,7 +583,7 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 10,
+   "closed_shells": 11,
    "inward_shells": 0
   },
   "ENG_WaterPump": {
@@ -589,21 +653,33 @@
    26,
    "pivot and adjuster bolts"
   ],
+  "ENG_Carburettor x ENG_PCVHose": [
+   16,
+   "hose pushed over carb-base PCV nipple"
+  ],
   "ENG_CrankDamper x ENG_TimingCover": [
-   32,
+   24,
    "damper hub in seal boss"
+  ],
+  "ENG_Dipstick x ENG_TimingCover": [
+   14,
+   "dipstick tube pressed into cover boss"
   ],
   "ENG_Distributor x ENG_TimingCover": [
    112,
    "distributor shank in cover boss"
   ],
   "ENG_DistributorCap x ENG_IgnitionLeads": [
-   102,
+   107,
    "lead ends enter cap towers"
   ],
   "ENG_Fan x ENG_FanPulley": [
    66,
    "fan bolted to spacer"
+  ],
+  "ENG_FuelPump x ENG_TimingCover": [
+   11,
+   "pump flange bolted to cover"
   ],
   "ENG_Head_L x ENG_PlugBoots": [
    184,
@@ -614,7 +690,7 @@
    "plug threads enter head bosses"
   ],
   "ENG_IgnitionLeads x ENG_PlugBoots": [
-   256,
+   228,
    "lead ends enter boot tips"
   ],
   "ENG_IgnitionLeads x ENG_WireLoom_L": [
@@ -632,6 +708,10 @@
   "ENG_OilFilter x ENG_TimingCover": [
    42,
    "filter spins onto adapter"
+  ],
+  "ENG_PCVHose x ENG_ValveCover_R": [
+   28,
+   "hose pushed over PCV valve"
   ],
   "ENG_TimingCover x ENG_WaterPump": [
    36,

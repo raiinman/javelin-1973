@@ -1,0 +1,1278 @@
+{
+ "car": "Javelin_CurrentV10_EmptyBay_FittingReference.blend",
+ "car_sha256": "d8b32bd9a0f16ec73589bee31e99a56b172d301d351aebfa935a64f86e51523d",
+ "engine_sha256": "dd129299ebf7ab31f886da19587c0769995dae8a9f48a987a2125946a2860796",
+ "root_location": [
+  0.0,
+  1.49,
+  -0.235
+ ],
+ "car_objects": 38,
+ "car_visibility_changed": [],
+ "car_has_actions": true,
+ "hood_animated": true,
+ "static_near_or_overlapping": {
+  "Body": {
+   "min_distance_m": 0.0156,
+   "visible": true,
+   "contact_faces": []
+  }
+ },
+ "hood_sweep": {
+  "Hood | DSI_Hood_Open": [
+   {
+    "frame": 1.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.0,
+    "min_clearance_m": 0.0595,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 1.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.068,
+    "min_clearance_m": 0.06,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 2.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.137,
+    "min_clearance_m": 0.0604,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 2.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.335,
+    "min_clearance_m": 0.0615,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 3.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.533,
+    "min_clearance_m": 0.0627,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 3.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.85,
+    "min_clearance_m": 0.0646,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 4.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 1.166,
+    "min_clearance_m": 0.0665,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 4.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 1.591,
+    "min_clearance_m": 0.069,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 5.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 2.015,
+    "min_clearance_m": 0.0715,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 5.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 2.536,
+    "min_clearance_m": 0.0746,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 6.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 3.058,
+    "min_clearance_m": 0.0763,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 6.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 3.665,
+    "min_clearance_m": 0.077,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 7.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 4.272,
+    "min_clearance_m": 0.0779,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 7.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 4.955,
+    "min_clearance_m": 0.079,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 8.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 5.637,
+    "min_clearance_m": 0.0801,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 8.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 6.384,
+    "min_clearance_m": 0.0814,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 9.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 7.13,
+    "min_clearance_m": 0.0828,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 9.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 7.929,
+    "min_clearance_m": 0.0843,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 10.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 8.728,
+    "min_clearance_m": 0.0859,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 10.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 9.568,
+    "min_clearance_m": 0.0876,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 11.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 10.409,
+    "min_clearance_m": 0.0895,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 11.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 11.279,
+    "min_clearance_m": 0.0914,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 12.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 12.148,
+    "min_clearance_m": 0.0935,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 12.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 13.036,
+    "min_clearance_m": 0.0957,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 13.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 13.924,
+    "min_clearance_m": 0.0979,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 13.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 14.817,
+    "min_clearance_m": 0.1003,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 14.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 15.711,
+    "min_clearance_m": 0.1026,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 14.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 16.598,
+    "min_clearance_m": 0.1049,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 15.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 17.486,
+    "min_clearance_m": 0.1072,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 15.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 18.355,
+    "min_clearance_m": 0.1096,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 16.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 19.225,
+    "min_clearance_m": 0.112,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 16.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 20.066,
+    "min_clearance_m": 0.1144,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 17.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 20.906,
+    "min_clearance_m": 0.1169,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 17.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 21.705,
+    "min_clearance_m": 0.1192,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 18.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 22.504,
+    "min_clearance_m": 0.1215,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 18.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 23.25,
+    "min_clearance_m": 0.1236,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 19.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 23.997,
+    "min_clearance_m": 0.1258,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 19.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 24.679,
+    "min_clearance_m": 0.1278,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 20.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 25.362,
+    "min_clearance_m": 0.1298,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 20.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 25.969,
+    "min_clearance_m": 0.1316,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 21.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 26.576,
+    "min_clearance_m": 0.1335,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 21.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 27.098,
+    "min_clearance_m": 0.135,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 22.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 27.619,
+    "min_clearance_m": 0.1366,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 22.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 28.043,
+    "min_clearance_m": 0.1378,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 23.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 28.468,
+    "min_clearance_m": 0.1389,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 23.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 28.784,
+    "min_clearance_m": 0.1398,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 24.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.101,
+    "min_clearance_m": 0.1407,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 24.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.299,
+    "min_clearance_m": 0.1412,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 25.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.497,
+    "min_clearance_m": 0.1418,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 25.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.566,
+    "min_clearance_m": 0.142,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 26.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.634,
+    "min_clearance_m": 0.1422,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   }
+  ],
+  "Hood | DSI_Reference_Combined_1_26": [
+   {
+    "frame": 1.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.0,
+    "min_clearance_m": 0.0595,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 1.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.068,
+    "min_clearance_m": 0.06,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 2.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.137,
+    "min_clearance_m": 0.0604,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 2.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.335,
+    "min_clearance_m": 0.0615,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 3.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.533,
+    "min_clearance_m": 0.0627,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 3.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 0.85,
+    "min_clearance_m": 0.0646,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 4.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 1.166,
+    "min_clearance_m": 0.0665,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 4.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 1.591,
+    "min_clearance_m": 0.069,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 5.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 2.015,
+    "min_clearance_m": 0.0715,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 5.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 2.536,
+    "min_clearance_m": 0.0746,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 6.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 3.058,
+    "min_clearance_m": 0.0763,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 6.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 3.665,
+    "min_clearance_m": 0.077,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 7.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 4.272,
+    "min_clearance_m": 0.0779,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 7.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 4.955,
+    "min_clearance_m": 0.079,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 8.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 5.637,
+    "min_clearance_m": 0.0801,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 8.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 6.384,
+    "min_clearance_m": 0.0814,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 9.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 7.13,
+    "min_clearance_m": 0.0828,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 9.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 7.929,
+    "min_clearance_m": 0.0843,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 10.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 8.728,
+    "min_clearance_m": 0.0859,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 10.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 9.568,
+    "min_clearance_m": 0.0876,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 11.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 10.409,
+    "min_clearance_m": 0.0895,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 11.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 11.279,
+    "min_clearance_m": 0.0914,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 12.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 12.148,
+    "min_clearance_m": 0.0935,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 12.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 13.036,
+    "min_clearance_m": 0.0957,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 13.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 13.924,
+    "min_clearance_m": 0.0979,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 13.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 14.817,
+    "min_clearance_m": 0.1003,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 14.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 15.711,
+    "min_clearance_m": 0.1026,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 14.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 16.598,
+    "min_clearance_m": 0.1049,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 15.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 17.486,
+    "min_clearance_m": 0.1072,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 15.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 18.355,
+    "min_clearance_m": 0.1096,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 16.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 19.225,
+    "min_clearance_m": 0.112,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 16.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 20.066,
+    "min_clearance_m": 0.1144,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 17.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 20.906,
+    "min_clearance_m": 0.1169,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 17.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 21.705,
+    "min_clearance_m": 0.1192,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 18.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 22.504,
+    "min_clearance_m": 0.1215,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 18.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 23.25,
+    "min_clearance_m": 0.1236,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 19.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 23.997,
+    "min_clearance_m": 0.1258,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 19.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 24.679,
+    "min_clearance_m": 0.1278,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 20.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 25.362,
+    "min_clearance_m": 0.1298,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 20.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 25.969,
+    "min_clearance_m": 0.1316,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 21.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 26.576,
+    "min_clearance_m": 0.1335,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 21.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 27.098,
+    "min_clearance_m": 0.135,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 22.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 27.619,
+    "min_clearance_m": 0.1366,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 22.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 28.043,
+    "min_clearance_m": 0.1378,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 23.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 28.468,
+    "min_clearance_m": 0.1389,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 23.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 28.784,
+    "min_clearance_m": 0.1398,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 24.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.101,
+    "min_clearance_m": 0.1407,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 24.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.299,
+    "min_clearance_m": 0.1412,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 25.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.497,
+    "min_clearance_m": 0.1418,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 25.5,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.566,
+    "min_clearance_m": 0.142,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   },
+   {
+    "frame": 26.0,
+    "hood_origin": [
+     0.0,
+     0.885,
+     0.5
+    ],
+    "hood_pitch_deg": 29.634,
+    "min_clearance_m": 0.1422,
+    "nearest_engine_part": "ENG_AirCleaner",
+    "overlapping_tri_pairs": 0
+   }
+  ]
+ },
+ "assumed_rear_hinge_sweep": {},
+ "hood_worst": {
+  "Hood | DSI_Hood_Open": {
+   "frame": 1.0,
+   "hood_origin": [
+    0.0,
+    0.885,
+    0.5
+   ],
+   "hood_pitch_deg": 0.0,
+   "min_clearance_m": 0.0595,
+   "nearest_engine_part": "ENG_AirCleaner",
+   "overlapping_tri_pairs": 0
+  },
+  "Hood | DSI_Reference_Combined_1_26": {
+   "frame": 1.0,
+   "hood_origin": [
+    0.0,
+    0.885,
+    0.5
+   ],
+   "hood_pitch_deg": 0.0,
+   "min_clearance_m": 0.0595,
+   "nearest_engine_part": "ENG_AirCleaner",
+   "overlapping_tri_pairs": 0
+  }
+ }
+}

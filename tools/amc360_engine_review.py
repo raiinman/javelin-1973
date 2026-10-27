@@ -40,6 +40,10 @@ SEATED = {
     frozenset(('ENG_Carburettor', 'ENG_AirCleaner')): 'cleaner neck seats on air horn',
     frozenset(('ENG_WaterPump', 'ENG_TimingCover')): 'pump flange bolted to cover',
     frozenset(('ENG_CrankDamper', 'ENG_TimingCover')): 'damper hub in seal boss',
+    frozenset(('ENG_PCVHose', 'ENG_ValveCover_R')): 'hose pushed over PCV valve',
+    frozenset(('ENG_PCVHose', 'ENG_Carburettor')): 'hose pushed over carb-base PCV nipple',
+    frozenset(('ENG_Dipstick', 'ENG_TimingCover')): 'dipstick tube pressed into cover boss',
+    frozenset(('ENG_FuelPump', 'ENG_TimingCover')): 'pump flange bolted to cover',
     frozenset(('ENG_ExhaustManifold_L', 'ENG_Head_L')): 'port flanges on head face',
     frozenset(('ENG_ExhaustManifold_R', 'ENG_Head_R')): 'port flanges on head face',
 }
@@ -195,11 +199,13 @@ def setup_render(res=(1400, 1000), samples=int(os.environ.get('ENG_SAMPLES', 48)
     sc.render.resolution_percentage = int(os.environ.get('ENG_RES_PCT', 100))
     sc.render.film_transparent = False
     sc.view_settings.view_transform = 'AgX'
+    sc.view_settings.look = 'AgX - Medium High Contrast'
     world = bpy.data.worlds.get('ENG_ReviewWorld') or bpy.data.worlds.new('ENG_ReviewWorld')
     world.use_nodes = True
     bg = world.node_tree.nodes.get('Background')
-    bg.inputs[0].default_value = (.55, .57, .60, 1)
-    bg.inputs[1].default_value = .55
+    dark = os.environ.get('ENG_STUDIO', 'dark') == 'dark'
+    bg.inputs[0].default_value = (.018, .021, .028, 1) if dark else (.55, .57, .60, 1)
+    bg.inputs[1].default_value = 1.0 if dark else .55
     sc.world = world
 
 
@@ -239,16 +245,19 @@ def render_to(cam, path):
 
 def studio(center):
     c = Vector(center)
-    add_light('ENG_Key', c + Vector((1.6, 1.8, 2.0)), (math.radians(-40), math.radians(35), math.radians(140)), 650, 1.6)
-    add_light('ENG_Fill', c + Vector((-2.0, .6, 1.0)), (math.radians(70), 0, math.radians(-110)), 260, 2.5)
-    add_light('ENG_Rim', c + Vector((0, -2.2, 1.6)), (math.radians(-55), 0, 0), 300, 2.0)
+    for name, off, energy, size in (('ENG_Key', (1.6, 1.8, 2.0), 300, 1.4), ('ENG_Fill', (-2.0, .8, 1.2), 70, 2.5),
+                                    ('ENG_Rim', (-.6, -2.2, 1.8), 320, 1.2), ('ENG_Top', (0, 0, 2.6), 90, 3.0),
+                                    ('ENG_Kick', (2.0, -1.0, .2), 70, 1.0)):
+        loc = c + Vector(off)
+        rot = (c - loc).to_track_quat('-Z', 'Y').to_euler()
+        add_light(name, loc, rot, energy, size)
     fd = bpy.data.meshes.new('ENG_Floor')
     s = 6
     fd.from_pydata([(-s, -s, 0), (s, -s, 0), (s, s, 0), (-s, s, 0)], [], [(0, 1, 2, 3)])
     fm = bpy.data.materials.new('ENG_FloorMat')
     fm.use_nodes = True
-    fm.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = (.35, .35, .36, 1)
-    fm.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = .8
+    fm.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = (.012, .013, .016, 1)
+    fm.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = .85
     fd.materials.append(fm)
     fl = bpy.data.objects.new('ENG_Floor', fd)
     fl.location = (0, 0, -.235)
@@ -347,7 +356,7 @@ def contact_faces(co, dg, eng_trees):
     return out
 
 
-def fit(engine_path, car_path, out_path, report_path, render_dir, root_loc):
+def fit(engine_path, car_path, out_path, report_path, render_dir, root_loc, rig_name=None, actions=()):
     car_hash = sha256(car_path)
     bpy.ops.wm.open_mainfile(filepath=car_path)
     before = visibility_snapshot()
@@ -380,32 +389,42 @@ def fit(engine_path, car_path, out_path, report_path, render_dir, root_loc):
         if best < .05 or faces:
             static[co.name] = dict(min_distance_m=round(best, 4), visible=co.visible_get(),
                                    contact_faces=faces)
-    # Hood sweep at half-frame samples, frames 1..26.
-    hoods = find_hood()
+    # Hood sweep at half-frame samples, frames 1..26, once per requested rig action
+    # (assigned in memory only), or once with whatever the file has active.
+    hoods = [h for h in find_hood() if h.visible_get()]
+    rig = bpy.data.objects.get(rig_name) if rig_name else None
+    original_action = rig.animation_data.action if rig and rig.animation_data else None
     sweep = {}
-    for hood in hoods:
-        rows = []
-        for i in range(51):
-            f = 1 + i * .5
-            scene.frame_set(int(math.floor(f)), subframe=f - math.floor(f))
-            dgx = bpy.context.evaluated_depsgraph_get()
-            ht = bvh_for(hood, dgx)
-            best, who, overl = 9.0, None, 0
-            for n, bm in eng_bms.items():
-                overl += len(eng_trees[n].overlap(ht))
-                for v in bm.verts:
-                    r = ht.find_nearest(v.co, best)
-                    if r[0] is not None and r[3] < best:
-                        best, who = r[3], n
-            rows.append(dict(frame=f, min_clearance_m=round(best, 4), nearest_engine_part=who,
-                             overlapping_tri_pairs=overl))
-        sweep[hood.name] = rows
+    for act_name in (actions or [None]):
+        if rig and act_name:
+            rig.animation_data.action = bpy.data.actions[act_name]
+        for hood in hoods:
+            rows = []
+            for i in range(51):
+                f = 1 + i * .5
+                scene.frame_set(int(math.floor(f)), subframe=f - math.floor(f))
+                dgx = bpy.context.evaluated_depsgraph_get()
+                ht = bvh_for(hood, dgx)
+                best, who, overl = 9.0, None, 0
+                for n, bm in eng_bms.items():
+                    overl += len(eng_trees[n].overlap(ht))
+                    for v in bm.verts:
+                        r = ht.find_nearest(v.co, best)
+                        if r[0] is not None and r[3] < best:
+                            best, who = r[3], n
+                rows.append(dict(frame=f, hood_origin=[round(c, 4) for c in hood.matrix_world.translation],
+                                 hood_pitch_deg=round(math.degrees(hood.matrix_world.to_euler().x), 3),
+                                 min_clearance_m=round(best, 4), nearest_engine_part=who,
+                                 overlapping_tri_pairs=overl))
+            sweep[f'{hood.name} | {act_name or "active"}'] = rows
+    if rig:
+        rig.animation_data.action = original_action
     scene.frame_set(frame0)
-    animated = bool(bpy.data.actions) or any(o.animation_data for o in hoods)
+    animated = any(len({r['hood_pitch_deg'] for r in rows}) > 1 for rows in sweep.values())
     # Without hood animation, also sweep an explicitly assumed rear-edge hinge.
     # This is a diagnostic, not evidence of the real rig.
     assumed = {}
-    for hood in hoods:
+    for hood in ([] if animated else hoods):
         hb = eval_bmesh(hood, bpy.context.evaluated_depsgraph_get())
         ymin = min(v.co.y for v in hb.verts)
         rear = [v.co for v in hb.verts if v.co.y < ymin + .02]
@@ -435,14 +454,15 @@ def fit(engine_path, car_path, out_path, report_path, render_dir, root_loc):
                root_location=list(root_loc), car_objects=len(before), car_visibility_changed=changed,
                car_has_actions=bool(bpy.data.actions), hood_animated=animated,
                static_near_or_overlapping=static, hood_sweep=sweep, assumed_rear_hinge_sweep=assumed)
+    worst = {h: min(rows, key=lambda r: r['min_clearance_m']) for h, rows in sweep.items()}
+    rep['hood_worst'] = worst
     with open(report_path, 'w') as f:
         json.dump(rep, f, indent=1)
-    worst = {h: min(rows, key=lambda r: r['min_clearance_m']) for h, rows in sweep.items()}
     print(json.dumps(dict(hoods=[h.name for h in hoods], worst=worst, animated=animated,
                           contacts={k: len(v['contact_faces']) for k, v in static.items()}), indent=1))
     if render_dir:
         section_slices(os.path.join(render_dir, 'amc360_fit_sections.png'), root_loc)
-        render_fit(render_dir, root_loc, hoods)
+        render_fit(render_dir, root_loc, hoods, rig if animated else None, actions[0] if actions else None)
     save_diagnostic(engine_path, car_path, out_path, root_loc)
 
 
@@ -498,20 +518,32 @@ def section_slices(path, root_loc):
     print('sections', path)
 
 
-def render_fit(outdir, root_loc, hoods):
+def render_fit(outdir, root_loc, hoods, rig=None, action=None):
     os.makedirs(outdir, exist_ok=True)
     setup_render((1400, 1000))
+    sc = bpy.context.scene
     c = Vector(root_loc) + Vector((0, -.2, .15))
     add_light('ENG_FitKey', c + Vector((1.5, 1.5, 2.5)), (math.radians(-35), math.radians(30), math.radians(140)), 900, 2)
     add_light('ENG_FitTop', c + Vector((0, 0, 2.5)), (0, 0, 0), 600, 2.5)
-    # The supplied file has no hood animation, so the bay views hide the hood
-    # in this session only; the car file itself is never written.
-    for h in hoods:
-        h.hide_render = True
+    add_light('ENG_FitBay', c + Vector((.2, .5, 1.1)), (math.radians(-25), 0, math.radians(10)), 260, .9)
+    if rig:
+        # Real hood motion: open pose at frame 26 of the named action (in memory only).
+        prev = rig.animation_data.action
+        rig.animation_data.action = bpy.data.actions[action]
+        sc.frame_set(26)
+        tag = 'hood_open_f26'
+    else:
+        # No hood animation in the file: hide the hood in this session only.
+        for h in hoods:
+            h.hide_render = True
+        tag = 'hood_hidden'
     render_to(look_camera('CAM_fit_bay', c + Vector((1.3, 1.7, 1.3)), c, 30),
-              os.path.join(outdir, 'amc360_fit_bay_hood_hidden.png'))
+              os.path.join(outdir, f'amc360_fit_bay_{tag}.png'))
     render_to(look_camera('CAM_fit_bay_top', c + Vector((0, .1, 2.2)), c + Vector((0, .1, 0)), 35),
-              os.path.join(outdir, 'amc360_fit_bay_top_hood_hidden.png'))
+              os.path.join(outdir, f'amc360_fit_bay_top_{tag}.png'))
+    if rig:
+        sc.frame_set(1)
+        rig.animation_data.action = prev
     for h in hoods:
         h.hide_render = False
     render_to(look_camera('CAM_fit_closed', c + Vector((2.6, 3.2, 1.0)), c + Vector((0, -.4, 0)), 40),
@@ -519,20 +551,14 @@ def render_fit(outdir, root_loc, hoods):
 
 
 def save_diagnostic(engine_path, car_path, out_path, root_loc):
-    """Small separate file: the car's scene is library-linked read-only as a background set,
-    the engine collection is appended locally at the fit transform."""
-    bpy.ops.wm.read_factory_settings(use_empty=True)
-    with bpy.data.libraries.load(car_path, link=True, relative=False) as (src, dst):
-        dst.scenes = list(src.scenes)
-    car_scene = dst.scenes[0]
-    scene = bpy.context.scene
-    scene.name = 'AMC360_BayFit_DIAGNOSTIC'
-    scene.background_set = car_scene
-    scene['diagnostic'] = ('Engine fit check only. Car is linked read-only from the historical '
-                           'assets/current-stl snapshot; not an adopted car checkpoint.')
+    """Separately named, self-contained copy: the car file reopened fresh and unmodified,
+    with the engine collection appended at the fit transform. The car file is never written."""
+    bpy.ops.wm.open_mainfile(filepath=car_path)
+    bpy.context.scene['diagnostic'] = ('Engine fit check only; not an adopted car checkpoint. '
+                                       'Car content is an unmodified copy of the supplied file.')
     link_engine(engine_path, root_loc)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
-    bpy.ops.wm.save_as_mainfile(filepath=out_path, compress=True, relative_remap=True)
+    bpy.ops.wm.save_as_mainfile(filepath=out_path, compress=True, copy=True)
     print('diagnostic', out_path)
 
 
@@ -547,6 +573,8 @@ def main():
     ap.add_argument('--out')
     ap.add_argument('--renders')
     ap.add_argument('--root', nargs=3, type=float, default=(0, 1.49, -.235))
+    ap.add_argument('--rig')
+    ap.add_argument('--actions', nargs='*', default=())
     o = ap.parse_args(a)
     eng = os.path.abspath(o.engine)
     if o.mode == 'check':
@@ -555,7 +583,7 @@ def main():
         render_engine(eng, os.path.abspath(o.outdir))
     else:
         fit(eng, os.path.abspath(o.car), os.path.abspath(o.out), os.path.abspath(o.report),
-            os.path.abspath(o.renders) if o.renders else None, tuple(o.root))
+            os.path.abspath(o.renders) if o.renders else None, tuple(o.root), o.rig, o.actions)
 
 
 if __name__ == '__main__':

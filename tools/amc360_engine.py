@@ -34,13 +34,24 @@ ALT_C = (.250, .330)
 BELT_Y = .125
 
 # Distributor: boss on the passenger-side timing cover, leaning out and slightly back.
+# 'stock': painted covers, black cleaner, silver label. 'dressup': polished covers and lid.
+FINISH = 'stock'
+
+
+def finish_mats():
+    if FINISH == 'dressup':
+        return 'ENG_Polished_Steel', 'ENG_Polished_Steel', 'ENG_Decal_Ink'
+    return 'ENG_Paint_Pressed', 'ENG_Black_Satin', 'ENG_Decal_Silver'
+
+
 DIST_BASE = Vector((.118, .060, .095))
 DIST_AXIS = Vector((.18, .10, .98)).normalized()
 
 PAINT = {
     # Unverified colour choices; see docs/amc360-engine.md before matching the target.
-    'ENG_Paint_Cast': ((.10, .25, .48), 0.0, .55),
-    'ENG_Paint_Pressed': ((.11, .27, .52), 0.0, .35),
+    # Metallic blue engine enamel: vendors sell it as 1967-73 AMC engine colour (unconfirmed factory data).
+    'ENG_Paint_Cast': ((.06, .19, .46), .35, .45),
+    'ENG_Paint_Pressed': ((.07, .21, .50), .35, .32),
     'ENG_Black_Satin': ((.025, .025, .028), 0.0, .45),
     'ENG_Cast_Iron': ((.16, .15, .14), .6, .75),
     'ENG_Aluminium': ((.62, .62, .60), 1.0, .45),
@@ -48,7 +59,9 @@ PAINT = {
     'ENG_Rubber': ((.03, .03, .03), 0.0, .8),
     'ENG_Bakelite_Cap': ((.04, .035, .03), 0.0, .3),
     'ENG_Steel_Bright': ((.75, .75, .74), 1.0, .25),
+    'ENG_Decal_Ink': ((.03, .03, .035), 0.0, .5),
     'ENG_Decal_Silver': ((.80, .80, .78), .6, .35),
+    'ENG_Polished_Steel': ((.86, .86, .87), 1.0, .14),
 }
 
 
@@ -86,8 +99,9 @@ def axis_matrix(origin, axis, hint=Vector((0, 0, 1))):
 
 
 class Part:
-    def __init__(self, name, mats, pivot=(0, 0, 0)):
+    def __init__(self, name, mats, pivot=(0, 0, 0), sharp=34):
         self.name, self.mats, self.pivot = name, list(mats), Vector(pivot)
+        self.sharp = math.radians(sharp)
         self.bm = bmesh.new()
 
     def mi(self, mat):
@@ -179,7 +193,7 @@ class Part:
                             affect='EDGES', clamp_overlap=True)
         self.absorb(bm, mat, xf or Matrix.Identity(4))
 
-    def sweep(self, path, section, mat, closed=False, cap=True):
+    def sweep(self, path, section, mat, closed=False, cap=True, scales=None):
         """Sweep a 2D section (in path normal/binormal) along points, parallel transport."""
         path = [Vector(p) for p in path]
         n = len(path)
@@ -197,7 +211,8 @@ class Part:
             if i:
                 nrm = (nrm - tans[i] * nrm.dot(tans[i])).normalized()
             bin_ = tans[i].cross(nrm)
-            rings.append([path[i] + nrm * sx + bin_ * sy for sx, sy in section])
+            k = scales[i] if scales else 1.0
+            rings.append([path[i] + (nrm * sx + bin_ * sy) * k for sx, sy in section])
         if closed:
             rings.append(rings[0])
             vr = self.grid(rings[:-1], mat, cap0=False, cap1=False)
@@ -222,7 +237,7 @@ class Part:
         for f in self.bm.faces[start:]:
             f.material_index = self.mi(mat)
 
-    def build(self, parent, materials, recalc=True, sharp=math.radians(34)):
+    def build(self, parent, materials, recalc=True):
         bm = self.bm
         bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-6)
         if recalc:
@@ -234,7 +249,7 @@ class Part:
         for m in self.mats:
             me.materials.append(materials[m])
         me.shade_smooth()
-        me.set_sharp_from_angle(angle=sharp)
+        me.set_sharp_from_angle(angle=self.sharp)
         ob = bpy.data.objects.new(self.name, me)
         ob.location = self.pivot
         ob.parent = parent
@@ -335,7 +350,7 @@ def build_head(side):
     if side < 0:
         poly = list(reversed(poly))
     y0, y1 = HEAD_Y[side]
-    p.extrude(poly, y1, y0, 'ENG_Paint_Cast', bevel=.005)
+    p.extrude(poly, y1, y0, 'ENG_Paint_Cast', bevel=.010)
     # Spark-plug bosses between the exhaust ports.
     m = bank_matrix(side, DECK)
     for y in CYL_Y[side]:
@@ -366,20 +381,21 @@ def build_valve_cover(side):
     hl = (y0 - y1) / 2 - .008
     m = bank_matrix(side, DECK + HEAD_H + .0005) @ Matrix.Translation((0, yc, 0))
     pivot = m @ Vector((0, 0, 0))
-    p = Part(name, ['ENG_Paint_Pressed', 'ENG_Steel_Bright', 'ENG_Rubber'], pivot=pivot)
-    # (height, half-length, half-width, corner radius) from flange to crown.
+    cover = finish_mats()[0]
+    p = Part(name, [cover, 'ENG_Steel_Bright', 'ENG_Rubber'], pivot=pivot)
+    # (height, half-length, half-width, corner radius) from flange to crown: a tall, full pressing.
     levels = [(0.0, hl + .006, .094, .026), (.004, hl + .006, .094, .026), (.004, hl - .002, .086, .020),
-              (.030, hl - .004, .084, .019), (.050, hl - .007, .080, .017), (.060, hl - .013, .072, .014),
-              (.066, hl - .022, .060, .012), (.068, hl - .032, .046, .010)]
+              (.034, hl - .004, .085, .020), (.060, hl - .008, .081, .018), (.074, hl - .015, .073, .015),
+              (.082, hl - .025, .060, .012), (.085, hl - .036, .046, .010)]
     rings = []
     for h, l, w, r in levels:
         rings.append([(wv, ll, h) for ll, wv in rounded_rect(l, w, r, corner=3, side=5)])
-    p.grid(rings, 'ENG_Paint_Pressed', cap0=True, xf=m)
+    p.grid(rings, cover, cap0=True, xf=m)
     # Pressed raised centre panel.
     top = rings[-1]
-    inner = [(wv * .86, ll * .97, .068) for wv, ll, _ in top]
-    crown = [(wv * .82, ll * .955, .0715) for wv, ll, _ in top]
-    p.grid([top, inner, crown], 'ENG_Paint_Pressed', cap1=True, xf=m)
+    inner = [(wv * .86, ll * .97, .085) for wv, ll, _ in top]
+    crown = [(wv * .82, ll * .955, .0885) for wv, ll, _ in top]
+    p.grid([top, inner, crown], cover, cap1=True, xf=m)
     # Flange bolts, both long sides.
     for k in range(4):
         ly = -hl + .05 + k * (2 * hl - .10) / 3
@@ -389,10 +405,63 @@ def build_valve_cover(side):
     # Breather on the driver cover, PCV grommet/valve on the passenger cover.
     if side < 0:
         p.lathe([(.020, 0), (.022, .006), (.022, .030), (.018, .036), (0, .038)], 16,
-                'ENG_Steel_Bright', m @ Matrix.Translation((-.010, hl - .085, .070)))
+                'ENG_Steel_Bright', m @ Matrix.Translation((-.010, hl - .085, .0875)))
     else:
         p.lathe([(.014, 0), (.014, .006), (.010, .008), (.010, .028), (0, .030)], 12,
-                'ENG_Rubber', m @ Matrix.Translation((-.010, hl - .080, .070)))
+                'ENG_Rubber', m @ Matrix.Translation((-.010, hl - .080, .0875)))
+        p.lathe([(.0075, .028), (.0075, .046), (.0055, .050), (0, .050)], 10,
+                'ENG_Steel_Bright', m @ Matrix.Translation((-.010, hl - .080, .0875)))
+    return p
+
+
+def pcv_top():
+    y0, y1 = HEAD_Y[1]
+    hl = (y0 - y1) / 2 - .008
+    m = bank_matrix(1, DECK + HEAD_H + .0005) @ Matrix.Translation((0, (y0 + y1) / 2, 0))
+    return m @ Vector((-.010, hl - .080, .0875 + .046)), (m.to_3x3() @ Vector((0, 0, 1))).normalized()
+
+
+def build_pcv_hose():
+    top, up = pcv_top()
+    port = Vector((.052, CARB_Y - .081, CARB_PAD_Z + .010))
+    p = Part('ENG_PCVHose', ['ENG_Rubber', 'ENG_Steel_Bright'], pivot=top)
+    # Carb-base PCV nipple pointing rearward.
+    p.lathe([(0, 0), (.006, 0), (.006, .016), (.0075, .018), (.0075, .021), (0, .021)], 10,
+            'ENG_Steel_Bright', axis_matrix(port + Vector((0, .006, 0)), Vector((0, -1, 0))))
+    end = port + Vector((0, -.013, 0))
+    pts = [top - up * .012, top + up * .012, top + up * .040 + Vector((-.030, -.010, 0)),
+           Vector((.120, -.190, .372)), Vector((.105, -.330, .368)), Vector((.070, -.372, .352)),
+           end + Vector((.004, -.022, 0)), end]
+    p.sweep(catmull(pts, per=5), circle_section(.0085, 10), 'ENG_Rubber')
+    return p
+
+
+def build_dipstick():
+    base = Vector((-.150, .030, .084))
+    p = Part('ENG_Dipstick', ['ENG_Steel_Bright', 'ENG_Black_Satin'], pivot=base)
+    pts = [base, base + Vector((0, 0, .040)), Vector((-.158, .022, .200)), Vector((-.163, .019, .262))]
+    p.sweep(catmull(pts, per=5), circle_section(.0050, 8), 'ENG_Steel_Bright')
+    top = Vector((-.163, .019, .262))
+    p.lathe([(0, 0), (.0068, 0), (.0068, .010), (0, .010)], 8, 'ENG_Black_Satin',
+            axis_matrix(top - Vector((0, 0, .002)), Vector((0, 0, 1))))
+    loop = [top + Vector((0, 0, .010)) + Vector((.013 * math.sin(a), 0, .013 * (1 - math.cos(a))))
+            for a in [2 * math.pi * i / 16 for i in range(16)]]
+    p.sweep(loop, circle_section(.0028, 6), 'ENG_Black_Satin', closed=True)
+    return p
+
+
+def build_fuel_pump():
+    c = Vector((.205, .030, .050))
+    p = Part('ENG_FuelPump', ['ENG_Paint_Cast', 'ENG_Steel_Bright', 'ENG_Black_Satin'], pivot=c)
+    # Mounting flange on the cover side, body, and a domed diaphragm housing facing outboard.
+    p.rbox(Vector((.170, .030, .050)), (.022, .044, .060), .005, 'ENG_Paint_Cast')
+    p.rbox(c, (.050, .040, .050), .010, 'ENG_Paint_Cast')
+    p.lathe([(0, 0), (.036, 0), (.038, .004), (.038, .012), (.030, .018), (.012, .021), (0, .021)], 20,
+            'ENG_Black_Satin', axis_matrix(c + Vector((.024, 0, 0)), Vector((1, 0, 0))))
+    for start, d in ((c + Vector((.008, .006, .024)), Vector((0, 0, 1))),
+                     (c + Vector((.008, -.006, -.024)), Vector((0, 0, -1)))):
+        p.lathe([(0, 0), (.006, 0), (.006, .018), (.0075, .020), (.0075, .024), (.004, .024), (0, .024)],
+                10, 'ENG_Steel_Bright', axis_matrix(start, d))
     return p
 
 
@@ -428,8 +497,8 @@ def intake_top(x, y, half):
             s = max(0, min(1, ((x - sx) * dx + (y - py) * dy) / L2))
             qx, qy = sx + s * dx, py + s * dy
             d = math.hypot(x - qx, y - qy)
-            f = max(0.0, 1 - (d / .030) ** 2)
-            z = max(z, .287 + .030 * f * (2 - f) * (1 - .15 * s))
+            f = max(0.0, 1 - (d / .036) ** 2)
+            z = max(z, .287 + .030 * f * f * (3 - 2 * f) * (1 - .15 * s))
     # Plenum and carburettor pad.
     px = abs(x) / .090
     py = abs(y - CARB_Y) / .088
@@ -441,22 +510,29 @@ def intake_top(x, y, half):
 
 
 def build_intake():
-    p = Part('ENG_Intake', ['ENG_Paint_Cast'], pivot=(0, CARB_Y, CARB_PAD_Z))
+    # Soft cast runners: a gentler sharp angle keeps grid zig-zags from reading as creases.
+    p = Part('ENG_Intake', ['ENG_Paint_Cast'], pivot=(0, CARB_Y, CARB_PAD_Z), sharp=55)
     vlo = -.1005
     lt = bank_point(-1, DECK + .080, vlo)
     lb = bank_point(-1, DECK + .020, vlo)
     half = -lt[0]
-    nx = 22
-    ys = [INTAKE_Y[0] - (INTAKE_Y[0] - INTAKE_Y[1]) * k / 47 for k in range(48)]
+    nx = 26
+    ys = [INTAKE_Y[0] - (INTAKE_Y[0] - INTAKE_Y[1]) * k / 55 for k in range(56)]
     rings = []
     for y in ys:
         sec = [(-.060, y, .200), (lb[0], y, lb[1])]
         for k in range(1, 5):
             t = k / 5
             sec.append((lb[0] + (lt[0] - lb[0]) * t, y, lb[1] + (lt[1] - lb[1]) * t))
+        # Fade runners and plenum toward the port-face line at both ends: cast end walls.
+        e = min(INTAKE_Y[0] - y, y - INTAKE_Y[1]) / .040
+        e = 1.0 if e >= 1 else e * e * (3 - 2 * e)
+        edge_z = lt[1]
         for k in range(nx + 1):
             x = -half + 2 * half * k / nx
-            sec.append((x, y, intake_top(x, y, half)))
+            zt = intake_top(x, y, half)
+            w = 1 - (abs(x) / half) ** 4
+            sec.append((x, y, edge_z + (zt - edge_z) * (.15 + .85 * e) - .010 * (1 - e) * w))
         for k in range(1, 5):
             t = k / 5
             sec.append((-(lt[0] + (lb[0] - lt[0]) * t), y, lt[1] + (lb[1] - lt[1]) * t))
@@ -480,19 +556,25 @@ def build_heads_ports_exhaust(side):
     ys = [y + .015 for y in CYL_Y[side]]
     for y in ys:
         p.rbox((HEAD_HALF + .0065, y, .040), (.012, .046, .040), .004, 'ENG_Cast_Iron', xf=m)
-        path = catmull([(HEAD_HALF + .010, y, .040), (HEAD_HALF + .035, y, .036),
-                        (log_v - .006, y, log_u + .006)], per=4)
-        p.sweep([m @ q for q in path], circle_section(.019, 10), 'ENG_Cast_Iron')
+        path = catmull([(HEAD_HALF + .010, y, .040), (HEAD_HALF + .035, y, .034),
+                        (log_v - .010, y, log_u + .010)], per=4)
+        n = len(path)
+        p.sweep([m @ q for q in path], circle_section(.022, 10), 'ENG_Cast_Iron',
+                scales=[1 + .30 * (i / (n - 1)) ** 2 for i in range(n)])
     yf, yr = ys[0] + .035, ys[-1] - .060
     lp = [m @ Vector((log_v, yf - k * (yf - yr) / 12, log_u)) for k in range(13)]
-    sec = [(.030 * math.cos(2 * math.pi * i / 14), .026 * math.sin(2 * math.pi * i / 14)) for i in range(14)]
-    p.sweep(lp, sec, 'ENG_Cast_Iron')
-    for end, prev in ((lp[0], lp[1]), (lp[-1], lp[-2])):
-        p.lathe([(.028, -.003), (.028, .002), (.024, .014), (.014, .022), (0, .025)], 14,
+    sec = [(.031 * math.cos(2 * math.pi * i / 14), .029 * math.sin(2 * math.pi * i / 14)) for i in range(14)]
+    grow = [.88 + .24 * k / 12 for k in range(13)]
+    p.sweep(lp, sec, 'ENG_Cast_Iron', scales=grow)
+    for (end, prev), g in (((lp[0], lp[1]), grow[0]), ((lp[-1], lp[-2]), grow[-1])):
+        p.lathe([(.031 * g, -.003), (.031 * g, .002), (.026 * g, .015), (.015 * g, .024), (0, .027 * g)], 14,
                 'ENG_Cast_Iron', axis_matrix(end, end - prev))
+    # Cast stiffening rib along the top of the log.
+    rib = [m @ Vector((log_v - .004, yf - k * (yf - yr) / 12, log_u + .025 + .006 * k / 12)) for k in range(13)]
+    p.sweep(rib, [(-.004, -.003), (.004, -.003), (.002, .004), (-.002, .004)], 'ENG_Cast_Iron')
     # Downturned outlet with a three-bolt flange near the rear.
     oc = m @ Vector((log_v, ys[-1] - .020, log_u))
-    p.lathe([(.026, 0), (.026, -.070), (.042, -.070), (.042, -.082), (.022, -.082)], 14,
+    p.lathe([(.030, 0), (.030, -.070), (.046, -.070), (.046, -.083), (.025, -.083)], 14,
             'ENG_Cast_Iron', axis_matrix(oc, Vector((0, 0, 1))))
     p.pivot = m @ Vector((log_v, (yf + yr) / 2, log_u))
     return p
@@ -502,8 +584,11 @@ def build_oil_pan():
     p = Part('ENG_OilPan', ['ENG_Paint_Pressed', 'ENG_Steel_Bright'], pivot=(0, -.26, -.018))
 
     def depth(y):
-        t = max(0.0, min(1.0, (-.245 - y) / .060))
-        t = t * t * (3 - 2 * t)
+        # Passenger-car pan: deep sump centred slightly forward, shallow front lip and rear tray.
+        def ss(a, b, v):
+            t = max(0.0, min(1.0, (v - a) / (b - a)))
+            return t * t * (3 - 2 * t)
+        t = ss(.010, -.050, y) * (1 - ss(-.300, -.360, y))
         return -.095 + (-.215 + .095) * t
 
     def section(y):
@@ -525,7 +610,7 @@ def build_oil_pan():
     ys = [.050 - k * (.624) / 27 for k in range(28)]
     p.grid([section(y) for y in ys], 'ENG_Paint_Pressed', cap0=True, cap1=True)
     p.lathe([(.016, 0), (.016, -.008), (.011, -.012), (0, -.012)], 6, 'ENG_Steel_Bright',
-            axis_matrix(Vector((.06, -.47, -.215)), Vector((0, 0, 1))))
+            axis_matrix(Vector((.06, -.20, -.215)), Vector((0, 0, 1))))
     return p
 
 
@@ -611,10 +696,10 @@ def build_crank_damper():
     p = Part('ENG_CrankDamper', ['ENG_Black_Satin', 'ENG_Rubber', 'ENG_Steel_Bright'], pivot=(0, .085, 0))
     xf = axis_matrix(Vector((0, .066, 0)), Vector((0, 1, 0)))
     p.lathe([(0, 0), (.030, 0), (.030, .008), (.070, .010), (.070, .012), (.090, .012), (.090, .030),
-             (.072, .030), (.072, .033), (.090, .033), (.090, .046), (.035, .048), (0, .048)], 32,
+             (.072, .030), (.072, .033), (.090, .033), (.090, .046), (.035, .048), (0, .048)], 24,
             'ENG_Black_Satin', xf,
             mats=['ENG_Black_Satin'] * 6 + ['ENG_Rubber', 'ENG_Rubber'] + ['ENG_Black_Satin'] * 4)
-    groove_pulley(p, (0, 0), BELT_Y, .088, .020, 32, 'ENG_Black_Satin')
+    groove_pulley(p, (0, 0), BELT_Y, .088, .020, 28, 'ENG_Black_Satin')
     p.lathe([(.012, 0), (.012, .010), (.009, .013), (0, .013)], 6, 'ENG_Steel_Bright',
             axis_matrix(Vector((0, BELT_Y + .016, 0)), Vector((0, 1, 0))))
     return p
@@ -622,7 +707,7 @@ def build_crank_damper():
 
 def build_pump_pulley_fan():
     p = Part('ENG_FanPulley', ['ENG_Black_Satin'], pivot=(PUMP_C[0], BELT_Y, PUMP_C[1]))
-    groove_pulley(p, PUMP_C, BELT_Y, .078, .020, 32, 'ENG_Black_Satin')
+    groove_pulley(p, PUMP_C, BELT_Y, .078, .020, 28, 'ENG_Black_Satin')
     c = Vector((PUMP_C[0], BELT_Y + .016, PUMP_C[1]))
     p.lathe([(0, 0), (.032, 0), (.032, .034), (0, .034)], 16, 'ENG_Black_Satin',
             axis_matrix(c, Vector((0, 1, 0))))
@@ -727,7 +812,7 @@ def build_alternator():
     p = Part('ENG_Alternator', ['ENG_Aluminium', 'ENG_Black_Satin', 'ENG_Steel_Bright'], pivot=pivot)
     xf = axis_matrix(c, Vector((0, 1, 0)))
     p.lathe([(0, 0), (.050, 0), (.066, .006), (.072, .020), (.078, .030), (.078, .060), (.075, .062),
-             (.078, .064), (.078, .094), (.068, .104), (.040, .108), (0, .108)], 28, 'ENG_Aluminium', xf)
+             (.078, .064), (.078, .094), (.068, .104), (.040, .108), (0, .108)], 24, 'ENG_Aluminium', xf)
     # Cooling fan and pulley.
     p.lathe([(0, 0), (.060, 0), (.060, .007), (0, .007)], 20, 'ENG_Black_Satin',
             axis_matrix(c + Vector((0, .108, 0)), Vector((0, 1, 0))))
@@ -764,6 +849,9 @@ def build_carburettor():
     p.rbox((0, CARB_Y, z0 + .074), (.150, .136, .012), .006, 'ENG_Zinc_Plate')
     p.lathe([(0, 0), (.066, 0), (.066, CLEANER_Z - z0 - .080), (0, CLEANER_Z - z0 - .080)], 28,
             'ENG_Zinc_Plate', Matrix.Translation((0, CARB_Y, z0 + .080)))
+    # Fuel-inlet fitting on the float-bowl front.
+    p.lathe([(0, 0), (.008, 0), (.008, .008), (.0095, .010), (.0095, .016), (.005, .022), (0, .022)], 8,
+            'ENG_Steel_Bright', axis_matrix(Vector((.032, CARB_Y + .0805, z0 + .036)), Vector((0, 1, 0))))
     # Choke housing and throttle lever.
     p.cyl((-.071, CARB_Y - .020, z0 + .052), (-.092, CARB_Y - .020, z0 + .052), .022, 16, 'ENG_Black_Satin')
     p.rbox((.081, CARB_Y - .030, z0 + .020), (.006, .050, .016), .002, 'ENG_Steel_Bright')
@@ -786,8 +874,12 @@ def lid_height(r):
 
 def build_air_cleaner():
     base = Vector((0, CARB_Y, CLEANER_Z))
-    p = Part('ENG_AirCleaner', ['ENG_Black_Satin', 'ENG_Steel_Bright'], pivot=base)
-    p.lathe(CLEANER_PROFILE, 48, 'ENG_Black_Satin', Matrix.Translation(base))
+    lid = finish_mats()[1]
+    p = Part('ENG_AirCleaner', sorted({'ENG_Black_Satin', 'ENG_Steel_Bright', lid}), pivot=base)
+    # Black can and pan; bright pressed lid from the rolled lid edge upward.
+    spans = len(CLEANER_PROFILE) - 1
+    p.lathe(CLEANER_PROFILE, 40, 'ENG_Black_Satin', Matrix.Translation(base),
+            mats=['ENG_Black_Satin'] * 9 + [lid] * (spans - 9))
     # Wing nut on the centre stud.
     top = base + Vector((0, 0, .1195))
     p.lathe([(0, 0), (.014, 0), (.014, .010), (.006, .016), (0, .017)], 10, 'ENG_Steel_Bright',
@@ -824,7 +916,7 @@ DIGITS = {
 def build_decal():
     """Small original-stroke '360' on the cleaner lid, readable from the front of the car."""
     base = Vector((0, CARB_Y, CLEANER_Z))
-    p = Part('ENG_AirCleanerLabel360', ['ENG_Decal_Silver'], pivot=base + Vector((0, .072, .114)))
+    p = Part('ENG_AirCleanerLabel360', [finish_mats()[2]], pivot=base + Vector((0, .072, .114)))
     unit = .028
     width = .12 * unit
     advance = 1.12 * unit
@@ -935,7 +1027,7 @@ def lead_paths():
 def build_leads():
     p = Part('ENG_IgnitionLeads', ['ENG_Rubber'], pivot=dist_point(.15))
     for side, k, pts in lead_paths():
-        path = catmull(pts, per=6)
+        path = catmull(pts, per=4)
         p.sweep(path, circle_section(.0036, 6), 'ENG_Rubber')
     return p
 
@@ -947,7 +1039,7 @@ def build_plug_boots():
             plug, d = plug_tip(side, y)
             p.lathe([(0, -.004), (.0075, -.004), (.0075, .006), (.0055, .010)], 6,
                     'ENG_Steel_Bright', axis_matrix(plug, d))
-            p.lathe([(.0055, .010), (.0090, .014), (.0090, .036), (.0060, .045), (0, .0455)], 10,
+            p.lathe([(.0055, .010), (.0090, .014), (.0090, .036), (.0060, .045), (0, .0455)], 8,
                     'ENG_Rubber', axis_matrix(plug, d))
     return p
 
@@ -972,9 +1064,11 @@ GROUPS = {
     'ENG_Pressings': ['ENG_ValveCover_L', 'ENG_ValveCover_R', 'ENG_OilPan', 'ENG_AirCleaner',
                       'ENG_AirCleanerLabel360'],
     'ENG_FuelIgnition': ['ENG_Carburettor', 'ENG_Distributor', 'ENG_DistributorCap',
-                         'ENG_IgnitionLeads', 'ENG_PlugBoots', 'ENG_WireLoom_L', 'ENG_WireLoom_R'],
+                         'ENG_IgnitionLeads', 'ENG_PlugBoots', 'ENG_WireLoom_L', 'ENG_WireLoom_R',
+                         'ENG_PCVHose', 'ENG_FuelPump'],
     'ENG_FrontDrive': ['ENG_CrankDamper', 'ENG_FanPulley', 'ENG_Fan', 'ENG_DriveBelt',
-                       'ENG_Alternator', 'ENG_AlternatorBracket', 'ENG_OilFilter', 'ENG_OilFillerCap'],
+                       'ENG_Alternator', 'ENG_AlternatorBracket', 'ENG_OilFilter', 'ENG_OilFillerCap',
+                       'ENG_Dipstick'],
 }
 
 
@@ -997,7 +1091,8 @@ def generate(scene=None, root_location=(0, 0, 0)):
               build_oil_filler_cap(), build_water_pump(), build_crank_damper(),
               build_pump_pulley_fan(), build_fan(), build_belt(), build_alternator(),
               build_alt_bracket(), build_carburettor(), build_air_cleaner(), build_decal(),
-              build_distributor(), build_distributor_cap(), build_leads(), build_plug_boots()]
+              build_distributor(), build_distributor_cap(), build_leads(), build_plug_boots(),
+              build_pcv_hose(), build_dipstick(), build_fuel_pump()]
     objs = {}
     for part in parts:
         ob = part.build(root, mats, recalc=part.name != 'ENG_AirCleanerLabel360')
@@ -1016,12 +1111,16 @@ def main():
     argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', required=True)
+    ap.add_argument('--finish', choices=['stock', 'dressup'], default='stock')
     args = ap.parse_args(argv)
     bpy.ops.wm.read_factory_settings(use_empty=True)
     scene = bpy.context.scene
     scene.unit_settings.system = 'METRIC'
     scene.unit_settings.scale_length = 1.0
+    global FINISH
+    FINISH = args.finish
     generate(scene)
+    scene['amc360_finish'] = FINISH
     bpy.ops.wm.save_as_mainfile(filepath=args.out, compress=True)
     print('saved', args.out)
 
