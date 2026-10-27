@@ -1,0 +1,104 @@
+module Base
+{
+    model J73_Body
+    {
+        mesh = vehicles/J73_Car|J73Mesh_Body,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = true,
+        invertX = false,
+    }
+    model J73_DoorLeft
+    {
+        mesh = vehicles/J73_Car|J73Mesh_DoorLeft,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = false,
+        invertX = false,
+    }
+    model J73_DoorRight
+    {
+        mesh = vehicles/J73_Car|J73Mesh_DoorRight,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = false,
+        invertX = false,
+    }
+    model J73_Hood
+    {
+        mesh = vehicles/J73_Car|J73Mesh_Hood,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = false,
+        invertX = false,
+    }
+    model J73_Trunk
+    {
+        mesh = vehicles/J73_Car|J73Mesh_Trunk,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = false,
+        invertX = false,
+    }
+    model J73_WindowLeft
+    {
+        mesh = vehicles/J73_Car|J73Mesh_WindowLeft,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = false,
+        invertX = false,
+        boneWeight = WindowLeft 1.0,
+    }
+    model J73_WindowRight
+    {
+        mesh = vehicles/J73_Car|J73Mesh_WindowRight,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = false,
+        invertX = false,
+        boneWeight = WindowRight 1.0,
+    }
+    model J73_Windshield
+    {
+        mesh = vehicles/J73_Car|J73Mesh_Windshield,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = true,
+        invertX = false,
+    }
+    model J73_RearGlass
+    {
+        mesh = vehicles/J73_Car|J73Mesh_RearGlass,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = true,
+        invertX = false,
+    }
+    model J73_Interior
+    {
+        mesh = vehicles/J73_Car|J73Mesh_Interior,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = true,
+        invertX = false,
+    }
+    model J73_Wheel
+    {
+        mesh = vehicles/J73_Car|J73Mesh_Wheel,
+        texture = Vehicles/J73_Palette,
+        shader = vehicle,
+        scale = 0.01,
+        static = true,
+        invertX = false,
+    }
+}

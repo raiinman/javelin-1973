@@ -1,0 +1,233 @@
+{
+  "vehicle": "Base.Javelin73PC",
+  "units": "metres",
+  "source": "Original procedural geometry authored in tools/build_mod.py",
+  "animations": [
+    "J73_Panels",
+    "J73_WindowLeft",
+    "J73_WindowRight"
+  ],
+  "parts": [
+    {
+      "name": "Body",
+      "model": "J73_Body",
+      "mesh": "vehicles/J73_Car|J73Mesh_Body",
+      "vertices": 58966,
+      "triangles": 104883,
+      "bounds": [
+        [
+          -0.95929,
+          -2.39542,
+          -0.48656
+        ],
+        [
+          0.95929,
+          2.488,
+          0.67
+        ]
+      ]
+    },
+    {
+      "name": "DoorLeft",
+      "model": "J73_DoorLeft",
+      "mesh": "vehicles/J73_Car|J73Mesh_DoorLeft",
+      "vertices": 4377,
+      "triangles": 5538,
+      "bounds": [
+        [
+          -1.01784,
+          -0.459,
+          -0.364
+        ],
+        [
+          -0.728,
+          0.784,
+          0.391
+        ]
+      ]
+    },
+    {
+      "name": "DoorRight",
+      "model": "J73_DoorRight",
+      "mesh": "vehicles/J73_Car|J73Mesh_DoorRight",
+      "vertices": 4377,
+      "triangles": 5538,
+      "bounds": [
+        [
+          0.728,
+          -0.459,
+          -0.364
+        ],
+        [
+          1.01784,
+          0.784,
+          0.391
+        ]
+      ]
+    },
+    {
+      "name": "Hood",
+      "model": "J73_Hood",
+      "mesh": "vehicles/J73_Car|J73Mesh_Hood",
+      "vertices": 4750,
+      "triangles": 8899,
+      "bounds": [
+        [
+          -0.7,
+          0.81,
+          0.12696
+        ],
+        [
+          0.7,
+          2.34,
+          0.34411
+        ]
+      ]
+    },
+    {
+      "name": "Trunk",
+      "model": "J73_Trunk",
+      "mesh": "vehicles/J73_Car|J73Mesh_Trunk",
+      "vertices": 14785,
+      "triangles": 29360,
+      "bounds": [
+        [
+          -0.85,
+          -2.33445,
+          0.19
+        ],
+        [
+          0.85,
+          -1.876,
+          0.37
+        ]
+      ]
+    },
+    {
+      "name": "WindowLeft",
+      "model": "J73_WindowLeft",
+      "mesh": "vehicles/J73_Car|J73Mesh_WindowLeft",
+      "vertices": 20,
+      "triangles": 18,
+      "bounds": [
+        [
+          -0.827,
+          -0.46,
+          0.243
+        ],
+        [
+          -0.7,
+          0.735,
+          0.59727
+        ]
+      ]
+    },
+    {
+      "name": "WindowRight",
+      "model": "J73_WindowRight",
+      "mesh": "vehicles/J73_Car|J73Mesh_WindowRight",
+      "vertices": 20,
+      "triangles": 18,
+      "bounds": [
+        [
+          0.7,
+          -0.46,
+          0.243
+        ],
+        [
+          0.827,
+          0.735,
+          0.59727
+        ]
+      ]
+    },
+    {
+      "name": "Windshield",
+      "model": "J73_Windshield",
+      "mesh": "vehicles/J73_Car|J73Mesh_Windshield",
+      "vertices": 14,
+      "triangles": 12,
+      "bounds": [
+        [
+          -0.815,
+          0.3,
+          0.25
+        ],
+        [
+          0.815,
+          0.79,
+          0.64544
+        ]
+      ]
+    },
+    {
+      "name": "RearGlass",
+      "model": "J73_RearGlass",
+      "mesh": "vehicles/J73_Car|J73Mesh_RearGlass",
+      "vertices": 1155,
+      "triangles": 2160,
+      "bounds": [
+        [
+          -0.66,
+          -1.64,
+          0.34312
+        ],
+        [
+          0.66,
+          -0.8,
+          0.64877
+        ]
+      ]
+    },
+    {
+      "name": "Interior",
+      "model": "J73_Interior",
+      "mesh": "vehicles/J73_Car|J73Mesh_Interior",
+      "vertices": 40235,
+      "triangles": 72869,
+      "bounds": [
+        [
+          -0.93607,
+          -2.20092,
+          -0.3825
+        ],
+        [
+          0.93607,
+          2.115,
+          0.65199
+        ]
+      ]
+    },
+    {
+      "name": "Wheel",
+      "model": "J73_Wheel",
+      "mesh": "vehicles/J73_Car|J73Mesh_Wheel",
+      "vertices": 7432,
+      "triangles": 13616,
+      "bounds": [
+        [
+          -0.1225,
+          -0.327,
+          -0.327
+        ],
+        [
+          0.1225,
+          0.327,
+          0.327
+        ]
+      ]
+    }
+  ],
+  "bounds": [
+    [
+      -1.01784,
+      -2.39542,
+      -0.48656
+    ],
+    [
+      1.01784,
+      2.488,
+      0.67
+    ]
+  ]
+}

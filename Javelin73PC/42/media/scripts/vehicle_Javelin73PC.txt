@@ -1,0 +1,186 @@
+module Base
+{
+    vehicle Javelin73PC
+    {
+        mechanicType = 3,
+        engineRepairLevel = 5,
+        offRoadEfficiency = 0.65,
+        playerDamageProtection = 0.75,
+        engineRPMType = firebird,
+        model
+        {
+            file = J73_Body,
+            scale = 1.0,
+            offset = 0.0 0.0 0.0,
+        }
+        skin { texture = Vehicles/J73_Palette, }
+        textureMask = Vehicles/J73_Mask,
+        textureLights = Vehicles/J73_Lights,
+        textureRust = Vehicles/J73_Rust,
+        textureDamage1Overlay = Vehicles/J73_Damage1,
+        textureDamage1Shell = Vehicles/J73_Blank,
+        textureDamage2Overlay = Vehicles/J73_Damage2,
+        textureDamage2Shell = Vehicles/J73_Blank,
+        extents = 1.92 0.95 4.80,
+        physicsChassisShape = 1.80 0.85 4.65,
+        centerOfMassOffset = 0.0 0.0 0.0,
+        shadowExtents = 1.84 4.80,
+        shadowOffset = 0.0 0.0,
+        mass = 1475,
+        engineForce = 4800,
+        engineLoudness = 95,
+        engineQuality = 80,
+        maxSpeed = 115,
+        gearRatioCount = 4,
+        gearRatioR = 2.59,
+        gearRatio1 = 2.64,
+        gearRatio2 = 1.75,
+        gearRatio3 = 1.34,
+        gearRatio4 = 1.00,
+        stoppingMovementForce = 2.5,
+        brakingForce = 90,
+        rollInfluence = 0.65,
+        steeringIncrement = 0.035,
+        steeringClamp = 0.30,
+        suspensionStiffness = 45.0,
+        suspensionCompression = 4.2,
+        suspensionDamping = 3.5,
+        maxSuspensionTravelCm = 18,
+        suspensionRestLength = 0.18,
+        wheelFriction = 1.65,
+        frontEndHealth = 150,
+        rearEndHealth = 150,
+        seats = 4,
+
+        wheel FrontLeft { front = true, offset = 0.77 -0.32 1.43, radius = 0.33, width = 0.22, }
+        wheel FrontRight { front = true, offset = -0.77 -0.32 1.43, radius = 0.33, width = 0.22, }
+        wheel RearLeft { front = false, offset = 0.77 -0.32 -1.36, radius = 0.33, width = 0.24, }
+        wheel RearRight { front = false, offset = -0.77 -0.32 -1.36, radius = 0.33, width = 0.24, }
+
+        template = PassengerSeat4,
+        template = TrunkDoor,
+        template = Trunk/part/TruckBed,
+        template = Seat/part/SeatFrontLeft,
+        template = Seat/part/SeatFrontRight,
+        template = Seat/part/SeatRearLeft,
+        template = Seat/part/SeatRearRight,
+        template = GloveBox,
+        template = GasTank,
+        template = Battery,
+        template = Engine,
+        template = Muffler,
+        template = EngineDoor,
+        template = Heater,
+        template = PassengerCompartment,
+        template = Windshield/part/Windshield,
+        template = Windshield/part/WindshieldRear,
+        template = Window/part/WindowFrontLeft,
+        template = Window/part/WindowFrontRight,
+        template = Door/part/DoorFrontLeft,
+        template = Door/part/DoorFrontRight,
+        template = Tire,
+        template = Brake,
+        template = Suspension,
+        template = Radio,
+        template = Headlight,
+        template! = SoundsSportsCar,
+
+        passenger FrontLeft
+        {
+            position inside { offset = 0.36 -0.10 0.0, rotate = 0.0 0.0 0.0, }
+            position outside { offset = 1.45 -0.65 0.0, rotate = 0.0 0.0 0.0, area = SeatFrontLeft, }
+        }
+        passenger FrontRight
+        {
+            position inside { offset = -0.36 -0.10 0.0, rotate = 0.0 0.0 0.0, }
+            position outside { offset = -1.45 -0.65 0.0, rotate = 0.0 0.0 0.0, area = SeatFrontRight, }
+        }
+        passenger RearLeft
+        {
+            door = DoorFrontLeft,
+            area = SeatFrontLeft,
+            position inside { offset = 0.36 -0.08 -0.72, rotate = 0.0 0.0 0.0, }
+            position outside { offset = 1.45 -0.65 0.0, rotate = 0.0 0.0 0.0, area = SeatFrontLeft, }
+        }
+        passenger RearRight
+        {
+            door = DoorFrontRight,
+            area = SeatFrontRight,
+            position inside { offset = -0.36 -0.08 -0.72, rotate = 0.0 0.0 0.0, }
+            position outside { offset = -1.45 -0.65 0.0, rotate = 0.0 0.0 0.0, area = SeatFrontRight, }
+        }
+        area Engine { xywh = 0.0 3.0 1.45 0.65, }
+        area TruckBed { xywh = 0.0 -3.0 1.45 0.65, }
+        area GasTank { xywh = 0.0 -3.0 0.65 0.65, }
+        area SeatFrontLeft { xywh = 1.45 0.0 0.60 0.80, }
+        area SeatFrontRight { xywh = -1.45 0.0 0.60 0.80, }
+        area SeatRearLeft { xywh = 1.45 -0.72 0.60 0.60, }
+        area SeatRearRight { xywh = -1.45 -0.72 0.60 0.60, }
+        area TireFrontLeft { xywh = 1.45 1.43 0.65 0.65, }
+        area TireFrontRight { xywh = -1.45 1.43 0.65 0.65, }
+        area TireRearLeft { xywh = 1.45 -1.36 0.65 0.65, }
+        area TireRearRight { xywh = -1.45 -1.36 0.65 0.65, }
+
+        part J73Interior
+        {
+            category = nodisplay,
+            lua { init = J73Vehicles.InitInterior, }
+            model Default { file = J73_Interior, }
+        }
+        part Tire*
+        {
+            model InflatedTirePlusWheel { file = J73_Wheel, }
+        }
+        part TruckBed { itemType = Base.NormalTrunk, }
+        part GloveBox { area = SeatFrontRight, }
+        part Heater { lua { update = Vehicles.Update.Heater, } }
+        part PassengerCompartment { category = nodisplay, lua { update = Vehicles.Update.PassengerCompartment, } }
+        part Windshield { model Default { file = J73_Windshield, } }
+        part WindshieldRear { model Default { file = J73_RearGlass, } }
+
+        attachment trailer { offset = 0.0 -0.35 -2.42, rotate = 0.0 0.0 0.0, zoffset = -1.0, }
+        attachment trailerfront { offset = 0.0 -0.35 2.42, rotate = 0.0 0.0 0.0, zoffset = 1.0, }
+        part DoorFrontLeft
+        {
+            model Default { file = J73_DoorLeft, }
+            anim Open { anim = J73_Panels, reverse = false, rate = 1.0, }
+            anim Close { anim = J73_Panels, reverse = true, rate = 1.0, }
+            anim Closed { anim = J73_Panels, reverse = false, animate = false, }
+            anim Opened { anim = J73_Panels, reverse = true, animate = false, }
+        }
+        part EngineDoor
+        {
+            model Default { file = J73_Hood, }
+            anim Open { anim = J73_Panels, reverse = false, rate = 1.0, }
+            anim Close { anim = J73_Panels, reverse = true, rate = 1.0, }
+            anim Closed { anim = J73_Panels, reverse = false, animate = false, }
+            anim Opened { anim = J73_Panels, reverse = true, animate = false, }
+        }
+        part DoorFrontRight
+        {
+            model Default { file = J73_DoorRight, }
+            anim Open { anim = J73_Panels, reverse = false, rate = 1.0, }
+            anim Close { anim = J73_Panels, reverse = true, rate = 1.0, }
+            anim Closed { anim = J73_Panels, reverse = false, animate = false, }
+            anim Opened { anim = J73_Panels, reverse = true, animate = false, }
+        }
+        part WindowFrontRight
+        {
+            model Default { file = J73_WindowRight, }
+            anim ClosedToOpen { anim = J73_WindowRight, reverse = false, animate = false, }
+        }
+        part TrunkDoor
+        {
+            model Default { file = J73_Trunk, }
+            anim Open { anim = J73_Panels, reverse = false, rate = 1.0, }
+            anim Close { anim = J73_Panels, reverse = true, rate = 1.0, }
+            anim Closed { anim = J73_Panels, reverse = false, animate = false, }
+            anim Opened { anim = J73_Panels, reverse = true, animate = false, }
+        }
+        part WindowFrontLeft
+        {
+            model Default { file = J73_WindowLeft, }
+            anim ClosedToOpen { anim = J73_WindowLeft, reverse = false, animate = false, }
+        }
+    }
+}

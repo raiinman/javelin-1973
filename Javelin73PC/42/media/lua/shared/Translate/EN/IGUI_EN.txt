@@ -1,0 +1,3 @@
+IGUI_EN = {
+    IGUI_VehicleNameJavelin73PC = "1973 AMC Javelin AMX Pierre Cardin",
+}

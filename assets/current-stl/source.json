@@ -1,0 +1,9 @@
+{
+  "snapshot": "Javelin73PC-current.blend",
+  "authoringSource": "build/stl-full-trace/slice-v03/integration/prototype-meshy-exterior-trim/DSI_Javelin_Meshy_Exterior_Trim_Pipes.blend",
+  "sha256": "3b7d355145773c8ed895a688ca10762ad670b754a3255100d0605ac171500d64",
+  "date": "2026-10-27",
+  "scope": "Accepted Meshy cockpit, V03 closures, black skirts, brightwork and fitted pipes",
+  "displayVerification": "Reopened with cockpit and functional panels visible in Material Preview",
+  "nativeGameplayVerified": false
+}

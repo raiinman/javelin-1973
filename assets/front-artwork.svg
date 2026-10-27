@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100mm" height="1700mm" viewBox="-1050 750 2100 1700">
+  <title>Original Javelin front graphic, clean-sheet physical plan drawing</title>
+  <desc>Coordinates in millimetres. Positive Y is forward. One connected T spans moving hood and both fixed wings. Video controls black border treatment. Curve dimensions are inferred.</desc>
+  <path id="main-black" fill="#080808" d="M -112 810 C -113 1170 -120 1660 -130 2025 C -131 2085 -144 2118 -196 2122 L -722 2122 C -780 2122 -800 2112 -817 2066 L -862 1740 C -875 1800 -918 2180 -930 2288 C -933 2310 -923 2302 -890 2305 L 890 2305 C 923 2302 933 2310 930 2288 C 918 2180 875 1800 862 1740 L 817 2066 C 800 2112 780 2122 722 2122 L 196 2122 C 144 2118 131 2085 130 2025 C 120 1660 113 1170 112 810 Z"/>
+  <path id="fine-left" fill="none" stroke="#080808" stroke-width="5" d="M -136 833 C -138 1190 -145 1660 -154 2023 C -156 2069 -165 2095 -203 2098 L -720 2098 C -766 2098 -779 2089 -792 2059 L -851 1742 L -862 1718 L -867 1740 C -889 1844 -943 2199 -954 2288 C -962 2320 -939 2328 -891 2329 L 891 2329 C 939 2328 962 2320 954 2288 C 943 2199 889 1844 867 1740 L 862 1718 L 851 1742 L 792 2059 C 779 2089 766 2098 720 2098 L 203 2098 C 165 2095 156 2069 154 2023 C 145 1660 138 1190 136 833"/>
+</svg>
