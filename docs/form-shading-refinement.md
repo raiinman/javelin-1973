@@ -1,0 +1,30 @@
+# Original form shading candidate
+
+Cycle8 is isolated under `build/form-shading-cycle8/`, based on all62 verified inputs from the220,498-triangle `build/parity-cycle7/pedals/checkpoint/`. Input blend SHA256 is `28cc299385332241a99c9b6195fc9ec2de5a0d99010e36c559785346c31dc62c`. No canonical generator, assets, profile or UI changed. The candidate remains disabled by default and has not been installed or promoted.
+
+## Implementation and frozen review bundle
+
+`candidate/tools/javelin_form_shading.py` implements the already evaluated `.78+.22*(.5+.5*restCornerNormalZ)` scalar and original protected intra-red-cell ramp. This is artistic rest-normal hemisphere form shading, not AO. No strength increase or new lighting direction was introduced. `source-patch-v01.diff` contains the focused generator/module patch; `versions/v01/` freezes its tools, source and package, with hashes in `checkpoint-v01.json`.
+
+Plain-red broad sheet calls explicitly pass `form_paint=True` in original build_mod/front/rear construction. Part.face defaults false, rejects explicit artwork UVs or non-exterior/non-red tagging, and records Boolean FACE attribute `J73FormPaint` before welding. Sheet construction explicitly propagates that intent. There are26 marked source call sites, including the hood top's known red variable. No call-stack inspection, red-object fallback or borrowed artwork is used. The UV layer is reacquired after welding because the added attribute exposed a stale pre-edit RNA reference; saved equality proof confirms no geometry or normal change.
+
+The helper plans all UVs and pixel spans before mutation, refuses unsafe coverage or occupied rows, retains one material per node and returns palette bytes/report to the generator. Ordinary generation leaves it off. An explicit `--form-shading` after Blender's `--` enables only the experimental output. A separate complete generator run without that flag, under `default-off/`, proved exact original geometry, normals, skin, material assignments, every UV and palette bytes. Three original verification support files absent from the62-input checkpoint were copied read-only into the isolated tools copy; their hashes are in `verification-support-inputs.json`.
+
+## Verification
+
+- Exact saved structural digest across frozen/enabled/default-off: `1bcd0386bd8f3e06ed54e6f929f3ea8b9769f644e03d4be96fc432c25f06e1bb`, including topology/positions, all corner normals, skin weights and material assignments. Eleven native nodes and220,498 triangles remain.
+-129,656 tagged paint loops change;332,878 nonpaint loops remain exact. All462,534 loops remain in their original semantic cells. Only2,295 original palette bytes change, all within the protected bands; alpha stays255. All masks, scripts and remaining payload bytes remain unchanged. Generator re-export changes the model and separate animation FBX as well as palette; no animation channels were authored or altered.
+- Ten guard negatives pass without unintended UV mutation: invalid alpha, atlas dimensions, pixel length, missing native node, missing tag, wrong tag type, cell-crossing polygon, tagged non-red face, absent hood coverage and no free protected ramp band. `invariant-v03.log` and `invariant-proof-v01.json` record the actual checks; disabled-default behavior is also proven by the full separate rebuild.
+- Existing33 unit tests pass. Static validator reports0 errors. Installed native parser accepts all5 Lua/script files. Native importer resolves eleven meshes/three named clips. Full current saved pose gate passes, including pedals, door crests, wheel/placement checks and ten intermediate hinge fractions. Logs are retained in the experimental root.
+
+The first build attempt used the user's addon configuration and failed at the stale UV-layer reference. Subsequent successful builds use factory startup and reacquire that layer; no addon or user configuration was changed. An initial unit run exposed checkpoint-omitted verification support files; after adding the original support copies, all33 passed. No failed run is represented as success.
+
+## Actual source review and remaining native gate
+
+`comparison-v02.html` presents50 fixed before/after renders. `renders-v02/` includes ambient1 emission views on all six axes, front/rear from both sides, open panels and a world-style rear near/far pair, plus unchanged controlled paint-studio comparisons. The report records exact cameras and poses. V01 retains the initial framing; V02 widens top/bottom and open views so the whole source fits. These are source simulations, not captured native shader output, and far sampling does not prove native mip/filter state.
+
+Actual image review finds modestly better side/quarter/fender roll separation on both sides under ambient1. Broad surfaces still look simplified. Direct top faces change little; rear pressed transitions become more visible. Open views show no baked neighbouring-panel shadow ghosts, consistent with an orientation-only method. The raised hood retains its bright rest-top treatment and the underside retains original redDark, so this remains nonphysical rest-pose shading. The far source view retains a subtle difference without an obvious lookup seam; actual native near/far sampling remains pending. Studio highlights dominate, with only a small additional colour difference and no obvious paint crush in the inspected pairs.
+
+Keep this module off pending actual native opposite-side/front/rear/open-panel/near-far and local/night-light review on the eventual composed geometry. Do not overwrite later roof/quarter refinements with this frozen220,498 FBX. The earlier214,322 native closed-pose A/B is useful prior evidence, not a native pass for this current-source candidate. Shading readability does not establish geometry/reference likeness or close a car section.
+
+DOX closeout: root owns this document and disposable experiment. No durable ownership, workflow or child index changed, so root/tools/assets AGENTS.md files remain unchanged. The isolated module and render/proof scripts are review outputs, not distribution metadata.

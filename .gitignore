@@ -3,3 +3,15 @@ reference-*.png
 build/
 __pycache__/
 *.blend1
+
+# Machine-local handoff records contain workstation paths and experiment inventories.
+docs/MARLOW-HANDOFF.md
+docs/MARLOW-FILE-INVENTORY.csv
+docs/MARLOW-GIT-STATUS.txt
+
+# Local credentials and generated tool caches.
+.env
+.env.*
+*.pem
+*.key
+*.pyc

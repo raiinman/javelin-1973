@@ -5,7 +5,7 @@ Build the driveable car in Bob La Cross's reference video for the installed Proj
 
 ## Assumptions
 - Target Build 42.20.0 first, using the installed game's scripts as the authoritative compatibility reference.
-- Red 360 V8 AMX, four seats, left-hand drive, Pierre Cardin upholstery. The engine label is visible at 1:07 in the reference.
+- Depict the red, four-seat, left-hand-drive restored AMX with Cardin upholstery, manual shifter and 360-labelled air cleaner visible in the video. That label does not authenticate engine internals or original factory options.
 - Create original geometry, textures, rigging and scripts from the video. The unrelated broken mod is technical reference only; none of its assets are part of this project.
 - A separate mod ID avoids replacing existing Javelin prototypes.
 
@@ -24,6 +24,7 @@ Build the driveable car in Bob La Cross's reference video for the installed Proj
 
 ## Plan and checks
 1. Inspect the source video and local game templates. Establish units, axes, closed pose and asset provenance.
+   The four-pass factory/video research in `docs/research-1973.md` supplies the dimension and trim baseline; retain the video car's visible restored configuration.
 2. Create original meshes, red 1973 AMX appearance and striped upholstery. Render a preview and check mesh extents and part alignment.
 3. Use native B42 mechanics templates, two doors, four passenger positions, sports parts, gasoline, trunk, headlights, loot, and rare parking/good/sport spawns. No legacy recipes or global mechanics-overlay replacement.
 4. Validate model/texture/template/Lua references and geometry; install a new local mod folder. Test loading and spawning in an isolated game cache if the runtime is available.

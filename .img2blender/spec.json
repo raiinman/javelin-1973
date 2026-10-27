@@ -1,0 +1,288 @@
+{
+  "subject": "1973 AMC Javelin AMX Pierre Cardin, restored red video car",
+  "activeWorkflow": {
+    "scope": "Trace the entire user-owned STL, superseding the front-only hybrid work",
+    "shapeMaster": "User-supplied AMC Javelin AMX Pierre Cardin 1973 edition.stl (local source)",
+    "shapeMasterSha256": "8eff79cfebdd21312fd8ca68359e60b02da47ad3fb2efaf4d5536f0bb9541ed8",
+    "workingBranch": "build/stl-full-trace/",
+    "contract": "docs/full-stl-trace.md",
+    "targetVideoRole": "Fitted equipment, artwork and interior",
+    "priorProduction": "Preserved, not replaced by the fused donor or unverified conversion",
+    "status": "Combined Meshy cockpit, V03 closures, separate skirts, brightwork and closer pipes saved and reopened with current assembly visible in Material Preview on 2026-10-27. No geometry changed during visibility recovery. Textured export and isolated staging are documented in docs/meshy-native-test.md. Native driving, braking, interactions, appearance and save/reload gates require reconciliation against the exact tested checkpoint.",
+    "workingModel": "build/stl-full-trace/slice-v03/integration/prototype-meshy-exterior-trim/DSI_Javelin_Meshy_Exterior_Trim_Pipes.blend",
+    "workingSha256": "3b7d355145773c8ed895a688ca10762ad670b754a3255100d0605ac171500d64",
+    "repositorySnapshot": "assets/current-stl/Javelin73PC-current.blend",
+    "historicalPreparedExport": {
+      "path": "build/stl-full-trace/slice-v03/integration/export-d-wells/",
+      "packageManifestSha256": "136fb2af55be2b9c6139156d5da7a99ddb491e16bf367aa29453f0ac8d4d4d64",
+      "staged": false,
+      "nativeGameplayVerified": false
+    },
+    "nativeCheckpoint": {
+      "checkpoint": "full-stl-c-mask2-f75ff38b",
+      "packageManifestSha256": "cc079cfd22feff1c1a537a991623ac90c5ef947397276bad9e8307eddd0993c3",
+      "stateObservationSession": "1792381625650",
+      "safePoseSession": "1792384112359",
+      "hoodVisualGate": "FAILED",
+      "effectiveGpuBoneMatrices": "unknown"
+    }
+  },
+  "references": [
+    {
+      "path": "reference-2.png",
+      "role": "target front quarter"
+    },
+    {
+      "path": "reference-30.png",
+      "role": "target front"
+    },
+    {
+      "path": "reference-22.png",
+      "role": "target trunk return, latch and rear trim"
+    },
+    {
+      "path": "docs/six-source-four-analyses.md",
+      "role": "four complete supplemental comparisons"
+    }
+  ],
+  "intendedUse": "original editable rigged Project Zomboid vehicle",
+  "style": "realistic target likeness",
+  "parityTarget": {
+    "exterior": "at least90% reference likeness",
+    "interior": "at least90% reference likeness",
+    "skepticalReset": "At self-assessed90%, review the entire preserved model again from a45% baseline",
+    "iterationLimit": "extended by explicit user instruction",
+    "evidence": "docs/parity-target.md",
+    "measurementLimit": "qualitative reference target, not a computed fidelity score"
+  },
+  "coordinates": {
+    "up": "+Z",
+    "front": "+Y",
+    "units": "metres",
+    "sourceMeshZOffset": -0.65,
+    "scaleBasis": "1973 AMC dealer dimensions, documented disagreements retained"
+  },
+  "collection": "Scene Collection",
+  "components": [
+    {
+      "id": "fenders",
+      "construction": "OriginalbroadconvexupperfieldwithC1outerrollandlongitudinalfadeinexistingcowl/nose/hoodanchors;originaltriangle-clippedgraphicpluspaint-supportcornernormaltransfer",
+      "acceptance": "broad rounded crown, convex arch shoulder, shared moving-panel seams"
+    },
+    {
+      "id": "roof-sail",
+      "construction": "one cubic rear-quarter scaffold shared by sail, surround and aft glass; quarter-light tip Y=-.95m",
+      "acceptance": "preserve roof lip, remove planar sail facets, rounded quarter-window corners"
+    },
+    {
+      "id": "trunk-spoiler",
+      "construction": "crowned closed lid, crest25mm lower, vertically oval low-lock cup and pressed5mm-offset inner backing; moving badges",
+      "acceptance": "102two-sided rays require positive3.5..6.5mm backing and opposing normals; retained seams and all hinge fractions; exact cup size inferred, native motion/likeness pending"
+    },
+    {
+      "id": "seats",
+      "construction": "two fuller highback front buckets and one continuous bench; thinner cushion pans, thigh falloff, depressed channels and welt; full-length triangle-supported ribbons",
+      "acceptance": "native centres retained; unchanged0.25..2.5mm support; cabin-forward Y>0.8 plus actual-padding normal dot>0.99; upholstery likeness remains open"
+    },
+    {
+      "id": "front-fascia",
+      "construction": "tessellated fascia skins with actual outer-headlamp apertures, pocket walls and seated rolled bezels",
+      "acceptance": "semantic lenses visible8..25mm behind actual adjacent field, no spanning caps; bumper/valance/fender transition still open"
+    },
+    {
+      "id": "cargo-wheelhouse",
+      "construction": "two closed original crowned upper returns bridge narrow cargo liners to outer shoulder; 8mm inferred thickness",
+      "acceptance": "fixed Body+Interior block163128 rear-wheel rays with zero backward first hits; full native-wheel and panel clearance; game confirmation pending"
+    },
+    {
+      "id": "interior-runtime-activation",
+      "construction": "J73Vehicles.InitInterior(vehicle,part) enables itemless J73Interior Default model during native initialization",
+      "acceptance": "freshspawn active-model presence and visible Cardin/cargo; savedvehicle reload remains required"
+    },
+    {
+      "id": "backlight-perimeter",
+      "construction": "rounded upper/lower corners,bowedsideedges,exactroofcornerfillerandlowerapron;20longitudinalintervalsretained",
+      "acceptance": "148pointssupported,unbranchedloop,maxturn<35deg,glassnormalsdot>.75,unobstructedinteriorrays. Radii inferred;nativeappearancepending"
+    },
+    {
+      "id": "dashboard-padding",
+      "construction": "rounded driverbrow,continuous tallventcheek stepping toshallow broad passengerface/slopedtop,originalcurvedhandle",
+      "acceptance": "preservewheel/manual/dialartandfull door/releaseclearance. Upperpadjoin/driverfascia/lowerstackremainapproximate"
+    }
+  ],
+  "materials": [
+    {
+      "id": "original-atlas",
+      "textureSource": "original procedural artwork",
+      "preview": "source-only paint/metal/fabric nodes"
+    }
+  ],
+  "criticalFeatures": [
+    "red paint",
+    "black hood/fender T",
+    "close-fitting chrome sidepipes without red runner",
+    "factory dimensional envelope",
+    "shared glass and panel joins"
+  ],
+  "review": {
+    "primaryCamera": "PreviewCamera",
+    "otherViews": [
+      "front-quarter",
+      "side",
+      "rear-quarter",
+      "front",
+      "top"
+    ],
+    "maxCorrectionsPerPass": 3,
+    "nativeReview": "C2 state observations recorded for all four seats, both front doors/windows, hood and trunk. Hood visual gate failed. D prepared export not staged; native driving/save/reload and post-reload operation remain pending.",
+    "targetFrameResolution": [
+      914,
+      523
+    ],
+    "currentFocus": "Complete STL-faithful usable slice before fine details; D front-well closure source/export checked, native Hood defect remains open"
+  },
+  "cameraEvidence": {
+    "projection": "fixed orthographic diagnostics; balanced/contact sensitivity alternatives and cycle4 onward50mm/40mm review estimates use actual914x523 frames; cycle3 and older914x518 estimates remain historical diagnostics",
+    "calibrated": false,
+    "limits": "target video is cropped and lens is unknown; camera/proportion mismatch remains; do not claim metric parity from pixel comparisons"
+  },
+  "sectionStatus": "All sections open. Initial front-crown visual approval withdrawn after user correction. No likeness percentage assigned.",
+  "unknowns": [
+    {
+      "region": "hidden sheet-metal curvature",
+      "assumption": "smooth interpolation between observed surfaces",
+      "confidence": "moderate"
+    }
+  ],
+  "currentIteration": {
+    "iteration": "full-stl-candidate-d-wells",
+    "slice": "Basic inferred front-well opaque closure only",
+    "checkpoint": "build/stl-full-trace/slice-v03/integration/candidate-d-wells/full-stl-functional-clearance.blend",
+    "sourceSha256": "f2fc28095be82586526e4e5850605262bd1be2e61b90ff3dd36e27a41c595240",
+    "evidence": "build/stl-full-trace/slice-v03/integration/native-visibility/wells-independent/",
+    "checks": "Independent saved-file comparison retains existing Body vertices/polygons/source IDs/material assignments and all fifteen other semantic meshes. Added119 inferred faces. Prepared export passes16 mesh/3 clip import,5 script parses,static0errors and108 imported bone-pose comparisons.",
+    "nativeState": "D not staged. Current C2 safe diagnostic session1792384112359 has recorded Hood open state and safe closed/open dumps; Hood visual defect remains unresolved.",
+    "limits": "Two-sided zero-thickness inferred well geometry; finite wheel/Hood checks are not continuous clearance or native proof. All sections open; driving/save marker/strict resume/post-reload operation pending; no numerical likeness score."
+  },
+  "priorFrontCheckpoint": {
+    "triangles": 169766,
+    "path": "build/parity-cycle4/front-checkpoint/",
+    "frozenFiles": 37
+  },
+  "priorCycle6": {
+    "cycle": 6,
+    "triangles": 214322,
+    "sourceSha256": "c9c25499d084ded7bfe8910375247a9be5568f0c3235bce57166656dc01216c8",
+    "evidence": "build/parity-cycle6/",
+    "checks": "32unit/static0/native11mesh3clip/fullposepass;allcargo/backlight/cup/seat/headliner/wheel/hingegates retained. Agentdense161crestsections max56.584mm;3708decal rays~0.8mm onisolatedslice. Combinedfixedbodycaptures20 plus lockedbalanced/contactcamera6.",
+    "supportSamples": {
+      "cushion": 8552,
+      "backrest": 25732,
+      "forwardBackrestBorderFaces": 3770
+    },
+    "deployment": "214322installedToolkitonly,17verifiedpayloads; PCFBX75040f3660f1668d93337a90ed237941b6e7ec0f38115b83db92137aba6f927a",
+    "nativeState": "214322rendered bothsides/top/underside/front/rear in nativeeditor andclosedworld. Rearcornerholes+simpleundersidefinding. Editorpausemadeoldaudit skipintermediateposes; actualLuaVMregressionnowfixesdevelopmenttimer/suitegate,33unitpass. Realpausededitorretestandnativecurrentmotionpending. Allsectionsopen.",
+    "stage": "sustainedlongitudinalfenders integrated with dashboard/backlight/front/cargo and nativeinteriorinit",
+    "backrestGate": "Y>0.8 and actual-padding normal dot>0.99; unchanged0.25..2.5mm support; full endpoints retained",
+    "counterfactual": "prior cup backing and flipped actual ribbon rejected in counterfactual.log"
+  },
+  "priorCombinedCycle7": {
+    "cycle": 7,
+    "triangles": 218034,
+    "sourceSha256": "ee99eb2206df0c62ff121990f522f544c422105f10f3ff7848ae2bfceee76e75",
+    "evidence": "build/parity-cycle7/",
+    "stage": "front crown breadth, rear corner closure, Cardin door crests",
+    "checks": "33unit/static0/native11mesh3clip/game5parser/fullposepass;4182rearcorner+12128crestsupport rays",
+    "deployment": "not installed; Toolkit restored frozen214322 after nonmatching-yaw shading trial",
+    "nativeState": "current geometry unreviewed; all sections open; no likeness score",
+    "remaining": "whole body proportions, nose/graphic transition, dash joins/lower stack, manual cabin hardware, native persistence"
+  },
+  "priorManualCycle7": {
+    "cycle": 7,
+    "slice": "manual pedals",
+    "triangles": 220498,
+    "sourceSha256": "28cc299385332241a99c9b6195fc9ec2de5a0d99010e36c559785346c31dc62c",
+    "evidence": "build/parity-cycle7/pedals/",
+    "stage": "four distinct manual foot controls composed onto rear closure/front breadth/door crests",
+    "checks": "33unit/static0/native11mesh3clip/fullposepass; independent12pad8arm4mount probes plus all existing guards",
+    "nativeState": "not installed; no new geometry native approval",
+    "limits": "pad dimensions/pivots inferred, static controls, no shoe/travel simulation; all sections open"
+  },
+  "priorQuarterCycle8": {
+    "cycle": 8,
+    "slice": "quarter-window perimeter",
+    "triangles": 220498,
+    "sourceSha256": "7e147b7d6fd1cc57f32b7c62936376b7f87e906e1f2185380e5bd8b13d0f091c",
+    "evidence": "build/parity-cycle8/",
+    "stage": "shared quarter perimeter controls composed with manual pedals",
+    "checks": "36unit/static0/native11mesh3clip/fullposepass",
+    "nativeState": "Toolkit-only7e installed; nativeworld861 retained Javelin/engine83/openwindow/taggedloot/13activeModels inclInterior; fuel35 matched actual35Lclamp, old37.25auditinvalid; capacity-safe12.25freshrepeat incycle9pending",
+    "limits": "quarter dimensions inferred; all sections open; no percentage"
+  },
+  "priorRoofCycle9": {
+    "cycle": 9,
+    "slice": "roofhardware and post-weld UVreacquisition",
+    "triangles": 222146,
+    "sourceSha256": "f13f3b43e1b4da9f5c8a88efec16cec8b5ff9e24deb920982ffb1aeddc318168",
+    "evidence": "build/parity-cycle9/",
+    "checks": "36unit/static0/game5parser/native11mesh3clip/fullpose+roofguard; exact10nonInterior fields versusUVfixedbaseline",
+    "nativeState": "222146installedToolkitonly; launchheld twice detecteduserinput, two unlaunchedaudit hooks cleaned; nativegeometryreviewpending. Prior7e220498passed freshsave/reloadvehicle/fuel12.25/engine83/window/loot,13activeModels inclInterior; priorpointerrestored.",
+    "limits": "hardwaredimensions/pose/opticsinferred; wholebody/interiorlikenessopen; rearhaunchconstructiontrialpendingreview",
+    "checkpoint": "build/parity-cycle9/roof-verified-inputs/ (69 explicit localinputs; frozen36unit/syntax/import pass)"
+  },
+  "priorRearCycle10": {
+    "cycle": 10,
+    "slice": "rear shared sheet ownership and four joins",
+    "triangles": 223722,
+    "sourceSha256": "241f5745fb6718cb4aa593f8d6d142cde64e90eac25bda94be477fe3da9bddc3",
+    "evidence": "build/parity-cycle10/",
+    "checks": "36unit/static0/game5parser/native11mesh3clip/fullpose+rear+roofguard;tennonBody exactallarrays inclInterior/normals/sharp",
+    "nativeState": "notinstalled;Toolkit222146unreviewed,launchhelduserinputandunlaunchedhooksremoved;prior220498save/reloadpass",
+    "limits": "fourjoinconstructiononly; broadshelf/contourknees/diagonalaprontangencyremain; allsectionsopen"
+  },
+  "priorFrontCycle11": {
+    "cycle": 11,
+    "slice": "front terminal assembly, broader front fenders remain active",
+    "triangles": 231893,
+    "sourceSha256": "7985de86a18e3e0df4b6d1ba0299487d8b27ba394173213a4d9998147e676167",
+    "evidence": "build/current-front-cycle11/",
+    "checks": "root36unit/static0/game5parser/native11mesh3clip/fullpose;independent exact10nonBody and savedrear preservation with bounded chrome weld rounding",
+    "nativeState": "notinstalled;Toolkit222146unreviewed;latest source loaded clean in user Blender",
+    "limits": "frontfendersONLY: broad width/crown distribution and graphic span unresolved; all sections open"
+  },
+  "priorFenderCycle13": {
+    "cycle": 13,
+    "slice": "front fender broad convex shoulder and supported pointed graphic checkpoint",
+    "triangles": 250197,
+    "sourceSha256": "3c3de939ccb0b3b938957ce5204b50fc26913ecd66060dc01fc7758aad5b6261",
+    "evidence": "build/front-fender-clean-cycle13/",
+    "checks": "42unit/static0/game5parser/native11mesh3clip/fullpose; exacttennonBody;77276verifiedinteriorgraphicrays;sourceandvisualindependentreview",
+    "nativeState": "notinstalled;oldunsavedBlenderpreserved,separatelatestinspectionwindowverified",
+    "limits": "frontfendersremainopen;entireTredrawrequestedandactivecycle14;outboardrollstillconcentrated;inferredcontrols;no percentage",
+    "normalScope": "localgraphicplus331neighborblackloops/153sharpflags;allpaint/chrome/glassloopsandnonBodyunchanged"
+  },
+  "priorDecalCycle14": {
+    "cycle": 14,
+    "slice": "clean-sheet hood/fender graphic within front-fender focus",
+    "triangles": 243156,
+    "sourceSha256": "a617d127cf5da6f09603500081b75191d4250a7b7a2d74cf49c626689113846a",
+    "evidence": "build/front-decal-cycle14/new-drawing/",
+    "checkpoint": "build/front-decal-cycle14/new-drawing/fresh-v03-checkpoint/ (82 explicit verified inputs)",
+    "checks": "42unit/static0/five native parsers/11mesh3clip import/fullpose; nine unaffected meshes exact;10031graphic triangles/40124verified rays/15landmarks; bounded separate raised badge support/visibility",
+    "nativeState": "not installed; native visual pending; latest canonical source visible in separate Blender; dirty prior session preserved",
+    "limits": "all sections open; graphic dimensions/cast letterforms inferred; broader fender likeness unresolved; no percentage",
+    "normalScope": "protected Body corner normal delta max0.001501; nonblack Body coordinates max0.238micrometres; original protected Hood faces exact"
+  },
+  "priorProductionCycle15": {
+    "cycle": 15,
+    "slice": "front-fender outer-roll redistribution only",
+    "triangles": 242911,
+    "sourceSha256": "b05b7b62a7146e494c5fc8b8c17157593e7dfdac92ac00620a8be01e4ff92572",
+    "evidence": "build/front-fender-form-cycle15/",
+    "checkpoint": "build/front-fender-form-cycle15/verified-candidate-checkpoint/ (82 explicit inputs)",
+    "checks": "42unit/static/native five parsers/11mesh3clip import/fullpose/graphic+badge+15landmarks pass; ten nonBody exact and SVG unchanged",
+    "strictOutsideShading": "FAILED retained; root explicitly accepts bounded464 unrelated trim/cowl corners max0.004889deg/0.239micrometres after actual render review; mapped front-terminal518corners separate",
+    "nativeState": "Production checkpoint preserved, not installed or natively visually reviewed; active live inspection is the full-STL working branch in activeWorkflow.",
+    "limits": "small transverse improvement; raised long crest and terminal/arch fullness remain; all sections open; no likeness percentage"
+  }
+}

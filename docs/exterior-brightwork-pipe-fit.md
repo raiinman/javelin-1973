@@ -1,0 +1,30 @@
+# Exterior brightwork and closer side pipes
+
+Working source: `build/stl-full-trace/slice-v03/integration/prototype-meshy-exterior-trim/DSI_Javelin_Meshy_Exterior_Trim_Pipes.blend`, SHA256 `bf17f37889cba01d75c922dea60763d73bb88b3cd91db4a7c1020d8f59446e85`. Input is the V03 cabin-closure checkpoint `8fdc2c7a1f445f0719cca3d26bea241d311c463c300c2ed6592954356cdfeb4b`, retaining the accepted cockpit, floor/firewall/cowl closures, separate black skirts and I5 exterior. Prior sources remain recoverable. The user subsequently authorized the textured export and isolated test; see `meshy-native-test.md`.
+
+Display status (2026-10-27): the combined file is loaded in the live Blender window and saved with functional panels, basic cabin, Meshy cockpit, restored closures and brightwork visible in Material Preview. Reopening verified cabin and panel visibility and Material Preview persistence. Preserved original sources remain hidden. The visibility-save SHA256 is `3b7d355145773c8ed895a688ca10762ad670b754a3255100d0605ac171500d64`; the authoring hash above identifies the earlier geometry checkpoint. Its exact pre-save file is preserved beside the working source as `before-visibility-save-20261027-093126.blend`. No geometry was edited. `integration/live-state.json` is an older display record, not current live status.
+
+## Reference comparisons
+
+Four focused fresh comparisons used the supplied video's `reference-2.png` and `reference-30.png`, the Druk side/front photograph `build/six-pass2/druk-000.jpg`, and the current saved car renders. The Druk vehicle is supporting trim evidence, not authority for the target's different equipment.
+
+1. Front review: both video views show a continuous thin bright windshield surround and front fascia trim. The model's mostly red screen border loses this separation. Add the screen moulding while preserving the existing I5 front chrome and body shape.
+2. Side review: the Druk photograph distinguishes the bright roof/aperture edge, door-top belt and quarter-glass divider. The model lacks that continuous contrast. Fixed aperture trim belongs to Body, lower main-window belt mouldings to the moving doors; avoid trim following the lowering glass or duplicating the quarter divider.
+3. Surface-fit review: comparison against the same front and side views favors a narrow raised metal face with a dark seal, not a large bright frame. Raw projected glass hulls chord across bowed screen edges and the initial raw normals made a jagged result. The final paths trace actual exposed glass-sheet boundaries, simplify sub5mm irregularities and use consistent section orientation. Paint-lip seating is projected along the fitted glazing normal; cowl/backlight contour remains authored fit, not measured factory data. Exact rear trim appearance is less supported by these selected references.
+4. Whole-car contrast review: the photographs show thin wheel-opening highlights and bright mirror accents rather than extra chrome over every body crease. Add narrow arch mouldings, retain the STL's panel contours and current front trim, and recolor only the selected existing mirror cap faces. The final source was inspected from front, side and rear quarters. Blender reflections do not establish native-game readability or likeness acceptance.
+
+## Changes and export contract
+
+- Separate `Exterior_Brightwork` geometry adds approximately9,170 triangles: windshield, rear screen, side/quarter apertures, door-top belt trim, seals and four wheel-opening mouldings. Exact counts and individual widths/owners are in `final-report.json`.
+- Brightwork uses four explicit base colors: silver `#b7bdc3`, crown `#e2e6e9`, shadow `#636d76`, seal `#121519`. `apply_trim.py` records each object's `export_owner`, neutral shader zone and palette keys. The future atlas/export path must preserve these face-color assignments instead of relying on Blender metal shading. No runtime export was generated here.
+- The existing front chrome, body panels, hood/fender artwork and cabin remain. Three selected existing mirror cap faces per side receive the silver material, with no geometry change.
+- Both complete pipe assemblies move85mm inward on X only. Each has3,826 marked vertices. All original Y/Z coordinates, length, slots, outlets and topology remain unchanged. The2,374 sampled points per side reduce nearest skirt distance from87.25/87.18mm to10.83/10.77mm. These are sampled distances, not exhaustive minimum clearance measurements.
+- Body vertices outside positively marked `reused_original_sidepipe == 1` faces remain exact. Do not select all truthy marker values: original non-pipe faces can carry a negative sentinel. The assemblies share no vertices with stock body faces.
+
+## Verification and limits
+
+- `verification.json` records33 checks with no strict transverse crossings: moved pipes against stock body, skirts, doors, cabin floor/firewall and wheels; both doors at25/50/75/100percent opening against fixed trim and pipes; front steering at-0.30/0/+0.30radians against pipes and arch mouldings. Intentional seal/paint attachment contact and glass motion are separate.
+- Trim coordinates are finite. Closed mouldings have positive signed volume and consistent outward winding; open black seals face outward. Original geometry signatures are checked before the intentional pipe translation and mirror-material change.
+- `final-front-quarter.png`, `final-rear-quarter.png`, `final-side.png` and the same-view `before-front-quarter.png` are local visual evidence. Preserve the inactive first glass-edge trial; it is not the current trim source.
+- Native shader, import, window lowering, suspension, driving and save/reload remain unverified. No installed package, save or game configuration changed. The prior missing-headliner/Cardin-door-panel and rear-enclosure limits remain open.
+- DOX pass: root owns this ignored experiment and documentation. Other child contracts and indices stay unchanged because no production package, tool ownership or domain boundary changed.
