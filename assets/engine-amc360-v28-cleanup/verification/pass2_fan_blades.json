@@ -1,0 +1,32 @@
+{
+ "Fan_Blade_1": {
+  "old_vertices": 20,
+  "new_vertices": 90,
+  "new_faces": 88
+ },
+ "Fan_Blade_2": {
+  "old_vertices": 20,
+  "new_vertices": 90,
+  "new_faces": 88
+ },
+ "Fan_Blade_3": {
+  "old_vertices": 20,
+  "new_vertices": 90,
+  "new_faces": 88
+ },
+ "Fan_Blade_4": {
+  "old_vertices": 20,
+  "new_vertices": 90,
+  "new_faces": 88
+ },
+ "Fan_Blade_5": {
+  "old_vertices": 20,
+  "new_vertices": 90,
+  "new_faces": 88
+ },
+ "Fan_Blade_6": {
+  "old_vertices": 20,
+  "new_vertices": 90,
+  "new_faces": 88
+ }
+}

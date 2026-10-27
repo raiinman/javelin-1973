@@ -11,6 +11,7 @@ Preserved procedural art/model sources and historical preview renders built from
 
 ## Ownership
 Blender source, procedural palette definition and car previews.
+- `engine-amc360-v28-cleanup/` holds the cleaned Astra V28 engine and its before/after evidence.
 - `engine-amc360/` holds the separate original AMC 360-style exterior engine, its renders, verification and bay-fit diagnostic; it is not part of the car or mod package.
 - `current-stl/` preserves the older complete STL-based assembly as a historical portable editable snapshot, separate from the earlier procedural production source. It is superseded by the cloud artifact indexed in `../current-work/`; preserve its exact binary/source identity and follow its child contract.
 
@@ -64,3 +65,4 @@ Inspect the generated source model and render at gameplay distance.
 ## Child DOX Index
 - `current-stl/AGENTS.md`: preserved historical STL source snapshot, checksum and visibility checks; current cloud authority remains indexed outside assets.
 - `engine-amc360/AGENTS.md`: original procedural AMC 360-style exterior engine, verification records and the V10 empty-bay fit diagnostic.
+- `engine-amc360-v28-cleanup/AGENTS.md`: cleanup of the user-supplied Astra V28 engine (shading, fan blades, exhaust manifolds) with before/after evidence; transforms and parts unchanged.

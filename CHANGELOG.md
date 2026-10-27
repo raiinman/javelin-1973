@@ -8,6 +8,8 @@
 
 - Added an original procedural AMC 360-style exterior engine (separate file, 29,914 triangles, stock and dress-up finishes) with verification, actual-mesh renders and a contact-free fit in the V10 empty bay across both hood actions. Reference images were not viewable in the build session; see `docs/amc360-engine.md` for sources and unverified layout choices.
 
+- Cleaned up the user-supplied Astra V28 engine: satin black in place of the front gloss "glob", rebuilt cambered fan blades, and rebuilt exhaust manifolds whose primaries flow into one filleted log with an open outlet. Scale, origin, fit position and parts unchanged; before/after sheets in `assets/engine-amc360-v28-cleanup/compare/`.
+
 ### Fixed
 - Saved and reopened the current car with the assembled cabin and functional panels visible in Material Preview.
 
