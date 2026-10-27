@@ -1,8 +1,8 @@
 {
  "engine": "AMC360_Engine.blend",
- "sha256": "dd129299ebf7ab31f886da19587c0769995dae8a9f48a987a2125946a2860796",
+ "sha256": "944ed6fdeb6ef99807dfa1d7553018c6061357df1404402be588486b488829a5",
  "blender": "5.2.1 LTS",
- "total_triangles": 29914,
+ "total_triangles": 29818,
  "objects": {
   "ENG_AirCleaner": {
    "triangles": 1696,
@@ -46,8 +46,8 @@
    "inward_shells": 0
   },
   "ENG_Alternator": {
-   "triangles": 1124,
-   "geometry_sha256": "d5a237a1b0f58d57bf3497756e12f4754db7360016bcad928d6f8d0e52e40ba4",
+   "triangles": 1396,
+   "geometry_sha256": "29d41de05a6e7292644ec1c47c2f72c938f6eb438668e6b846920914b445b8b3",
    "materials": [
     "ENG_Aluminium",
     "ENG_Black_Satin",
@@ -64,7 +64,7 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 6,
+   "closed_shells": 27,
    "inward_shells": 0
   },
   "ENG_AlternatorBracket": {
@@ -131,8 +131,8 @@
    "inward_shells": 0
   },
   "ENG_CrankDamper": {
-   "triangles": 1122,
-   "geometry_sha256": "674f6ea2f841c7874a95239438725379a0d11edc57daa9967cc80a24cf473aac",
+   "triangles": 1034,
+   "geometry_sha256": "a518588f0763cb2469255a6f8c46eca990315af8b8c8b59bff964c5b186d27da",
    "materials": [
     "ENG_Black_Satin",
     "ENG_Rubber",
@@ -236,8 +236,8 @@
    "inward_shells": 0
   },
   "ENG_ExhaustManifold_L": {
-   "triangles": 1952,
-   "geometry_sha256": "ecb6988218c1001c6a2e9fec723428b3ba1f8123451239c85501cc758a134f3a",
+   "triangles": 2210,
+   "geometry_sha256": "416c92022e44f9221c245dd0eb182ed5737121c103da8e9e4681ebd940a89cf8",
    "materials": [
     "ENG_Cast_Iron"
    ],
@@ -252,12 +252,12 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 13,
+   "closed_shells": 14,
    "inward_shells": 0
   },
   "ENG_ExhaustManifold_R": {
-   "triangles": 1952,
-   "geometry_sha256": "dc90371b780e6ccf77a4698e554768ae70e3d548a8fcc52ecbfc6a8ace7bbf0f",
+   "triangles": 2210,
+   "geometry_sha256": "47650a27c11310c21f00b04354831bcde8649ed9bf6f5eea51e97269bee05434",
    "materials": [
     "ENG_Cast_Iron"
    ],
@@ -272,7 +272,7 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 13,
+   "closed_shells": 14,
    "inward_shells": 0
   },
   "ENG_Fan": {
@@ -398,8 +398,8 @@
    "inward_shells": 0
   },
   "ENG_Intake": {
-   "triangles": 4588,
-   "geometry_sha256": "80e12062cb2a27c842e9daca9988c62c4827ed2b73a873a54c84fd60e9769932",
+   "triangles": 3580,
+   "geometry_sha256": "87ed5b77b29eee257931d7a9b3a31ec5f0c9133214c206615fc76bd366b9fb21",
    "materials": [
     "ENG_Paint_Cast"
    ],
@@ -522,8 +522,8 @@
    "inward_shells": 0
   },
   "ENG_TimingCover": {
-   "triangles": 840,
-   "geometry_sha256": "f5ab20d3a2801d129eb12fa0adfe3f6927d3a45e502d00a3d8c13fbacdb7615d",
+   "triangles": 1052,
+   "geometry_sha256": "702f9547c0fd788f02e66a1e8920e31cddf190f2458d0db36634500d68b9bb0e",
    "materials": [
     "ENG_Paint_Cast",
     "ENG_Steel_Bright"
@@ -539,7 +539,7 @@
    "nonmanifold_edges": 0,
    "loose_verts": 0,
    "inconsistent_winding_edges": 0,
-   "closed_shells": 5,
+   "closed_shells": 8,
    "inward_shells": 0
   },
   "ENG_ValveCover_L": {
@@ -658,7 +658,7 @@
    "hose pushed over carb-base PCV nipple"
   ],
   "ENG_CrankDamper x ENG_TimingCover": [
-   24,
+   20,
    "damper hub in seal boss"
   ],
   "ENG_Dipstick x ENG_TimingCover": [
@@ -714,7 +714,7 @@
    "hose pushed over PCV valve"
   ],
   "ENG_TimingCover x ENG_WaterPump": [
-   36,
+   50,
    "pump flange bolted to cover"
   ]
  },

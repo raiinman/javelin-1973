@@ -516,8 +516,8 @@ def build_intake():
     lt = bank_point(-1, DECK + .080, vlo)
     lb = bank_point(-1, DECK + .020, vlo)
     half = -lt[0]
-    nx = 26
-    ys = [INTAKE_Y[0] - (INTAKE_Y[0] - INTAKE_Y[1]) * k / 55 for k in range(56)]
+    nx = 22
+    ys = [INTAKE_Y[0] - (INTAKE_Y[0] - INTAKE_Y[1]) * k / 47 for k in range(48)]
     rings = []
     for y in ys:
         sec = [(-.060, y, .200), (lb[0], y, lb[1])]
@@ -563,7 +563,7 @@ def build_heads_ports_exhaust(side):
                 scales=[1 + .30 * (i / (n - 1)) ** 2 for i in range(n)])
     yf, yr = ys[0] + .035, ys[-1] - .060
     lp = [m @ Vector((log_v, yf - k * (yf - yr) / 12, log_u)) for k in range(13)]
-    sec = [(.031 * math.cos(2 * math.pi * i / 14), .029 * math.sin(2 * math.pi * i / 14)) for i in range(14)]
+    sec = [(.031 * math.cos(2 * math.pi * i / 12), .029 * math.sin(2 * math.pi * i / 12)) for i in range(12)]
     grow = [.88 + .24 * k / 12 for k in range(13)]
     p.sweep(lp, sec, 'ENG_Cast_Iron', scales=grow)
     for (end, prev), g in (((lp[0], lp[1]), grow[0]), ((lp[-1], lp[-2]), grow[-1])):
@@ -572,10 +572,18 @@ def build_heads_ports_exhaust(side):
     # Cast stiffening rib along the top of the log.
     rib = [m @ Vector((log_v - .004, yf - k * (yf - yr) / 12, log_u + .025 + .006 * k / 12)) for k in range(13)]
     p.sweep(rib, [(-.004, -.003), (.004, -.003), (.002, .004), (-.002, .004)], 'ENG_Cast_Iron')
-    # Downturned outlet with a three-bolt flange near the rear.
+    # Swept outlet elbow turning down, rearward and outboard, flaring into a thick flange.
     oc = m @ Vector((log_v, ys[-1] - .020, log_u))
-    p.lathe([(.030, 0), (.030, -.070), (.046, -.070), (.046, -.083), (.025, -.083)], 14,
-            'ENG_Cast_Iron', axis_matrix(oc, Vector((0, 0, 1))))
+    sx = 1 if side > 0 else -1
+    elbow = catmull([oc + Vector((0, 0, .010)), oc + Vector((0, -.004, -.030)),
+                     oc + Vector((sx * .012, -.018, -.062)), oc + Vector((sx * .026, -.034, -.084))], per=4)
+    n = len(elbow)
+    p.sweep(elbow, circle_section(.029, 12), 'ENG_Cast_Iron',
+            scales=[1 + .22 * (i / (n - 1)) ** 2 for i in range(n)])
+    end, prev = elbow[-1], elbow[-2]
+    d = (end - prev).normalized()
+    p.lathe([(.026, -.004), (.050, -.004), (.050, .010), (.040, .013), (.030, .013), (0, .010)], 14,
+            'ENG_Cast_Iron', axis_matrix(end, d))
     p.pivot = m @ Vector((log_v, (yf + yr) / 2, log_u))
     return p
 
@@ -623,6 +631,25 @@ def timing_outline():
 def build_timing_cover():
     p = Part('ENG_TimingCover', ['ENG_Paint_Cast', 'ENG_Steel_Bright'], pivot=(0, .03, .1))
     p.extrude(timing_outline(), .0005, .055, 'ENG_Paint_Cast', bevel=.008)
+    # Cast bolt lugs round the perimeter and a central web, clear of the bosses.
+    out = timing_outline()
+    perim = []
+    for (x0, z0), (x1, z1) in zip(out, out[1:] + out[:1]):
+        L = math.hypot(x1 - x0, z1 - z0)
+        for k in range(max(1, int(L / .055))):
+            t = (k + .5) / max(1, int(L / .055))
+            perim.append((x0 + (x1 - x0) * t, z0 + (z1 - z0) * t))
+    for x, z in perim:
+        dx, dz = 0 - x, .10 - z
+        L = math.hypot(dx, dz) or 1
+        x, z = x + dx / L * .015, z + dz / L * .015
+        if (math.hypot(x, z) < .085 or math.hypot(x - PUMP_C[0], z - PUMP_C[1]) < .090
+                or math.hypot(x - DIST_BASE.x, z - DIST_BASE.z) < .060 or z < .0 or abs(x) > .150
+                or math.hypot(x + .105, z - .112) < .040 or math.hypot(x - .172, z) < .060):
+            continue
+        p.lathe([(0, 0), (.0105, 0), (.0105, .006), (.0065, .006), (.0065, .010), (0, .010)], 8,
+                'ENG_Paint_Cast', axis_matrix(Vector((x, .0545, z)), Vector((0, 1, 0))))
+    p.rbox(Vector((0, .0585, .091)), (.020, .008, .060), .004, 'ENG_Paint_Cast')
     # Crank seal boss.
     p.lathe([(.058, 0), (.058, .010), (.050, .014), (.040, .014)], 24, 'ENG_Paint_Cast',
             Matrix.Translation((0, .0552, 0)) @ Matrix.Rotation(-math.pi / 2, 4, 'X'))
@@ -696,7 +723,7 @@ def build_crank_damper():
     p = Part('ENG_CrankDamper', ['ENG_Black_Satin', 'ENG_Rubber', 'ENG_Steel_Bright'], pivot=(0, .085, 0))
     xf = axis_matrix(Vector((0, .066, 0)), Vector((0, 1, 0)))
     p.lathe([(0, 0), (.030, 0), (.030, .008), (.070, .010), (.070, .012), (.090, .012), (.090, .030),
-             (.072, .030), (.072, .033), (.090, .033), (.090, .046), (.035, .048), (0, .048)], 24,
+             (.072, .030), (.072, .033), (.090, .033), (.090, .046), (.035, .048), (0, .048)], 20,
             'ENG_Black_Satin', xf,
             mats=['ENG_Black_Satin'] * 6 + ['ENG_Rubber', 'ENG_Rubber'] + ['ENG_Black_Satin'] * 4)
     groove_pulley(p, (0, 0), BELT_Y, .088, .020, 28, 'ENG_Black_Satin')
@@ -813,10 +840,24 @@ def build_alternator():
     xf = axis_matrix(c, Vector((0, 1, 0)))
     p.lathe([(0, 0), (.050, 0), (.066, .006), (.072, .020), (.078, .030), (.078, .060), (.075, .062),
              (.078, .064), (.078, .094), (.068, .104), (.040, .108), (0, .108)], 24, 'ENG_Aluminium', xf)
-    # Cooling fan and pulley.
-    p.lathe([(0, 0), (.060, 0), (.060, .007), (0, .007)], 20, 'ENG_Black_Satin',
-            axis_matrix(c + Vector((0, .108, 0)), Vector((0, 1, 0))))
+    # Cooling fan: hub disc and ten radial fins between the case and the pulley.
+    fan_c = c + Vector((0, .1165, 0))
+    p.lathe([(0, -.006), (.024, -.006), (.024, .006), (0, .006)], 16, 'ENG_Black_Satin',
+            axis_matrix(fan_c - Vector((0, .006, 0)), Vector((0, 1, 0))))
+    for i in range(10):
+        m = Matrix.Translation(fan_c) @ Matrix.Rotation(2 * math.pi * i / 10, 4, 'Y') @ Matrix.Rotation(.35, 4, 'X')
+        p.rbox(Vector((.041, 0, 0)), (.036, .010, .0026), 0, 'ENG_Black_Satin', xf=m)
     groove_pulley(p, ALT_C, BELT_Y, .0385, .018, 20, 'ENG_Black_Satin')
+    # Cast case ribs across the drive-end housing and three rear through-bolts.
+    for i in range(8):
+        a = 2 * math.pi * (i + .5) / 8
+        m = Matrix.Translation(c + Vector((0, .079, 0))) @ Matrix.Rotation(a, 4, 'Y')
+        p.rbox(Vector((.0775, 0, 0)), (.006, .026, .012), 0, 'ENG_Aluminium', xf=m)
+    for i in range(3):
+        a = 2 * math.pi * i / 3 + .5
+        q = c + Vector((.052 * math.cos(a), 0, .052 * math.sin(a)))
+        p.lathe([(0, 0), (.0065, 0), (.0065, .005), (0, .0055)], 6, 'ENG_Steel_Bright',
+                axis_matrix(q + Vector((0, .0008, 0)), Vector((0, -1, 0))))
     # Mounting ears: lower pivot and upper adjuster.
     p.rbox(pivot + Vector((0, .010, .008)), (.030, .044, .030), .006, 'ENG_Aluminium')
     p.rbox(Vector((ALT_C[0] + .062, .004, ALT_C[1] + .062)), (.024, .030, .024), .006, 'ENG_Aluminium')

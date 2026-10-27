@@ -24,18 +24,41 @@ The 360 label is visual reference only. It does not prove displacement, internal
 
 - 31 named mesh objects under `ENG_Root`, grouped as `ENG_Castings`, `ENG_Pressings`, `ENG_FuelIgnition` and `ENG_FrontDrive`. Pivots sit at mounting points.
 - Engine frame: metres, +Y forward, +Z up, driver side -X. Origin on the crank axis at the block front face.
-- Castings: block with bell flange, core plugs and mount bosses; rolled-end heads with plug bosses; an intake with smooth cast runner humps, plenum, faded end walls and thermostat neck; log manifolds that swell toward a downturned outlet, with flared primaries and a top rib; timing cover with distributor boss, filter adapter, filler tube and fuel pump; water pump.
+- Castings: block with bell flange, core plugs and mount bosses; rolled-end heads with plug bosses; an intake with smooth cast runner humps, plenum, faded end walls and thermostat neck; log manifolds that swell toward a swept, flaring outlet elbow with a thick flange, with flared primaries and a top rib; timing cover with cast bolt lugs, a centre web, distributor boss, filter adapter, filler tube and fuel pump; water pump.
 - Pressings: tall valve covers with flange, full rolled crown, raised centre panel, flange bolts, breather and PCV valve; a passenger-car pan with forward-centre sump; a round domed air cleaner with rolled lip, wing nut and forward snorkel.
-- Front drive: damper, V-grooved pulleys, a V-belt from exact tangents, four-blade stamped fan, passenger-side alternator with bracket, pivot and adjuster.
+- Front drive: damper, V-grooved pulleys, a V-belt from exact tangents, four-blade stamped fan, passenger-side alternator with finned cooling fan, case ribs, through-bolts, bracket, pivot and adjuster.
 - Fuel and ignition: Motorcraft-4300-style carburettor with fuel inlet, PCV hose to the carb base, angled front distributor with vacuum canister and cap, eight leads through loom combs to seated boots, dipstick. The pump-to-carb fuel line is omitted because the passenger front is too crowded to route it cleanly.
 - Label: a 40 mm original stroke-drawn "360" on the lid, readable from the front of the car. No font, logo or decal artwork was reused.
 - Finish: `--finish stock` (default) gives metallic blue painted covers, a black can and lid, and a silver label. `--finish dressup` gives polished covers and lid with a dark label (`renders/amc360_variant_dressup_front_quarter.png`, preview quality). Both are original materials without image textures.
+
+## Research parity checklist
+
+This counts research items the model meets. It is a checklist, not a likeness percentage: no reference image has been compared, so visual likeness is unmeasured.
+
+| # | Research item | Source class | Model |
+| --- | --- | --- | --- |
+| 1 | Round air cleaner with a 360 label | Target | Met |
+| 2 | Rolled, domed cleaner | Target (earlier review) | Met |
+| 3 | Rounded valve covers | Target (earlier review) | Met |
+| 4 | 90 degree V, 4.75 in bore pitch, 9.21 in deck, driver bank forward | General knowledge | Met |
+| 5 | Distributor at the front, on the timing cover | Text source | Met |
+| 6 | Fuel pump on the timing cover | Text source | Met |
+| 7 | Oil filter on the oil-pump cover at the timing cover | Text source | Met (angle assumed) |
+| 8 | Front oil filler on the timing cover | General knowledge | Met |
+| 9 | Alternator on the passenger side (1972+) | Text source | Met |
+| 10 | Factory Motorola alternator | Text source | Partial: generic round case, not a Motorola-specific shape |
+| 11 | Passenger-car forward-centre sump | Text source | Met |
+| 12 | Metallic blue engine enamel | Vendor claim | Met (shade unconfirmed) |
+| 13 | Painted stock valve covers; chrome is dress-up | Listings | Met (`stock` default, `dressup` option) |
+| 14 | Log-type exhaust manifolds | General knowledge | Unverified |
+
+Result: 12 of 14 met, 1 partial, 1 unverified. The remaining gap to real likeness is the image comparison in Open work 1.
 
 ## Verification (`verification/engine_check.json`)
 
 | Check | Result |
 | --- | --- |
-| Evaluated triangles | 29,914 (target about 30,000) |
+| Evaluated triangles | 29,818 (target about 30,000) |
 | Degenerate faces, zero-length edges, loose vertices, non-manifold edges | 0 in all objects |
 | Open boundaries | 0, except the intentionally flat 360 label |
 | Winding and normals | No inconsistent edges; all closed shells have outward normals by signed volume |
