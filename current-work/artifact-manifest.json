@@ -1,7 +1,7 @@
 {
   "schema": "dsi.javelin.asset-index.v2",
   "snapshot_date": "2026-10-29",
-  "base_commit": "15b0a5c4f94ae79f1c7d911d267f1e93056f1b05",
+  "base_commit": "92282d2bcae4533749a82148d5c3b5657410b3b6",
   "project": "DSI Javelin 1973",
   "visibility": "private",
   "current_model": {
@@ -61,5 +61,6 @@
     "included_in_clone": false,
     "role": "Historical reversible visibility/export-exclusion checkpoint, not current source"
   },
-  "history": "All prior source/optional structural work retained; old Git model binaries/source.json and original failure records unchanged. No new captures or asset binaries published."
+  "history": "All prior source/optional structural work retained; old Git model binaries/source.json and original failure records unchanged. Curated original-render display derivatives are indexed separately; no model binaries or game/runtime captures are added.",
+  "gallery_manifest": "current-work/gallery/image-manifest.json"
 }

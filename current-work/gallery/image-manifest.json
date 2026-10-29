@@ -1,0 +1,811 @@
+{
+  "schema": "dsi.javelin.gallery-images.v1",
+  "snapshot_date": "2026-10-29",
+  "current_model_sha256": "aad667f38b8c7a449b0ea148cefa2a71b0c6eecfd568ad2e5c5b6808e8d06289",
+  "image_count": 20,
+  "publication_scope": "Curated original authored-car display derivatives only. No new rendering, geometry changes, game/reference captures, private desktop/notes or model binaries.",
+  "date_policy": "Record-set dates identify the source documentation family. Original render timestamps are unrecorded unless separately stated; no filesystem mtime is presented as a capture date.",
+  "display_derivation": "ImageMagick deterministic JPEG display derivatives and thumbnails only; fit within 1440x1100 and 480x340 without upscaling; quality88/84, 4:4:4, metadata stripped. No crop, retouch, color adjustment, AI generation. JPEG display derivatives are not pixel-identical proof.",
+  "items": [
+    {
+      "id": "current-whole-car",
+      "title": "The current editable Javelin",
+      "exhibit": "01-whole-car",
+      "state": "current-source",
+      "checkpoint": "V41-based outer-front-tire contour / Library 36",
+      "record_set_date": "2026-10-29",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "candidate-full-car-wide.png",
+      "source_image_sha256": "b4f38a0bb77567438b637d905179634254cb159b93f1acde69d85fbd52f7a932",
+      "source_image_bytes": 1928498,
+      "source_dimensions": [
+        1440,
+        960
+      ],
+      "source_model_sha256": "aad667f38b8c7a449b0ea148cefa2a71b0c6eecfd568ad2e5c5b6808e8d06289",
+      "evidence_record": "candidate-full-car-wide.json",
+      "evidence_record_sha256": "27c1dd470854db4cbffc0010cbb2d5668f626d72e5af6bdb88eedff2e54905a1",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "The complete car from a front quarter. This earlier Blender authoring render depicts the exact bytes now adopted as Library 36.",
+      "limits": "64-sample undenoised source inspection. Whole-car visual refinement remains open; no native-game or finished-quality approval.",
+      "display": {
+        "path": "images/views/current-whole-car.jpg",
+        "sha256": "4c56a256048999abbcc59508226da6b09e0fb5217905b9f7d952a56eba2aa05d",
+        "bytes": 228687,
+        "width": 1440,
+        "height": 960
+      },
+      "thumbnail": {
+        "path": "images/thumbs/current-whole-car.jpg",
+        "sha256": "3ba9fee92559e3efb2cfd812d6fe0e4bf6b3160de9e34b04fbc0fafba800f09f",
+        "bytes": 24763,
+        "width": 480,
+        "height": 320
+      },
+      "comparison_group": null,
+      "comparison_stage": null
+    },
+    {
+      "id": "v03-side",
+      "title": "Historical side silhouette",
+      "exhibit": "01-whole-car",
+      "state": "historical",
+      "checkpoint": "BodyOnly V03",
+      "record_set_date": "2026-10-27",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V03-body-only-side.png",
+      "source_image_sha256": "087d488476f0a9f813209c0730c471f27cb800f05222bd04bf1ce538a395b10c",
+      "source_image_bytes": 735031,
+      "source_dimensions": [
+        1100,
+        760
+      ],
+      "source_model_sha256": "668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90",
+      "evidence_record": "CLEAN_BODY_V03_IMAGE_SOURCE_MANIFEST.json",
+      "evidence_record_sha256": "ed5a8d1b644e5fda0a0b6ecb894a103f03752fcd3c8a7d4922238e1ad88617ce",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Historical V03 exterior view retained as a separate checkpoint, not a current-model photograph.",
+      "limits": "Visibility/export-exclusion milestone only. Geometry repair and native acceptance were not established by these images.",
+      "display": {
+        "path": "images/views/v03-side.jpg",
+        "sha256": "f3499593539ddccd9208471fa1eb14818f0f55590de4ef88ee52a6fd1ec027c7",
+        "bytes": 89759,
+        "width": 1100,
+        "height": 760
+      },
+      "thumbnail": {
+        "path": "images/thumbs/v03-side.jpg",
+        "sha256": "ca0052c39ae00d78a122b471cb4e0b521167561a5e8c4aa2da66cd3726343bb6",
+        "bytes": 16634,
+        "width": 480,
+        "height": 332
+      },
+      "comparison_group": null,
+      "comparison_stage": null
+    },
+    {
+      "id": "v03-rear",
+      "title": "Historical rear-quarter silhouette",
+      "exhibit": "01-whole-car",
+      "state": "historical",
+      "checkpoint": "BodyOnly V03",
+      "record_set_date": "2026-10-27",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V03-body-only-rear-quarter.png",
+      "source_image_sha256": "54b82df7464614f639683a3e2ddaf3099acb33487a95c67deab75f1396bed5bf",
+      "source_image_bytes": 602857,
+      "source_dimensions": [
+        1100,
+        760
+      ],
+      "source_model_sha256": "668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90",
+      "evidence_record": "CLEAN_BODY_V03_IMAGE_SOURCE_MANIFEST.json",
+      "evidence_record_sha256": "ed5a8d1b644e5fda0a0b6ecb894a103f03752fcd3c8a7d4922238e1ad88617ce",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Historical V03 exterior view retained as a separate checkpoint, not a current-model photograph.",
+      "limits": "Visibility/export-exclusion milestone only. Geometry repair and native acceptance were not established by these images.",
+      "display": {
+        "path": "images/views/v03-rear.jpg",
+        "sha256": "cebc44fb143a3bcc4d111d2f5bc748ebd9db7870a5312d3fdc6051d4fbe0e0fc",
+        "bytes": 64827,
+        "width": 1100,
+        "height": 760
+      },
+      "thumbnail": {
+        "path": "images/thumbs/v03-rear.jpg",
+        "sha256": "d1bb9c5945534983dbf4062b35669a93c177c632234bfaf346297731ed87b7d3",
+        "bytes": 12250,
+        "width": 480,
+        "height": 332
+      },
+      "comparison_group": null,
+      "comparison_stage": null
+    },
+    {
+      "id": "body-bay-before",
+      "title": "Before: intersecting front-bay geometry",
+      "exhibit": "02-body",
+      "state": "historical",
+      "checkpoint": "BodyOnly V03 before V04 repair",
+      "record_set_date": "2026-10-27",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V04-body-repair-before-bay.png",
+      "source_image_sha256": "fa840ea4e4b986a72604d95c64b12f12e4f69329d97576d94a9b21f6a298d278",
+      "source_image_bytes": 1531268,
+      "source_dimensions": [
+        1400,
+        1000
+      ],
+      "source_model_sha256": "668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90",
+      "evidence_record": "V04_VISUAL_SOURCE_MANIFEST.json",
+      "evidence_record_sha256": "0e87543fcecbd1994e30bc8f9e198fc6c7bffd497f4013f7faf6942ee5987244",
+      "image_hash_matched_to_source_receipt": false,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Original bay intersections before the bounded body repair.",
+      "limits": "After render source differs from adopted V04 only by hidden archive export-exclusion metadata. Source manifest and successful historical delivery identify the pair; original image hashes were recorded at gallery curation, not supplied by that source manifest. No extra underneath structure or full-car completion claim.",
+      "display": {
+        "path": "images/views/body-bay-before.jpg",
+        "sha256": "3a379fc293d783af028dd7fbc9d2337a866a60c36eee37cb0cdd8c3076f8beed",
+        "bytes": 146329,
+        "width": 1400,
+        "height": 1000
+      },
+      "thumbnail": {
+        "path": "images/thumbs/body-bay-before.jpg",
+        "sha256": "bcd0cfb2baa736e44f61643f67ad114dff0a89077ca923b78543627b6b695e13",
+        "bytes": 25077,
+        "width": 476,
+        "height": 340
+      },
+      "comparison_group": "front-bay-repair",
+      "comparison_stage": "before"
+    },
+    {
+      "id": "body-bay-after",
+      "title": "After: minimal front-body repair",
+      "exhibit": "02-body",
+      "state": "historical",
+      "checkpoint": "V04 reviewed repair candidate",
+      "record_set_date": "2026-10-27",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V04-body-repair-after-bay.png",
+      "source_image_sha256": "0c4fa6a6b8fc5cb768948dee3fc65fadda31b382b892d279a02d042de3a7e569",
+      "source_image_bytes": 1525828,
+      "source_dimensions": [
+        1400,
+        1000
+      ],
+      "source_model_sha256": "7be4e9aea23dbdab5fdd33986088e60bf6f300106040b4831a00ae11999d2552",
+      "evidence_record": "V04_VISUAL_SOURCE_MANIFEST.json",
+      "evidence_record_sha256": "0e87543fcecbd1994e30bc8f9e198fc6c7bffd497f4013f7faf6942ee5987244",
+      "image_hash_matched_to_source_receipt": false,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Existing body geometry corrected with the hood hidden for inspection; this is not an engine installation.",
+      "limits": "After render source differs from adopted V04 only by hidden archive export-exclusion metadata. Source manifest and successful historical delivery identify the pair; original image hashes were recorded at gallery curation, not supplied by that source manifest. No extra underneath structure or full-car completion claim.",
+      "display": {
+        "path": "images/views/body-bay-after.jpg",
+        "sha256": "bba0e7107b6e87105a90f09c73a6fddfc743f679eb6e4810d9f8afa307f7d5d7",
+        "bytes": 149072,
+        "width": 1400,
+        "height": 1000
+      },
+      "thumbnail": {
+        "path": "images/thumbs/body-bay-after.jpg",
+        "sha256": "a56193416934a3ee0b7f3acf9e3783f01afc8822a883912c007002279ac5e0db",
+        "bytes": 25517,
+        "width": 476,
+        "height": 340
+      },
+      "comparison_group": "front-bay-repair",
+      "comparison_stage": "after"
+    },
+    {
+      "id": "trunk-bowl-before",
+      "title": "Before: split trunk bowl",
+      "exhibit": "03-panels",
+      "state": "historical",
+      "checkpoint": "V24 source before V25",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V25-before-split-trunk-bowl.png",
+      "source_image_sha256": "c4a6a1540a1d2e361aae850e25949af004705f6eaad3c6dbea0d4556bdbe18dd",
+      "source_image_bytes": 897307,
+      "source_dimensions": [
+        1100,
+        750
+      ],
+      "source_model_sha256": "6a157345318acb46dc56021876084a96854b71e7f2e525cdf6a1260f9fcfc8b2",
+      "evidence_record": "review-view-manifest.json",
+      "evidence_record_sha256": "2d0b65fb1c81db2588a002b86dcf53f9d28a3f8846bdcfd28fd5ce531dd52e64",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Historical panel-ownership inspection at the recorded open pose. The final V25 moves the complete visible bowl and rear skin with the trunk.",
+      "limits": "Workbench material preview, not PBR beauty, factory construction, continuous swept clearance or native damage. The rejected 595-face trial is excluded.",
+      "display": {
+        "path": "images/views/trunk-bowl-before.jpg",
+        "sha256": "7f4157ef22f183eff1266f79ab9875fa6783ee9c149a6534e5d9aa855921cffe",
+        "bytes": 62766,
+        "width": 1100,
+        "height": 750
+      },
+      "thumbnail": {
+        "path": "images/thumbs/trunk-bowl-before.jpg",
+        "sha256": "646598fb69acedb37095c7a50d44ce15634d0665a620245bdc7e4b92c5f7aaad",
+        "bytes": 15695,
+        "width": 480,
+        "height": 327
+      },
+      "comparison_group": "trunk-bowl",
+      "comparison_stage": "before"
+    },
+    {
+      "id": "trunk-bowl-after",
+      "title": "After: complete moving trunk bowl",
+      "exhibit": "03-panels",
+      "state": "historical",
+      "checkpoint": "V25 final 605-face ownership",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V25-after-complete-trunk-bowl-motion.png",
+      "source_image_sha256": "d4fda76d84196ad57f8f597340467dd3f28b4e6467f93ced51c10f63be94f05e",
+      "source_image_bytes": 927286,
+      "source_dimensions": [
+        1100,
+        750
+      ],
+      "source_model_sha256": "51ef61817a5ff4019ae2a80a89f42ab504e33834b7b4cb5e772e480ec999adac",
+      "evidence_record": "review-view-manifest.json",
+      "evidence_record_sha256": "2d0b65fb1c81db2588a002b86dcf53f9d28a3f8846bdcfd28fd5ce531dd52e64",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Historical panel-ownership inspection at the recorded open pose. The final V25 moves the complete visible bowl and rear skin with the trunk.",
+      "limits": "Workbench material preview, not PBR beauty, factory construction, continuous swept clearance or native damage. The rejected 595-face trial is excluded.",
+      "display": {
+        "path": "images/views/trunk-bowl-after.jpg",
+        "sha256": "6c9fba57930df1b7c92b2653507ae3ace1431d5a9e9e8a7cf3aa2c4ca074cd41",
+        "bytes": 66243,
+        "width": 1100,
+        "height": 750
+      },
+      "thumbnail": {
+        "path": "images/thumbs/trunk-bowl-after.jpg",
+        "sha256": "46611904f8cd68b92ff4b5de612ec6e949c7cefefb7ee02b800e3ac94e14c424",
+        "bytes": 15927,
+        "width": 480,
+        "height": 327
+      },
+      "comparison_group": "trunk-bowl",
+      "comparison_stage": "after"
+    },
+    {
+      "id": "trunk-open",
+      "title": "Open trunk and rear skin",
+      "exhibit": "03-panels",
+      "state": "historical",
+      "checkpoint": "V25 final 605-face ownership",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V25-trunk-rear-skin-open-preview.png",
+      "source_image_sha256": "c6172c8c3cfe1185a35e3ab6591ed03a8899b0ce0093e7e9812d2b45e12bc4bb",
+      "source_image_bytes": 881476,
+      "source_dimensions": [
+        1100,
+        750
+      ],
+      "source_model_sha256": "51ef61817a5ff4019ae2a80a89f42ab504e33834b7b4cb5e772e480ec999adac",
+      "evidence_record": "review-view-manifest.json",
+      "evidence_record_sha256": "2d0b65fb1c81db2588a002b86dcf53f9d28a3f8846bdcfd28fd5ce531dd52e64",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Historical panel-ownership inspection at the recorded open pose. The final V25 moves the complete visible bowl and rear skin with the trunk.",
+      "limits": "Workbench material preview, not PBR beauty, factory construction, continuous swept clearance or native damage. The rejected 595-face trial is excluded.",
+      "display": {
+        "path": "images/views/trunk-open.jpg",
+        "sha256": "17ca61b6c416185301e1128f670b9e350d65b60b92fc31cd4cd82e78bca1bf5c",
+        "bytes": 91887,
+        "width": 1100,
+        "height": 750
+      },
+      "thumbnail": {
+        "path": "images/thumbs/trunk-open.jpg",
+        "sha256": "d19601b0fde62b4ba262e59d5b8a8c89b88865165b05be59d6343d0020f1f4fd",
+        "bytes": 22429,
+        "width": 480,
+        "height": 327
+      },
+      "comparison_group": null,
+      "comparison_stage": null
+    },
+    {
+      "id": "front-assembly-exploded",
+      "title": "How the front assembly separates",
+      "exhibit": "03-panels",
+      "state": "historical",
+      "checkpoint": "V10 front-fascia source assembly",
+      "record_set_date": "2026-10-27",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V10-existing-front-assembly-exploded.png",
+      "source_image_sha256": "7864e703e11ee7bcec1e6fafcaf05ad39c4db31b052745eba950a6050585cd7a",
+      "source_image_bytes": 1145917,
+      "source_dimensions": [
+        1400,
+        1000
+      ],
+      "source_model_sha256": "8c3c4764890d9cbca4c665bf893e1bbbb56cf66a92a0eca8084596c6ab4fba9f",
+      "evidence_record": "V10_VISUAL_SOURCE_MANIFEST.json",
+      "evidence_record_sha256": "79a8c8930746f86b40ec43ecf7bd2d0d860f1c8c19693218731a4b99db9a25b1",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Existing 3,297-face front assembly translated forward in memory for an exploded inspection.",
+      "limits": "Inspection offsets only. Geometry and closed placement were not changed; this is not a saved assembly pose, an animation or a damage simulation.",
+      "display": {
+        "path": "images/views/front-assembly-exploded.jpg",
+        "sha256": "9db3e1fbdab9742dc54c8bf41fbfa34cf57812a1bd4b7b40af3c72be73b63e7b",
+        "bytes": 107505,
+        "width": 1400,
+        "height": 1000
+      },
+      "thumbnail": {
+        "path": "images/thumbs/front-assembly-exploded.jpg",
+        "sha256": "14f102c5fb92a2aa091f82d61c471ed2cb909e743505270b2c91b853a5a281d0",
+        "bytes": 17473,
+        "width": 476,
+        "height": 340
+      },
+      "comparison_group": null,
+      "comparison_stage": null
+    },
+    {
+      "id": "right-wheel-side-before",
+      "title": "Before: right wheel side",
+      "exhibit": "04-wheels",
+      "state": "historical",
+      "checkpoint": "V41 conformal trim / Library 35",
+      "record_set_date": "2026-10-29",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "source-right-wheel-side.png",
+      "source_image_sha256": "4f9c84075e760d3c1be27cc27577f1c3241b28da873dd0da51c8088ebfd9f1b4",
+      "source_image_bytes": 1837032,
+      "source_dimensions": [
+        1280,
+        1024
+      ],
+      "source_model_sha256": "c02959f309a8b039bf110fc745a0ff8efa353dcb1f79a510e30f99f14108c10e",
+      "evidence_record": "source-right-wheel-side.json",
+      "evidence_record_sha256": "2b175ffde42ecb9b5d23ea827a3605d03ffe02b39ce3702027fd01ae9918bd59",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Matched camera and lighting isolate the smoother outer circumference. The adopted after image shows the exact current source bytes.",
+      "limits": "Only 400 central facets per front tire were replaced. Inner-sidewall/guard shading, coarse rim/hub spikes, blank tread/rubber finish and rear tires remain open. Not whole-tire or whole-model approval.",
+      "display": {
+        "path": "images/views/right-wheel-side-before.jpg",
+        "sha256": "41b6c6570f39c472ad8073edc3b619f6e2813826d15b257be356a7b4783dee37",
+        "bytes": 214722,
+        "width": 1280,
+        "height": 1024
+      },
+      "thumbnail": {
+        "path": "images/thumbs/right-wheel-side-before.jpg",
+        "sha256": "c4fea77a3641e3d9b9764da791537d4b32044d1eb2134f46c0c09edf9f3d4871",
+        "bytes": 20923,
+        "width": 425,
+        "height": 340
+      },
+      "comparison_group": "right-tire-contour",
+      "comparison_stage": "before"
+    },
+    {
+      "id": "right-wheel-side-after",
+      "title": "After: right wheel side",
+      "exhibit": "04-wheels",
+      "state": "current-source",
+      "checkpoint": "V41-based outer-tire contour / Library 36",
+      "record_set_date": "2026-10-29",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "candidate-right-wheel-side.png",
+      "source_image_sha256": "b9bbd7bb58601ed907bbe219a3704b19c50f3c0278df28b5af2153b560aa4030",
+      "source_image_bytes": 1838164,
+      "source_dimensions": [
+        1280,
+        1024
+      ],
+      "source_model_sha256": "aad667f38b8c7a449b0ea148cefa2a71b0c6eecfd568ad2e5c5b6808e8d06289",
+      "evidence_record": "candidate-right-wheel-side.json",
+      "evidence_record_sha256": "efef02edd8943cf17bbac8a7d6aa6d12010777edbe2999cf8b0726b5170470b7",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Matched camera and lighting isolate the smoother outer circumference. The adopted after image shows the exact current source bytes.",
+      "limits": "Only 400 central facets per front tire were replaced. Inner-sidewall/guard shading, coarse rim/hub spikes, blank tread/rubber finish and rear tires remain open. Not whole-tire or whole-model approval.",
+      "display": {
+        "path": "images/views/right-wheel-side-after.jpg",
+        "sha256": "243e8fa803f229673b4df88d2133c657d38103132e1cbd27e736d68f5bb03fe4",
+        "bytes": 214654,
+        "width": 1280,
+        "height": 1024
+      },
+      "thumbnail": {
+        "path": "images/thumbs/right-wheel-side-after.jpg",
+        "sha256": "632883d3dfca879f496ce1a16d4d2e02097ffd1c76ca94a43a24e15b9d7814e2",
+        "bytes": 20925,
+        "width": 425,
+        "height": 340
+      },
+      "comparison_group": "right-tire-contour",
+      "comparison_stage": "after"
+    },
+    {
+      "id": "left-wheel-oblique-before",
+      "title": "Before: left wheel oblique",
+      "exhibit": "04-wheels",
+      "state": "historical",
+      "checkpoint": "V41 conformal trim / Library 35",
+      "record_set_date": "2026-10-29",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "source-left-wheel-oblique.png",
+      "source_image_sha256": "d048d147c5e2c0d0f0305bf982bdcb8458ed6edccda245e4d0adb2cfffbd7658",
+      "source_image_bytes": 2183838,
+      "source_dimensions": [
+        1280,
+        1024
+      ],
+      "source_model_sha256": "c02959f309a8b039bf110fc745a0ff8efa353dcb1f79a510e30f99f14108c10e",
+      "evidence_record": "source-left-wheel-oblique.json",
+      "evidence_record_sha256": "335a37be6303998c30f962fb71e6bfc0c30c31813326b66c84e41ba3e2a5ee59",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Matched camera and lighting isolate the smoother outer circumference. The adopted after image shows the exact current source bytes.",
+      "limits": "Only 400 central facets per front tire were replaced. Inner-sidewall/guard shading, coarse rim/hub spikes, blank tread/rubber finish and rear tires remain open. Not whole-tire or whole-model approval.",
+      "display": {
+        "path": "images/views/left-wheel-oblique-before.jpg",
+        "sha256": "ced7a1db2f0cba8b197fa2bce0df72533284838120c1102334ac578e637d4593",
+        "bytes": 276296,
+        "width": 1280,
+        "height": 1024
+      },
+      "thumbnail": {
+        "path": "images/thumbs/left-wheel-oblique-before.jpg",
+        "sha256": "9658b7b7209738789382d0698cd618929744ca86f0ca2cb8bdb52bb846551c17",
+        "bytes": 24223,
+        "width": 425,
+        "height": 340
+      },
+      "comparison_group": "left-tire-contour",
+      "comparison_stage": "before"
+    },
+    {
+      "id": "left-wheel-oblique-after",
+      "title": "After: left wheel oblique",
+      "exhibit": "04-wheels",
+      "state": "current-source",
+      "checkpoint": "V41-based outer-tire contour / Library 36",
+      "record_set_date": "2026-10-29",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "candidate-left-wheel-oblique.png",
+      "source_image_sha256": "60fd027cfa9246e9f7cb2ca6715f39168e80d974f3474e37018352ed2250a854",
+      "source_image_bytes": 2183680,
+      "source_dimensions": [
+        1280,
+        1024
+      ],
+      "source_model_sha256": "aad667f38b8c7a449b0ea148cefa2a71b0c6eecfd568ad2e5c5b6808e8d06289",
+      "evidence_record": "candidate-left-wheel-oblique.json",
+      "evidence_record_sha256": "c47d69088e59565df54702442104bd9a8c553a0cd285155b2eb54fc4028b1461",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Matched camera and lighting isolate the smoother outer circumference. The adopted after image shows the exact current source bytes.",
+      "limits": "Only 400 central facets per front tire were replaced. Inner-sidewall/guard shading, coarse rim/hub spikes, blank tread/rubber finish and rear tires remain open. Not whole-tire or whole-model approval.",
+      "display": {
+        "path": "images/views/left-wheel-oblique-after.jpg",
+        "sha256": "0ede917677330971fdea266453649830379ff7310da234788dc8743cbec2b18b",
+        "bytes": 275970,
+        "width": 1280,
+        "height": 1024
+      },
+      "thumbnail": {
+        "path": "images/thumbs/left-wheel-oblique-after.jpg",
+        "sha256": "6e9b23998ef50ecce27371255c7a12eac74ee0b709f23751d9f216bd069e0192",
+        "bytes": 24179,
+        "width": 425,
+        "height": 340
+      },
+      "comparison_group": "left-tire-contour",
+      "comparison_stage": "after"
+    },
+    {
+      "id": "arch-trim-before",
+      "title": "Before: restored pre-fit arch-strip placement",
+      "exhibit": "05-trim",
+      "state": "historical",
+      "checkpoint": "V41 conformal front-arch trim / Library 35",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "conformal-v02-source-placement-left-oblique.png",
+      "source_image_sha256": "7379045cb542252327d1325ef9b06cf85333d6931ae54bf85bd2603d4a0ed7a3",
+      "source_image_bytes": 2263359,
+      "source_dimensions": [
+        1280,
+        880
+      ],
+      "source_model_sha256": "c02959f309a8b039bf110fc745a0ff8efa353dcb1f79a510e30f99f14108c10e",
+      "evidence_record": "SAVED_V41V02_VIEWS.json",
+      "evidence_record_sha256": "e9d446bc088fde48cb32e65b9b4a988d9cd5b83f7cbff868179d018e3844c4cf",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; before is a memory-only source-placement comparison within the recorded V41 review.",
+      "caption": "Matched oblique views of front brightwork source-fit correction.",
+      "limits": "Before restores source strips in memory under the same camera; it is not a separate earlier full saved model. Painted crown, tire/rim, badge and marker defects remain. No factory mounting or game proof.",
+      "display": {
+        "path": "images/views/arch-trim-before.jpg",
+        "sha256": "d0f7cfdb87031843ccb475d3d72bc9ab198d5a1bae95208f5509cdc25b8bc21c",
+        "bytes": 444542,
+        "width": 1280,
+        "height": 880
+      },
+      "thumbnail": {
+        "path": "images/thumbs/arch-trim-before.jpg",
+        "sha256": "99ef9232ea8cbc25852ef5ec2192c74f3e2656918aa904e9e961c19a05feeb70",
+        "bytes": 33619,
+        "width": 480,
+        "height": 330
+      },
+      "comparison_group": "arch-brightwork",
+      "comparison_stage": "before"
+    },
+    {
+      "id": "arch-trim-after",
+      "title": "After: conformal arch brightwork",
+      "exhibit": "05-trim",
+      "state": "historical",
+      "checkpoint": "V41 conformal front-arch trim / Library 35",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "conformal-v02-candidate-left-oblique.png",
+      "source_image_sha256": "1cfc5ffbd0d743bb86a44980379b651f1652e4338dce8f52309a8920dfe0c1b6",
+      "source_image_bytes": 2259679,
+      "source_dimensions": [
+        1280,
+        880
+      ],
+      "source_model_sha256": "c02959f309a8b039bf110fc745a0ff8efa353dcb1f79a510e30f99f14108c10e",
+      "evidence_record": "SAVED_V41V02_VIEWS.json",
+      "evidence_record_sha256": "e9d446bc088fde48cb32e65b9b4a988d9cd5b83f7cbff868179d018e3844c4cf",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; before is a memory-only source-placement comparison within the recorded V41 review.",
+      "caption": "Matched oblique views of front brightwork source-fit correction.",
+      "limits": "Before restores source strips in memory under the same camera; it is not a separate earlier full saved model. Painted crown, tire/rim, badge and marker defects remain. No factory mounting or game proof.",
+      "display": {
+        "path": "images/views/arch-trim-after.jpg",
+        "sha256": "38b482a94c6d61fe224a79a50d02eb5c5e15506c1271f0e69314439a32076275",
+        "bytes": 443366,
+        "width": 1280,
+        "height": 880
+      },
+      "thumbnail": {
+        "path": "images/thumbs/arch-trim-after.jpg",
+        "sha256": "9468b1a027678ac002b4c2139f34842d7b242b955e0d66c46a49988c6c141563",
+        "bytes": 33514,
+        "width": 480,
+        "height": 330
+      },
+      "comparison_group": "arch-brightwork",
+      "comparison_stage": "after"
+    },
+    {
+      "id": "headlamp-exploded",
+      "title": "Inside the headlamp assembly",
+      "exhibit": "05-trim",
+      "state": "historical",
+      "checkpoint": "V07 existing headlamp bezels",
+      "record_set_date": "2026-10-27",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V07-existing-headlamp-parts-exploded.png",
+      "source_image_sha256": "0faa8c81a45b2c0c2029cdc507f7531cb5f47736d3608572a32355a372336308",
+      "source_image_bytes": 660733,
+      "source_dimensions": [
+        1000,
+        700
+      ],
+      "source_model_sha256": "0c352019c60d29feb22315ead3664aba33cac9b873da8946c390a1fdccb1e370",
+      "evidence_record": "V07_VISUAL_SOURCE_MANIFEST.json",
+      "evidence_record_sha256": "a985881128dccebb5d84de4ce9c89e6bf5cfec727bee0ee04e9f52116bed3eb4",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Existing lenses and bezels offset in memory to reveal their separate ownership.",
+      "limits": "Not new fixtures, game damage or a saved open/exploded assembly. Original geometry was not added by this inspection.",
+      "display": {
+        "path": "images/views/headlamp-exploded.jpg",
+        "sha256": "d1fcac4c3a44c68142d03c212bb4e1c8d686ffb6fffeefa46b9e8edb6fca3ff8",
+        "bytes": 63521,
+        "width": 1000,
+        "height": 700
+      },
+      "thumbnail": {
+        "path": "images/thumbs/headlamp-exploded.jpg",
+        "sha256": "5a5aad7e89b9f2dfdece97ca0b8f47c05594bd5b3a660d82c42070f48b4c91a1",
+        "bytes": 17886,
+        "width": 480,
+        "height": 336
+      },
+      "comparison_group": null,
+      "comparison_stage": null
+    },
+    {
+      "id": "seat-front-before",
+      "title": "Before: front-seat motifs",
+      "exhibit": "06-interior",
+      "state": "historical",
+      "checkpoint": "V26 source before V27",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V27-before-passenger-seat-design-front.png",
+      "source_image_sha256": "ceae1b38be456487561c1bd03c231bb34af72aed56e8a7ab3f874a671e8d43f6",
+      "source_image_bytes": 792723,
+      "source_dimensions": [
+        1000,
+        750
+      ],
+      "source_model_sha256": "38154b89da01bdfc7f662ba18f0708fa6f1160399128e4ab46d03a4a429000f4",
+      "evidence_record": "independent-final-view-review.json",
+      "evidence_record_sha256": "e42b5bc5a6c8f45302c89678551b6a30502b163314e80245186cec04fc255326",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Passenger seat is image-left. V27 reverses its design so both vertical bands sit outboard; the original driver design is preserved.",
+      "limits": "Texture/material design correction on unchanged seat geometry. Finite projection over an asymmetric seat, not exact spatial pixel reflection, full-cabin completion or a current-source cabin render.",
+      "display": {
+        "path": "images/views/seat-front-before.jpg",
+        "sha256": "3a4a64010304de2a941c07527a66cd39d741206fdf5e6e744cdaedceff5762f2",
+        "bytes": 58532,
+        "width": 1000,
+        "height": 750
+      },
+      "thumbnail": {
+        "path": "images/thumbs/seat-front-before.jpg",
+        "sha256": "f62e459e180efa393a28c4355c0eca207951b7be583bb4fb5647931fbe123ce0",
+        "bytes": 14375,
+        "width": 453,
+        "height": 340
+      },
+      "comparison_group": "seat-front",
+      "comparison_stage": "before"
+    },
+    {
+      "id": "seat-front-after",
+      "title": "After: front-seat motifs",
+      "exhibit": "06-interior",
+      "state": "historical",
+      "checkpoint": "V27 adopted passenger-seat design",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V27-after-passenger-seat-design-front.png",
+      "source_image_sha256": "c79cad7470690665631014f45ab49ec795149093cc028391a79594cada9a2381",
+      "source_image_bytes": 794233,
+      "source_dimensions": [
+        1000,
+        750
+      ],
+      "source_model_sha256": "3effbed795795359791c8c7dc067261094f7611e38502d28247e1cb1dc3d764c",
+      "evidence_record": "independent-final-view-review.json",
+      "evidence_record_sha256": "e42b5bc5a6c8f45302c89678551b6a30502b163314e80245186cec04fc255326",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Passenger seat is image-left. V27 reverses its design so both vertical bands sit outboard; the original driver design is preserved.",
+      "limits": "Texture/material design correction on unchanged seat geometry. Finite projection over an asymmetric seat, not exact spatial pixel reflection, full-cabin completion or a current-source cabin render.",
+      "display": {
+        "path": "images/views/seat-front-after.jpg",
+        "sha256": "1b528468a177564a7b5208028d4ad6a004e10023da31bf38558b08a847dca33d",
+        "bytes": 59199,
+        "width": 1000,
+        "height": 750
+      },
+      "thumbnail": {
+        "path": "images/thumbs/seat-front-after.jpg",
+        "sha256": "b5eaec3b68feca4170e2c7922c2b32cc02d92242d922c0666f56ea343235439a",
+        "bytes": 14523,
+        "width": 453,
+        "height": 340
+      },
+      "comparison_group": "seat-front",
+      "comparison_stage": "after"
+    },
+    {
+      "id": "seat-overhead-before",
+      "title": "Before: seat motifs from above",
+      "exhibit": "06-interior",
+      "state": "historical",
+      "checkpoint": "V26 source before V27",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V27-before-passenger-seat-design-overhead.png",
+      "source_image_sha256": "ef02ca8974f640863d16b2539f5d0b7a35a1425fe3dfa3973f2b7ef83f42a545",
+      "source_image_bytes": 777528,
+      "source_dimensions": [
+        1000,
+        750
+      ],
+      "source_model_sha256": "38154b89da01bdfc7f662ba18f0708fa6f1160399128e4ab46d03a4a429000f4",
+      "evidence_record": "independent-final-view-review.json",
+      "evidence_record_sha256": "e42b5bc5a6c8f45302c89678551b6a30502b163314e80245186cec04fc255326",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Passenger seat is image-left. V27 reverses its design so both vertical bands sit outboard; the original driver design is preserved.",
+      "limits": "Texture/material design correction on unchanged seat geometry. Finite projection over an asymmetric seat, not exact spatial pixel reflection, full-cabin completion or a current-source cabin render.",
+      "display": {
+        "path": "images/views/seat-overhead-before.jpg",
+        "sha256": "225c8b42b3326c2b94212ae08458ffc1243b941ae0734dd259f7206d722f01e2",
+        "bytes": 54463,
+        "width": 1000,
+        "height": 750
+      },
+      "thumbnail": {
+        "path": "images/thumbs/seat-overhead-before.jpg",
+        "sha256": "c216afa5bd856d5d4551e18f53558240423068aa6c850e178cbde5fdd78f5832",
+        "bytes": 13274,
+        "width": 453,
+        "height": 340
+      },
+      "comparison_group": "seat-overhead",
+      "comparison_stage": "before"
+    },
+    {
+      "id": "seat-overhead-after",
+      "title": "After: seat motifs from above",
+      "exhibit": "06-interior",
+      "state": "historical",
+      "checkpoint": "V27 adopted passenger-seat design",
+      "record_set_date": "2026-10-28",
+      "render_timestamp": null,
+      "render_timestamp_note": "Unrecorded in inspected source receipt; record-set date is not asserted as render date.",
+      "source_image_filename": "V27-after-passenger-seat-design-overhead.png",
+      "source_image_sha256": "0ecce60fbc338c4e5c368c166ed7e6a676fe888bc1c2f073189f96c140373bc9",
+      "source_image_bytes": 781962,
+      "source_dimensions": [
+        1000,
+        750
+      ],
+      "source_model_sha256": "3effbed795795359791c8c7dc067261094f7611e38502d28247e1cb1dc3d764c",
+      "evidence_record": "independent-final-view-review.json",
+      "evidence_record_sha256": "e42b5bc5a6c8f45302c89678551b6a30502b163314e80245186cec04fc255326",
+      "image_hash_matched_to_source_receipt": true,
+      "source_note": "Actual original authored-car render; not a game screenshot or third-party photograph.",
+      "caption": "Passenger seat is image-left. V27 reverses its design so both vertical bands sit outboard; the original driver design is preserved.",
+      "limits": "Texture/material design correction on unchanged seat geometry. Finite projection over an asymmetric seat, not exact spatial pixel reflection, full-cabin completion or a current-source cabin render.",
+      "display": {
+        "path": "images/views/seat-overhead-after.jpg",
+        "sha256": "efcac4de42b71950d6b03021a940629cef95e38d480d28e5bb66d2aa490abae6",
+        "bytes": 55342,
+        "width": 1000,
+        "height": 750
+      },
+      "thumbnail": {
+        "path": "images/thumbs/seat-overhead-after.jpg",
+        "sha256": "80b410d9a25355a941642af4452e530ac36515ee4e8fb617e4b5e9ec8d7d6e2d",
+        "bytes": 13485,
+        "width": 453,
+        "height": 340
+      },
+      "comparison_group": "seat-overhead",
+      "comparison_stage": "after"
+    }
+  ]
+}

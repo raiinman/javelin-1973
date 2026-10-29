@@ -4,15 +4,27 @@
 
 A reusable, editable **1973 AMC Javelin AMX Pierre Cardin vehicle asset** by Dead Signal Interactive. Private development repository. The vehicle is the product; game integrations are separate, checkpoint-specific delivery lanes.
 
-![Historical BodyOnly V03 front-quarter authoring render, not the current V41 model](current-work/progress/body-only-v03-front.png)
+[![Current-source Javelin, open the whole-car exhibit](current-work/gallery/images/views/current-whole-car.jpg)](current-work/gallery/01-whole-car.md)
 
-**Historical image: BodyOnly V03, 2026-10-27.** This actual authoring render is retained for continuity. It does not depict current V41 progress, prove final likeness or show in-game acceptance. Current-model images require a separately approved publication.
+**Current source: V41-based outer-tire contour, Library 36.** Existing original render of the exact adopted bytes, not a new render or in-game acceptance. [Enter the visual gallery →](current-work/gallery/README.md)
 
 ![Asset](https://img.shields.io/badge/Asset-editable_vehicle-355844?logo=blender&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-visual_refinement-b68139)
 ![Access](https://img.shields.io/badge/Repository-private-555555?logo=github&logoColor=white)
 
 [Current asset](current-work/README.md) · [Status and gates](docs/project-status.md) · [Artifact manifest](current-work/artifact-manifest.json) · [Project specification](SPEC.md) · [Real-car research](docs/research-index.md)
+
+## Walk through the Javelin
+
+Six linked exhibits, 20 original renders. Open a room, then follow its individual images, before/after pairs, source cards and back/next links. Historical work is labeled separately from current source.
+
+<table>
+<tr><td align="center"><a href="current-work/gallery/01-whole-car.md"><img src="current-work/gallery/images/thumbs/current-whole-car.jpg" width="300" alt="The whole car exhibit: The current editable Javelin"></a><br><a href="current-work/gallery/01-whole-car.md"><b>01 · The whole car</b></a><br>Current source + history</td><td align="center"><a href="current-work/gallery/02-body.md"><img src="current-work/gallery/images/thumbs/body-bay-after.jpg" width="300" alt="Body construction exhibit: After: minimal front-body repair"></a><br><a href="current-work/gallery/02-body.md"><b>02 · Body construction</b></a><br>Historical development</td></tr>
+<tr><td align="center"><a href="current-work/gallery/03-panels.md"><img src="current-work/gallery/images/thumbs/trunk-open.jpg" width="300" alt="Panels and ownership exhibit: Open trunk and rear skin"></a><br><a href="current-work/gallery/03-panels.md"><b>03 · Panels and ownership</b></a><br>Historical development</td><td align="center"><a href="current-work/gallery/04-wheels.md"><img src="current-work/gallery/images/thumbs/right-wheel-side-after.jpg" width="300" alt="Wheels and tires exhibit: After: right wheel side"></a><br><a href="current-work/gallery/04-wheels.md"><b>04 · Wheels and tires</b></a><br>Current source + history</td></tr>
+<tr><td align="center"><a href="current-work/gallery/05-trim.md"><img src="current-work/gallery/images/thumbs/arch-trim-after.jpg" width="300" alt="Brightwork and lamps exhibit: After: conformal arch brightwork"></a><br><a href="current-work/gallery/05-trim.md"><b>05 · Brightwork and lamps</b></a><br>Historical development</td><td align="center"><a href="current-work/gallery/06-interior.md"><img src="current-work/gallery/images/thumbs/seat-front-after.jpg" width="300" alt="Inside the cabin exhibit: After: front-seat motifs"></a><br><a href="current-work/gallery/06-interior.md"><b>06 · Inside the cabin</b></a><br>Historical development</td></tr>
+</table>
+
+[Start with the whole car →](current-work/gallery/01-whole-car.md) · [Gallery evidence](current-work/gallery/evidence.md)
 
 ## Project direction
 

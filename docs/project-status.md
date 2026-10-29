@@ -10,7 +10,7 @@ The asset remains under visual refinement. Adoption/source checks do not certify
 
 The V41 binary remains external to this Git tree. A clone does not contain it or the complete cloud development archive. The existing `assets/current-stl/` snapshot, unchanged `source.json`, `assets/Javelin73PC.blend` and `Javelin73PC/` remain historical work. `tools/build_mod.py` builds the older procedural model, not V41. Do not overwrite current source/UVs using old filename labels or palette-only export.
 
-The README hero and existing progress images depict **historical V03**, not V41. No new captures/assets are published by this refresh.
+The README now leads into the [linked visual gallery](../current-work/gallery/README.md) with an existing verified render of the exact current Library 36 bytes. V03 images and other earlier exhibits remain explicitly historical. Twenty curated original renders are shown through modest optimized derivatives; no new render, model change, game/runtime screenshot or private capture was required.
 
 ## Independent integration lanes
 

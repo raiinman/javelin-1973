@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased - 2026-10-29 visual gallery
+
+### Added
+- Museum-style visual walkthrough: whole car, body, panels, wheels, trim and interior, with 20 curated original renders and individual source cards.
+- Clickable optimized thumbnails, meaningful historical/current before-and-after pairs, checkpoint/date limits, source/derivative hashes and back/next navigation.
+- Existing exact-current Library 36 overview render, replacing the historical V03 image as the README entry point. V03 remains preserved and labeled in the historical exhibit.
+
+No fresh renders, model/exporter/runtime changes, game/reference screenshots or private captures are included. Earlier documentation-before-rename events below retain their historical scope.
+
 ## Unreleased - 2026-10-29 asset-scope documentation
 
 ### Changed

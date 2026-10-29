@@ -1,5 +1,5 @@
 # Purpose
-Own the portable canonical editable Javelin asset index, documentation images and bounded verification evidence.
+Own the portable canonical editable Javelin asset index, documentation images, the linked visual gallery and bounded verification evidence.
 # Ownership
 Root owns project scope, research/docs, historical assets and the independent Camera/Fast Load products. This subtree records exact external artifact identity, adoption and evidence limits, not engine implementation.
 # Local Contracts
@@ -11,8 +11,8 @@ Root owns project scope, research/docs, historical assets and the independent Ca
 - Wreckfest uses Blender / the existing writer into official `bgeometry` tooling; Max is not required. The patched-V40 temporary 158 donor-sphere garage observation is not driving or physics acceptance and does not validate V41.
 - Preserve privacy and research attribution. No private download links, machine inventories, donor assets, game binaries, secrets or machine-local paths.
 # Work Guidance
-Use exact source hashes and checkpoint-specific evidence. Retain the current V03 image files as explicitly historical; publish no new captures/assets in this housekeeping. Root review is required before publication.
+Use exact source hashes and checkpoint-specific evidence. Owner authorized a curated museum-style gallery of original eligible authored-car renders on 2026-10-29, superseding the temporary no-new-render-publication limit for this bounded scope. Retain V03 images as historical; exclude third-party/reference/game/runtime/private captures and model binaries. Reuse verified existing images; coordinate any bounded fresh cloud render with the modeling owner without geometry changes. Root review of the scoped diff and image manifest is required before publication.
 # Verification
 Check JSON, repository links, exact artifact/adoption identity and inherited receipt limits. No model scripts, exporters or game tests run for this documentation-only refresh.
 # Child DOX Index
-None.
+- `gallery/AGENTS.md`: curated exhibit navigation, individual render cards, image eligibility, display derivatives, provenance and link verification.

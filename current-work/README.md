@@ -2,6 +2,8 @@
 
 Snapshot: **2026-10-29**. Project: **DSI Javelin 1973**, a reusable editable vehicle asset with independent integration gates.
 
+[Explore the linked visual gallery →](gallery/README.md) · [Current whole-car render](gallery/works/current-whole-car.md)
+
 ## Current source and adoption
 
 Current cloud authority is the **V41-based outer-front-tire contour checkpoint, Library version 36**, stored as `DSI_Javelin_Current_Cloud_Model.blend`.
@@ -33,7 +35,7 @@ Continue reference-driven visual refinement of the canonical editable vehicle, b
 
 ![Historical actual BodyOnly V03 rear-quarter authoring render, not current V41](progress/body-only-v03-rear.png)
 
-These existing images depict **BodyOnly V03 on 2026-10-27**, not current V41. They remain for continuity only. They are actual authoring renders, not in-game screenshots or final likeness approval. No new capture/asset is published by this housekeeping; current-model image publication requires separate approval.
+These existing images depict **BodyOnly V03 on 2026-10-27**, not current V41. They remain for continuity only. They are actual authoring renders, not in-game screenshots or final likeness approval. The owner subsequently authorized a curated original-render gallery. Its [current-source render](gallery/works/current-whole-car.md), historical exhibits and [image manifest](gallery/image-manifest.json) remain separately labeled; no fresh render or model change was needed.
 
 The [original V03 receipt](receipts/body-only-v03-preservation.json) retains its 15 preservation/scope checks. V03 hid/excluded optional new underside work, restored original floor/tunnel and preserved original pipe pieces without adding/deleting raw geometry. Those results belong to V03, not V41.
 

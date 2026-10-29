@@ -43,6 +43,6 @@ The current cloud source is not included in a clone. Do not rename old Git-store
 
 ## Boundaries
 
-Keep this repository private and preserve history, source/binaries, licenses, installations, mods and saves. Do not copy unrelated donor-mod assets. No PC control, model/exporter implementation, game execution, asset upload or new image publication is part of this documentation refresh. The repository was renamed on 2026-10-29 to [raiinman/javelin-1973](https://github.com/raiinman/javelin-1973), preserving its identity, private visibility, default `main` branch and history.
+Keep this repository private and preserve history, source/binaries, licenses, installations, mods and saves. Do not copy unrelated donor-mod assets. No PC control, model/exporter implementation, game execution or model-binary upload is part of this documentation work. The owner authorized a curated linked gallery of original eligible authored-car renders and optimized derivatives, excluding third-party/reference/game/runtime/private captures; its scoped diff and image manifest require root review. The repository was renamed on 2026-10-29 to [raiinman/javelin-1973](https://github.com/raiinman/javelin-1973), preserving its identity, private visibility, default `main` branch and history.
 
 Earlier PZ-specific specifications and test results remain available in Git history and the linked development records. Their local install/test instructions do not authorize a new run for this broader asset project.
