@@ -1,10 +1,10 @@
 # Tools
 
 ## Purpose
-Generate, validate and install the original car mod.
+Preserve the historical Project Zomboid procedural build, validation and installation toolchain. These tools do not reproduce the current cloud canonical asset indexed in `../current-work/README.md`.
 
 ## Ownership
-Python build/install tools, native Java import probes and disposable Lua runtime audits.
+Historical PZ Python build/install tools, native Java import probes and disposable Lua runtime audits. Current reusable asset authoring and Wreckfest integration are separate lanes; documentation housekeeping does not resume this toolchain.
 
 ## Local Contracts
 - `clean_fbx.py` removes optional FBX provenance nodes and strips texture references to filenames after each export, rebuilding node offsets while preserving geometry, rigging, clips and property payloads. Native import remains the compatibility gate.

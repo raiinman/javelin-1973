@@ -4,8 +4,8 @@
 Persist the target, evidence boundaries and section-review decisions.
 
 ## Ownership
-`spec.json` owns reconstruction intent. `reviews.jsonl` records inspected iterations. Production generators remain in `../tools/` and the preserved production source in `../assets/`. The active full-STL conversion and its reproducible scripts are staged in `../build/stl-full-trace/`, under the contract in `../docs/full-stl-trace.md`.
-- `../assets/current-stl/` carries the verified assembled checkpoint for a fresh clone; `../docs/project-status.md` distinguishes it from earlier procedural work and local experimental history.
+`spec.json` preserves reconstruction intent and checkpoint-specific history. `reviews.jsonl` records inspected iterations. Current canonical asset authority lives in `../current-work/README.md` and its manifest; historical source paths and native results here do not override it. Production generators remain in `../tools/` and the preserved production source in `../assets/`. The historical full-STL conversion and its reproducible scripts are staged in `../build/stl-full-trace/`, under the contract in `../docs/full-stl-trace.md`.
+- `../assets/current-stl/` carries an older historical assembled checkpoint for a fresh clone, not current V41. The canonical cloud binary remains external; `../docs/project-status.md` records separate asset and integration gates.
 
 ## Local Contracts
 - Record observed improvements and remaining defects separately from mathematical checks and native-game approval.

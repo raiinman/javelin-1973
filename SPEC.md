@@ -1,43 +1,48 @@
-# 1973 AMC Javelin AMX Pierre Cardin
+# DSI Javelin 1973
 
-## Objective and authorization
-Build the driveable car in Bob La Cross's reference video for the installed Project Zomboid 42.20.0. The user's request authorizes implementation and local installation. Keep existing mods and saves intact.
+## Objective
 
-## Assumptions
-- Target Build 42.20.0 first, using the installed game's scripts as the authoritative compatibility reference.
-- Depict the red, four-seat, left-hand-drive restored AMX with Cardin upholstery, manual shifter and 360-labelled air cleaner visible in the video. That label does not authenticate engine internals or original factory options.
-- Create original geometry, textures, rigging and scripts from the video. The unrelated broken mod is technical reference only; none of its assets are part of this project.
-- A separate mod ID avoids replacing existing Javelin prototypes.
+Develop a reusable, editable 1973 AMC Javelin AMX Pierre Cardin vehicle asset from the user-owned STL and restored red reference car. The canonical vehicle source is independent of any one game. Reusability is the project direction, not a claim that the model is finished, optimized or ready for every engine.
 
-## Structure and style
-- `Javelin73PC/common/media/`: normalized models and textures.
-- `Javelin73PC/42/`: mod metadata, vehicle scripts, server spawn and loot registration, translations.
-- `tools/`: reproducible Blender build, package validation, local installation.
-- `docs/`: source provenance and verification results.
-- `assets/`: editable Blender source and preview renders.
-- Lua follows the game's table conventions, e.g. `vehicles["Base.Javelin73PC"] = { index = -1, spawnChance = 1 }`.
+Current source authority and exact identity live in [current-work](current-work/README.md) and its [artifact manifest](current-work/artifact-manifest.json). V41 supersedes earlier model checkpoints, not their research, preservation duties or evidence history.
 
-## Commands
-- Build: `& 'C:/Program Files/Blender Foundation/Blender 5.2/blender.exe' --background --python tools/build_mod.py`
-- Validate: `python tools/validate_mod.py --game 'C:/Games/ProjectZomboid'`
-- Install: `python tools/install_mod.py`
+## Source and visual requirements
 
-## Plan and checks
-1. Inspect the source video and local game templates. Establish units, axes, closed pose and asset provenance.
-   The four-pass factory/video research in `docs/research-1973.md` supplies the dimension and trim baseline; retain the video car's visible restored configuration.
-2. Create original meshes, red 1973 AMX appearance and striped upholstery. Render a preview and check mesh extents and part alignment.
-3. Use native B42 mechanics templates, two doors, four passenger positions, sports parts, gasoline, trunk, headlights, loot, and rare parking/good/sport spawns. No legacy recipes or global mechanics-overlay replacement.
-4. Validate model/texture/template/Lua references and geometry; install a new local mod folder. Test loading and spawning in an isolated game cache if the runtime is available.
+- Preserve the user-owned STL's overall body authority and original project work. Preserve accepted Meshy cockpit appearance while fitting and reducing it as needed.
+- Depict the reference car's red body, black hood/fender T, close-fitting chrome side pipes, recognizable trim, four rear lamps and Cardin cabin. The visible 360 air-cleaner label does not authenticate engine internals or factory options.
+- Keep geometry, panel ownership, rig/motion, material and texture organization editable. Preserve original and superseded work as inactive history instead of overwriting it.
+- Continue section-based reference comparison and whole-vehicle visual review. Source checks and adopted iterations are not final likeness approval or a numerical fidelity measurement.
+- Correct body and slicing as needed without inventing unnecessary new underneath structure. Hidden optional modules are not automatically part of an export.
 
-## Success criteria
-- Discoverable as a separate Build 42 mod with vehicle `Base.Javelin73PC`.
-- Red Javelin AMX silhouette with Cardin interior, four individual rear lamps and the video's trim details.
-- Four wheel models, two functional doors, usable hood/trunk, seats and ordinary maintenance using current vanilla templates.
-- World spawn and loot registration does not alter other vehicles.
-- No missing mod-owned references, undefined legacy callbacks or unbalanced scripts.
-- Verification report distinguishes static, Blender, game-load and actual driving checks.
+## Structure and ownership
+
+| Location | Role |
+| --- | --- |
+| `current-work/` | Current external canonical artifact identity, bounded receipts and documentation images |
+| `docs/` | Portable status, research, integration gates and checkpoint-specific history |
+| `assets/` | Preserved original artwork and historical model sources |
+| `.img2blender/` | Reconstruction intent and historical section-review evidence |
+| `Javelin73PC/`, `tools/` | Historical PZ package and its procedural build/verification tools |
+| `camera/`, `fast-load/` | Independent PZ products with separate contracts and unchanged status |
+
+The current cloud source is not included in a clone. Do not rename old Git-stored binaries or procedural generators to imply they reproduce it.
+
+## Independent acceptance gates
+
+1. **Editable asset:** verify exact source identity, visible assembly, packed/external dependencies, units/axes, ownership, normals, seams, motion and material references against the reviewed checkpoint.
+2. **Visual refinement:** inspect actual pixels against the correct target references in matched and complementary views. Preserve disagreements and inferred dimensions.
+3. **Target export/import:** validate the exact exported source, writer/tool versions, transforms, materials and target requirements. A successful export is not successful native behavior.
+4. **Native runtime:** assess appearance, controls, driving, braking, physics/collision, damage and persistence as applicable to that target. Do not transfer acceptance between checkpoints or games.
+5. **Release:** separately review packaging, performance, provenance/license notices and publication authorization. Source synchronization alone is not release authority.
+
+## Integration lanes
+
+- **Wreckfest:** active runtime-fix ownership belongs to Claude. Use Blender / the existing writer into official `bgeometry` tooling, not a mandatory Max conversion. The user's patched-V40 garage screenshot is a bounded milestone only. See [integration status](docs/integration-status.md).
+- **Project Zomboid:** preserve the historical `Javelin73PC` integration and its unique identifiers. The last user-confirmed historical target is 42.20.4; older 42.20.0 syntax records retain their original scope. No V41 port or current native acceptance is claimed.
+- **Other targets:** research and adapt only within separate authorization. No universal engine support promise.
 
 ## Boundaries
-- Always: preserve other projects and saves, use unique asset names, validate before installation.
-- Ask first: public Workshop publishing or unresolved decisions outside the requested car mod.
-- Never: change game installation files, overwrite previous Javelin prototypes, silently claim runtime tests passed.
+
+Keep this repository private and preserve history, source/binaries, licenses, installations, mods and saves. Do not copy unrelated donor-mod assets. No PC control, model/exporter implementation, game execution, asset upload or new image publication is part of this documentation refresh. Root selected the neutral repository name `javelin-1973`; this documentation update does not execute a URL rename.
+
+Earlier PZ-specific specifications and test results remain available in Git history and the linked development records. Their local install/test instructions do not authorize a new run for this broader asset project.

@@ -1,7 +1,7 @@
 # Mod package
 
 ## Purpose
-Original 1973 Javelin AMX Pierre Cardin for Build 42.
+Preserved historical Project Zomboid Build 42 integration for the 1973 Javelin AMX Pierre Cardin. This package is not the current cloud canonical vehicle or a V41 export; see `../current-work/README.md`.
 
 ## Ownership
 `common/media/` assets and `42/` scripts and metadata.

@@ -1,0 +1,20 @@
+{
+  "schema": "dsi.javelin.portable-adoption-evidence.v1",
+  "snapshot_date": "2026-10-29",
+  "status": "ADOPTED exact reviewed outer-front-tire contour bytes; readback verified",
+  "source": "Portable summary of inspected cloud adoption receipt; private paths and download links omitted",
+  "library_model_id": "libfile_dc7967b8d0088191ad558887bc71a3dd",
+  "library_version": 36,
+  "filename": "DSI_Javelin_Current_Cloud_Model.blend",
+  "sha256": "aad667f38b8c7a449b0ea148cefa2a71b0c6eecfd568ad2e5c5b6808e8d06289",
+  "bytes": 39160325,
+  "canonical_immutable_and_library_readback_hash_size_match": true,
+  "predecessor_sha256": "c02959f309a8b039bf110fc745a0ff8efa353dcb1f79a510e30f99f14108c10e",
+  "predecessor_bytes": 38683044,
+  "predecessor_preserved": true,
+  "scope": "400 central faces per front tire only; original 309/310 collars, all old points, beads, rim, arch, rig and unrelated assets preserved by exact reviewed identity",
+  "native_rebuild_or_save": false,
+  "new_renders": false,
+  "runtime_physics_export_installed_mod_changed": false,
+  "limits": "Limited outer contour improvement only. V41-based WIP, not whole tire/model or 80 percent acceptance. Collar family and R57 remain parked; prior history unchanged. Historical source-manifest predecessor references bind to the immutable prior milestone, not the current pointer."
+}

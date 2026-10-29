@@ -1,14 +1,14 @@
 {
   "subject": "1973 AMC Javelin AMX Pierre Cardin, restored red video car",
   "activeWorkflow": {
-    "scope": "Trace the entire user-owned STL, superseding the front-only hybrid work",
+    "scope": "Historical full user-owned STL conversion, superseding earlier front-only hybrid work; current cloud authority is indexed separately",
     "shapeMaster": "User-supplied AMC Javelin AMX Pierre Cardin 1973 edition.stl (local source)",
     "shapeMasterSha256": "8eff79cfebdd21312fd8ca68359e60b02da47ad3fb2efaf4d5536f0bb9541ed8",
     "workingBranch": "build/stl-full-trace/",
     "contract": "docs/full-stl-trace.md",
     "targetVideoRole": "Fitted equipment, artwork and interior",
     "priorProduction": "Preserved, not replaced by the fused donor or unverified conversion",
-    "status": "Combined Meshy cockpit, V03 closures, separate skirts, brightwork and closer pipes saved and reopened with current assembly visible in Material Preview on 2026-10-27. No geometry changed during visibility recovery. Textured export and isolated staging are documented in docs/meshy-native-test.md. Native driving, braking, interactions, appearance and save/reload gates require reconciliation against the exact tested checkpoint.",
+    "status": "Historical saved assembly and target-specific observations retained below. Not current canonical source or proof of V41 native acceptance. Combined Meshy cockpit, V03 closures, separate skirts, brightwork and closer pipes saved and reopened with current assembly visible in Material Preview on 2026-10-27. No geometry changed during visibility recovery. Textured export and isolated staging are documented in docs/meshy-native-test.md. Native driving, braking, interactions, appearance and save/reload gates require reconciliation against the exact tested checkpoint.",
     "workingModel": "build/stl-full-trace/slice-v03/integration/prototype-meshy-exterior-trim/DSI_Javelin_Meshy_Exterior_Trim_Pipes.blend",
     "workingSha256": "3b7d355145773c8ed895a688ca10762ad670b754a3255100d0605ac171500d64",
     "repositorySnapshot": "assets/current-stl/Javelin73PC-current.blend",
@@ -45,7 +45,7 @@
       "role": "four complete supplemental comparisons"
     }
   ],
-  "intendedUse": "original editable rigged Project Zomboid vehicle",
+  "intendedUse": "reusable editable vehicle asset, with separate target-specific integrations",
   "style": "realistic target likeness",
   "parityTarget": {
     "exterior": "at least90% reference likeness",
@@ -139,7 +139,7 @@
       914,
       523
     ],
-    "currentFocus": "Complete STL-faithful usable slice before fine details; D front-well closure source/export checked, native Hood defect remains open"
+    "currentFocus": "Current canonical visual/source refinement is indexed in current-work/README.md. Existing PZ native-review and iteration fields retain historical checkpoint limits."
   },
   "cameraEvidence": {
     "projection": "fixed orthographic diagnostics; balanced/contact sensitivity alternatives and cycle4 onward50mm/40mm review estimates use actual914x523 frames; cycle3 and older914x518 estimates remain historical diagnostics",
@@ -284,5 +284,14 @@
     "strictOutsideShading": "FAILED retained; root explicitly accepts bounded464 unrelated trim/cowl corners max0.004889deg/0.239micrometres after actual render review; mapped front-terminal518corners separate",
     "nativeState": "Production checkpoint preserved, not installed or natively visually reviewed; active live inspection is the full-STL working branch in activeWorkflow.",
     "limits": "small transverse improvement; raised long crest and terminal/arch fullness remain; all sections open; no likeness percentage"
+  },
+  "currentCanonicalAsset": {
+    "project": "DSI Javelin 1973",
+    "purpose": "Reusable editable 1973 Javelin vehicle asset; not PZ-only or universally engine-ready",
+    "authority": "current-work/artifact-manifest.json",
+    "checkpoint": "V41",
+    "includedInClone": false,
+    "integrationStatus": "docs/integration-status.md",
+    "historicalRecordBoundary": "existing activeWorkflow/currentIteration fields retain earlier checkpoint observations, not current-source authority"
   }
 }

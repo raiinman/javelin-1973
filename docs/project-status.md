@@ -1,20 +1,28 @@
 # Project status and takeover
 
-Snapshot: 2026-10-27 18:48 UTC. This repository remains private. Read root and applicable child `AGENTS.md` before editing.
+Snapshot: **2026-10-29**. **DSI Javelin 1973** is a reusable editable vehicle asset, with separate target integrations. This repository remains private. Read root and applicable child `AGENTS.md` before editing.
 
-## Current vehicle: body correction and slicing
+## Canonical editable asset
 
-The reviewed **BodyOnly V03** checkpoint, SHA-256 `668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90`, is current authoring authority. [Current work](../current-work/README.md), [artifact manifest](../current-work/artifact-manifest.json), [15-check scope/preservation receipt](../current-work/receipts/body-only-v03-preservation.json).
+**V41** is current cloud authoring authority, SHA-256 `aad667f38b8c7a449b0ea148cefa2a71b0c6eecfd568ad2e5c5b6808e8d06289`. The exact reviewed outer-tire candidate was adopted without an additional geometry edit; the prior canonical source remains preserved. [Current work](../current-work/README.md), [artifact manifest](../current-work/artifact-manifest.json).
 
-User direction: the elaborate new underneath structure is unnecessary for this Project Zomboid task. Correct the existing body geometry and slice it properly; do not add more now. V03 preserves all optional work but hides/excludes 69 new underside meshes and four empties, restores the original main floor/tunnel and retains the original side pipes and rear structures. This scope correction added/deleted no raw geometry. Actual body repair is pending review, not certified by the preservation checks.
+The asset remains under visual refinement. Adoption/source checks do not certify final likeness, continuous clearance, whole-car quality or engine readiness. Preserve the user-owned STL authority, accepted cockpit, original artwork and optional hidden/export-excluded underside history. Do not add unnecessary underneath structure.
 
-Current user-confirmed PZ target is 42.20.4; Blender authoring is 5.2.1. No V03 export/native-game acceptance is claimed. Earlier V01 runtime experiments and old package receipts are historical input-specific evidence, not validation of the current model. The later goal is Wreckfest for PC installed through the Xbox app/Microsoft Store. Custom-mod/import support for this exact edition and the delivery route remain unverified.
+The V41 binary remains external to this Git tree. A clone does not contain it or the complete cloud development archive. The existing `assets/current-stl/` snapshot, unchanged `source.json`, `assets/Javelin73PC.blend` and `Javelin73PC/` remain historical work. `tools/build_mod.py` builds the older procedural model, not V41. Do not overwrite current source/UVs using old filename labels or palette-only export.
 
-## Research, history and clone limits
+The README hero and existing progress images depict **historical V03**, not V41. No new captures/assets are published by this refresh.
 
-[Actual-car research remains relevant](research-index.md). Preserve measurements, photo/video citations, disagreements and provenance. Superseded model critiques apply to their recorded checkpoints.
+## Independent integration lanes
 
-The V03 binary remains external to this Git tree. A clone does not contain it or the full cloud development archive. The existing `assets/current-stl/` snapshot, its unchanged `source.json`, `assets/Javelin73PC.blend` and `Javelin73PC/` remain historical work. `tools/build_mod.py` builds the older procedural model, not V03. Do not use old filename labels or palette-only export to overwrite the newer source/cockpit.
+- **Wreckfest:** Claude owns the current runtime fix. User screenshot evidence shows patched V40 with the temporary 158 donor-sphere workaround reaches the garage. Driving and physics remain unaccepted; this does not validate V41. Blender / the existing writer → official `bgeometry` tooling is the route, with no Max requirement.
+- **Project Zomboid:** preserved historical package and research, last user-confirmed target 42.20.4. Older input-specific receipts are not current-model approval; this housekeeping resumes no PZ work.
+- **Other targets:** potential reuse, requiring separate target-specific export/import, appearance, physics/performance and runtime gates.
+
+[Integration status and preserved failure boundaries](integration-status.md). [Asset specification](../SPEC.md).
+
+## Research and history
+
+[Actual-car research remains relevant](research-index.md). Preserve measurements, photo/video citations, source disagreements and provenance. Superseded model critiques apply to their recorded checkpoints. Keep original crash/failure records separate from later workaround success; do not rewrite history as a pass.
 
 ## Camera
 
@@ -26,4 +34,6 @@ Revision **0.0.8 is explicitly untested**. Read [README](../fast-load/README.md)
 
 ## Environment and publication boundaries
 
-The current native environment is not reproduced by a clone. Existing game/Toolkit/profile prerequisites remain external; see [Toolkit setup](toolkit-setup.md). Preserve normal saves, unrelated mods, game files and shortcuts. Source synchronization is not Workshop-publication authority. Keep repository visibility private.
+The native environment is not reproduced by a clone. Existing game/Toolkit/profile prerequisites remain external; see [historical Toolkit setup](toolkit-setup.md). Preserve normal saves, unrelated mods, game files and shortcuts. No PC, game, exporter or implementation actions are part of this docs refresh.
+
+Root selected the neutral repository name `javelin-1973`; this documentation update does not itself change the URL. External clones/remotes/integrations are an unverified migration follow-up, not a reason to resume PC work. Keep visibility private and never reuse the old repository name after a verified rename.

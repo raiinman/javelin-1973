@@ -1,31 +1,37 @@
 {
-  "schema": "dsi.javelin.body-only-docs.v1",
-  "snapshot_utc": "2026-10-27T18:48:00Z",
-  "base_commit": "c4212951529669100eafc5b5cf7a5abcccd99e52",
+  "schema": "dsi.javelin.asset-index.v2",
+  "snapshot_date": "2026-10-29",
+  "base_commit": "15b0a5c4f94ae79f1c7d911d267f1e93056f1b05",
+  "project": "DSI Javelin 1973",
   "visibility": "private",
   "current_model": {
-    "filename": "DSI_Javelin_BodyOnly_Milestone_V03.blend",
-    "sha256": "668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90",
-    "bytes": 27862912,
-    "scope": "Reviewed body-only reversible visibility/export exclusion; actual body repair pending",
+    "filename": "DSI_Javelin_Current_Cloud_Model.blend",
+    "checkpoint": "V41-based outer-front-tire contour, Library version 36",
+    "sha256": "aad667f38b8c7a449b0ea148cefa2a71b0c6eecfd568ad2e5c5b6808e8d06289",
+    "bytes": 39160325,
+    "scope": "Exact reviewed outer-front-tire candidate adopted; limited contour improvement, not whole-model acceptance",
     "included_in_clone": false,
-    "storage": "Owner-private ChatGPT Library; preserved external cloud milestone; not included in a GitHub clone",
+    "storage": "Owner-private ChatGPT Library and preserved cloud milestone; not included in a GitHub clone",
     "library_model_id": "libfile_dc7967b8d0088191ad558887bc71a3dd",
-    "native_game_verified": false,
-    "library_version": 2,
+    "library_version": 36,
     "library_filename": "DSI_Javelin_Current_Cloud_Model.blend",
-    "library_file_id": "file_00000000dde481f585f8ec150cd3d27d",
-    "library_delivery_status": "Successful guarded replacement receipt inspected; exact delivered bytes hash/size independently recomputed",
-    "history": "Same Library identity retains v0V01 and v1V02 as history; v2 is the reviewed body-only V03"
+    "library_file_id": "file_00000000fce081f586d2749c70d073db",
+    "library_delivery_status": "Adoption receipt inspected; canonical, immutable milestone and downloaded Library readback independently hash/size matched",
+    "immutable_milestone_filename": "DSI_Javelin_OuterFrontTireContour_Milestone_Library36.blend",
+    "adoption_receipt": "current-work/receipts/outer-front-tire-adoption-library36.json",
+    "native_game_verified": false,
+    "whole_model_visual_accepted": false
   },
-  "current_task": "Correct existing body geometry and slice properly; do not add more underneath structure now",
-  "future_aspiration": {
-    "game": "Wreckfest",
-    "platform": "PC",
-    "installation": "Xbox app/Microsoft Store",
-    "exact_edition_custom_mod_import_support": "unverified",
-    "delivery_route": "unverified"
+  "preserved_predecessor": {
+    "checkpoint": "V41 conformal front-arch trim, Library version 35",
+    "sha256": "c02959f309a8b039bf110fc745a0ff8efa353dcb1f79a510e30f99f14108c10e",
+    "bytes": 38683044,
+    "immutable_milestone_filename": "DSI_Javelin_FrontArch_ConformalTrim_Milestone_V41.blend",
+    "included_in_clone": false,
+    "role": "Preserved prior canonical source, not the current pointer"
   },
+  "current_task": "Refine the canonical editable vehicle asset and visual likeness; preserve accepted source and parked work; target integrations have separate gates",
+  "integration_evidence": "docs/integration-status.md",
   "images": [
     {
       "path": "current-work/progress/body-only-v03-front.png",
@@ -33,7 +39,8 @@
       "bytes": 624212,
       "private_library_image_id": "libfile_6979cc01c8288191937e4a3b4c4b21bd",
       "image_version": 0,
-      "scope": "Actual V03 exterior authoring render, no native-game/repair-completion claim"
+      "scope": "Historical actual V03 exterior authoring render; does not depict current V41 or certify native/repair acceptance",
+      "role": "historical"
     },
     {
       "path": "current-work/progress/body-only-v03-rear.png",
@@ -41,8 +48,18 @@
       "bytes": 602857,
       "private_library_image_id": "libfile_b6ce3c4d707c8191a9b1820f7e215eb4",
       "image_version": 0,
-      "scope": "Actual V03 exterior authoring render, no native-game/repair-completion claim"
+      "scope": "Historical actual V03 exterior authoring render; does not depict current V41 or certify native/repair acceptance",
+      "role": "historical"
     }
   ],
-  "history": "All prior source/optional structural work retained; old Git model binaries/source.json unchanged."
+  "historical_body_only_v03": {
+    "filename": "DSI_Javelin_BodyOnly_Milestone_V03.blend",
+    "sha256": "668ffbaed111e20833c963a519ce04373525dd7e873b5957ed8bea24aabbfa90",
+    "bytes": 27862912,
+    "library_version": 2,
+    "preservation_receipt": "current-work/receipts/body-only-v03-preservation.json",
+    "included_in_clone": false,
+    "role": "Historical reversible visibility/export-exclusion checkpoint, not current source"
+  },
+  "history": "All prior source/optional structural work retained; old Git model binaries/source.json and original failure records unchanged. No new captures or asset binaries published."
 }

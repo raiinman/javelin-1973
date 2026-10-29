@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased - 2026-10-29 asset-scope documentation
+
+### Changed
+- Reframed the project as DSI Javelin 1973, a reusable editable vehicle asset with independent Wreckfest and historical Project Zomboid integration gates.
+- Indexed adopted cloud V41 and its exact reviewed adoption limits, without adding the external binary to the clone.
+- Corrected root/current-work specifications and stale child guidance; retained V03 imagery as explicitly historical.
+- Preserved the handoff-reported Wreckfest failure separately from patched-V40 garage-load evidence; no driving/physics acceptance or new Claude fix result claimed.
+
+No source/model/package binaries, assets, camera/Fast Load code, exporters, installs or runtime tests changed. This is not a release or an executed repository URL rename.
+
 ## Unreleased - 2026-10-27 source snapshot
 
 ### Added
